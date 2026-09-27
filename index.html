@@ -520,6 +520,10 @@ i++;if(i>3){clearInterval(t);busy=false;document.getElementById('m').textContent
 <\/script>`
 };
 
+const QR_DEMO = 'iVBORw0KGgoAAAANSUhEUgAAAYgAAAGIAQMAAABhjeVlAAAABlBMVEUMFCT///9oK1aNAAACdklEQVR42u1cy27DMAwT9v//rD1ikXQKFMjB7GHMgLYemh1ESKQoZdVPr8odueM/3VHX9Xf6eateh+uvzUd866ueXrnjwcWIL2yI0QBSrd9KdI/jIWmxzpo5g8dCKNF14dHrZaHTU8F+X4PHJ/AYCilkxjBH8LDzB3G5sKmu+dDhDyMeQhNvfqKvTHhA+ipAc17kIV9LdB38AUnVzAbwuaITPM7Xq8UQVx4gaUq07/BJ6pUlPyb4qzBpYzg0DwmW6B7nD2bE5EttdspAlXrlqldiiswJvNG0S6J3PfnR03JAT6EJGamFlj3RdfSDWzpUy2uR4cMflvyggai5IUY7mpPkh4s/phHsBhS0SOC5Jz88/flYIlquplFsmVAlPyz1qiinlNtJGyUFK9E19IMldi5Klugr4fVE18QfNE3kFyUT9vC5Mz84HKTWwiBdCliie54/dAolGBWMLZ6Dx/l6xVacCMFHqZvjnug68CiRtqqmRPiuupXoGvwS6KvaN+TE4RpbMdE1+CUycdq23zCZouGe6J7Xu3RFWrhCV32y72PFY1NQLGPo3WVDLtH1+Vewd++mCUfswcPA58ACE/TSrV515YOHxy/R1YW+Cd2mqxI8THq39pE5NS4WrbPPYOMPLmC1Pn9w83eDhxEP9udcu5LRevoP6zxKHvLgLi9a8s3KSnQN+mpbwdInQDZaT//hqlfCIa9AcBSS/tyid1VolcqqZp3K/MP+fFS92iZjlyQ/6gPPD5Y+96xCS2tbomvDg66Jzm271UUJHk48tl2frn3zKv2HlT8w5dDuXLr0+CVefaXHhqjihD377d7+I/97J3fkjtv1DR1erVggRcRJAAAAAElFTkSuQmCC';
+
+const QR_RESULT = 'iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQMAAABB54RGAAAABlBMVEUMFCT///9oK1aNAAABsElEQVR42u2bUY7DIAxErc0BOFKuzpFyACQKeGyo+tOVdqX5GD5Q0vgrT2OPTWr921VNoQpV6K9CH8O6H2y9lvlsbPHoGrc/9vVS6P+ETlqXkxugru60fK3buBItGlpLPYNMs4UMeErvoTfR4qMVYjIrDQ9Ei1tbKyf2ZpEdRYu0bk1G1WU1rYapbhHS2p4w02Fu8oRktPYKbzFWA6PD7Otl0dStMvGUt3RYo5atK9Hi0dbi0TP1ZbWCwFS3qLR1P5apDy4DyNzQKxMSuYyhraWydlhE/61KW2SZEI4CI0JDOnSMPXow0SLyhM8HtzAdvcvBk/Vb3lv55L0lt3PSIVo0mRAefdv4Vagsh05yGXye8A4nGFc5gxItsllG+PajRX7Tm2gRTXWPY2OUrJ0E5Qm5tIUzSFfUEljDlmdeosXTb+XQHd7Cf4sY0WKrW58z+DtTpBw8V7+FQgX/BzHt+YZcBpfLSN+e1SpGhKJF12/ZPtU/DlCQBOXgKWlFv4VWy3I4rxk8I60whvvDz7oHUXpZdN88HekQyJrqFq8nPKpVfkUjWoz9lv7ioVCF/lnoC+n3KBvedYd7AAAAAElFTkSuQmCC';
+
 const QR_MANUAL = 'iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQMAAABB54RGAAAABlBMVEURGCf///8AJgUnAAABqUlEQVR42u1bWw7DIAyL1gNwpF6dI3EAJMbyILT72aRN8of5qGDNF5YdJ+lkfLqqMJShDP0qtImvM361XS1z5+uYx4d8vBj6n9AXWsfCqE/I9NhENtw0hGihoKXsMbR0J6X7i/PFvJNoIaI1AihTSaKFzi1PXj2UkGih5q3ATQ2GuQzmLTS0lie0RHV50BOCoXVZKoczZe2G3tMYLwtFCWsJ8+7eQnfzrWoi0cJSQmOUZivDqO8vmLeg0FITGAbDWWZHe1HILZi81Z1MVaKNYXawHdF+IlpIaLknDB5liWy7Sk+I5AmDRztulsHoCQGV0Iqu9BYtNbGz3oKrjkuQydsYajXEHv4bLwulT+gNXW8MugjG2IRooeWtkY3BvnpQqY5UQihuZYksb0d6QixuRakVBdaZBqMMooXHrewO5kPMDrpO8rKwevDabwpueecpZ168LKz51moW3vlGT4ikhLepvutflMjkFljeyq9ocrQ1LnJItNDQantNvE/6qYSo3Eq/EQMUfvMEmbdiduIzL1lAkVuAnjC/xpCliezqotZb/IsHQxn6s9Anll0iTiRQxNMAAAAASUVORK5CYII=';
 
 const QR_SURVEY = 'iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQMAAABB54RGAAAABlBMVEURGCf///8AJgUnAAABoElEQVR42u2bwW3EMAwEibgAleTWr6QrQAAjS1xSyusCJMA+Vg/DJ/PlwZJLymf+6XqZQhWq0F+Fvi3WPbfGT38197FxOR5dI/TLPl4K/Z/Qh9a1yA1afYCau60veCAoWkS0lo5uqGxqa3DD3i1ajLSeu5kEW490KFrMtKKcLVDSFnPdKjKPtlx1i5FWesL35T8v8oRktGplTjS4jN3s62Xx1K3Zb3UkRly2Rky0aGhFqzXF1IHHQmqqW1x1K0wgWuRNapUORYujbvXjLu3g2XmJFo8nTEVF/msxg9oTo14WSyYMW4F+axWqNO+qW1wOvmaCy7xvU11pi89lHHYwSpbVaEO0iFwGQHVoq0TXpC22fqvIBLejbmmqy0arBrrng2zERItploGslzYeXt5Vt9i0tcrT26zO/LEwfhItxhl8uYxMkaLFNctYbt0djsKObzVUt/g8YZxBnifGdREt0q9okAmzbsllMNJCOixGMaGXtii1hc9055lXGkNpi7Bu1Un/VsZ0vkXqCdd813Bs3OLsWJ6Qst/SXzwUqtA/C/0GAJMXStaXKGEAAAAASUVORK5CYII=';
@@ -551,6 +555,9 @@ const SLIDES = [
     {t:{uz:"Ochiq havola", ko:"공개 URL"}, d:{uz:"O'quvchilar uydan ham ochib ishlata oladi.", ko:"깃허브로 배포해 누구나 접속 가능"}},
     {t:{uz:"Backend tushunchasi", ko:"백엔드 개념"}, d:{uz:"Ma'lumot qayerda va qanday saqlanishini bilib olasiz.", ko:"데이터가 저장되는 구조를 눈으로 확인"}}
   ],
+  link:{ url:'https://script.google.com/macros/s/AKfycbw_Uu7JL1Pbd1vfvpXVW3CFICY-eh3a0Haui2g1BUapYKvyudlNc4ISc4leH6G7gWRXUA/exec',
+         qr:QR_DEMO, text:"Namunani oching  \u2192",
+         label:{uz:"Namuna: shu o'yin ham vibe coding bilan yaratilgan — hozir sinab ko'ring", ko:"예시 — 바이브코딩으로 만든 게임, 지금 열어서 해보세요"} },
   note:{uz:"Mukammal dastur emas — ishlaydigan natija. Bugungi yagona maqsad shu.", ko:"완벽한 앱이 아니라 '동작하는 결과물'이 목표"} },
 
 { type:'section', block:'Opening', num:'01', name:'Opening',
@@ -742,7 +749,7 @@ const SLIDES = [
   title:{uz:"GitHub Pages — 5 qadam", ko:"깃허브 배포 5단계"},
   subtitle:{uz:"Hammamiz birga bajaramiz — 15 daqiqa", ko:"전원 실습 15분"},
   items:[
-    {t:{uz:"github.com ga kiring", ko:"깃허브 로그인"}, d:{uz:"Hisob oldindan tayyorlangan.", ko:"계정은 사전 생성 완료"}},
+    {t:{uz:"github.com ga kiring", ko:"깃허브 로그인"}, url:'https://github.com/', urlText:'github.com', d:{uz:"Hisob oldindan tayyorlangan.", ko:"계정은 사전 생성 완료"}, hl:true},
     {t:{uz:"New repository > nom bering > Public", ko:"새 저장소 생성 · Public"}, d:{uz:"Nom: masalan  my-lesson-tool", ko:"영문 소문자 권장"}},
     {t:{uz:"Add file > Upload files > index.html", ko:"파일 업로드 — index.html"}, d:{uz:"Fayl nomi aynan index.html bo'lsin.", ko:"파일명 반드시 index.html"}, hl:true},
     {t:{uz:"Settings > Pages > Branch: main > Save", ko:"Settings > Pages > main 브랜치 저장"}, hl:true},
@@ -757,6 +764,8 @@ const SLIDES = [
     {t:{uz:"Nima beradi?", ko:"무엇을 주는가"}, d:{uz:"Ma'lumotlar bazasi va foydalanuvchi kirishi (login).", ko:"DB와 사용자 인증"}},
     {t:{uz:"Bugun nima qilamiz?", ko:"오늘 할 일"}, d:{uz:"Loyiha ochamiz, jadval yaratamiz, kalitni sahifaga ulaymiz.", ko:"프로젝트 생성 → 테이블 → 연결까지 시연"}}
   ],
+  link:{ url:'https://supabase.com/', 
+         label:{uz:"Ro'yxatdan o'ting va loyiha yarating", ko:"가입 후 프로젝트 생성 — 무료 플랜으로 충분합니다"} },
   note:{uz:"Shablon va qo'llanma havolasi beriladi — qolganini onlayn mentorlikda davom ettiramiz.", ko:"템플릿·가이드 링크 제공, 사후 멘토링으로 연결"} },
 
 { type:'section', block:'Present & Share', num:'05', name:'Present & Share',
@@ -766,13 +775,14 @@ const SLIDES = [
 
 { type:'rows', block:'Present & Share',
   title:{uz:"Natijangizni yuboring", ko:"결과물 제출"},
-  subtitle:{uz:"QR kodni oching — to'rtta savol", ko:"구글 설문 4문항 · 실시간 번역 수집"},
+  subtitle:{uz:"QR kodni oching — uchta savol", ko:"구글 설문 3문항 · 실시간 번역 수집"},
   items:[
     {t:{uz:"Ism va maktab", ko:"이름과 학교"}},
     {t:{uz:"Vosita havolasi", ko:"결과물 링크"}, d:{uz:"GitHub Pages manzili.", ko:"깃허브 페이지 주소"}},
-    {t:{uz:"Qaysi darsning qaysi muammosi uchun", ko:"어떤 수업의 어떤 문제를 위한 것인지"}},
-    {t:{uz:"Eng katta o'zgarish bergan tuzatish", ko:"가장 크게 바뀐 수정 한 가지"}, hl:true}
+    {t:{uz:"Qaysi darsning qaysi muammosi uchun", ko:"어떤 수업의 어떤 문제를 위한 것인지"}, hl:true}
   ],
+  link:{ url:'https://forms.gle/WuSP2c4wKjMzp3WU8', qr:QR_RESULT,
+         label:{uz:"Natijangizni shu yerga yuboring", ko:"결과물 제출 — QR 또는 링크로 접속"} },
   note:{uz:"Barcha natijalar ekranda bitta ro'yxatda ko'rinadi — galereya boshlanadi.", ko:"제출 목록을 화면에 띄우고 갤러리 워크 시작"} },
 
 { type:'steps', block:'Present & Share',
@@ -859,7 +869,7 @@ function linkOf(s){
   return '<div class="linkbox">' +
     (s.link.qr ? '<img alt="QR" src="data:image/png;base64,' + s.link.qr + '">' : '') +
     '<div class="lt"><b>' + T(s.link.label) + '</b>' +
-    '<a class="url" href="' + s.link.url + '" target="_blank" rel="noopener">' + s.link.url + '</a></div>' +
+    '<a class="url" href="' + s.link.url + '" target="_blank" rel="noopener">' + esc(s.link.text || s.link.url) + '</a></div>' +
   '</div>';
 }
 
@@ -905,7 +915,7 @@ function render(s, i){
           '<h3>' + T(it.t) + '</h3>' +
           '<p>' + T(it.d) + '</p>' +
         '</div>').join('') +
-      '</div></div>' + noteOf(s);
+      '</div></div>' + linkOf(s) + noteOf(s);
   }
 
   else if(s.type === 'rows'){
