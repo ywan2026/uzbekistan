@@ -214,6 +214,22 @@
   .tph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:36px;color:var(--muted);font-size:15.5px;line-height:1.7;background:var(--soft)}
   .tprev.live .tph{display:none}
 
+  /* pdf viewer */
+  .msplit{display:flex;gap:40px;align-items:flex-start}
+  .mlist{flex:1;min-width:0}
+  .mbox{width:520px;flex:none;border:1px solid var(--line);background:#fff;display:flex;flex-direction:column}
+  .mbar{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid var(--line);background:var(--soft)}
+  .mbar .lb{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mbar button{
+    width:30px;height:28px;border:1px solid var(--line-2);background:#fff;color:var(--ink-2);
+    font-family:inherit;font-size:15px;font-weight:600;line-height:1;cursor:pointer;border-radius:3px;transition:.14s;
+  }
+  .mbar button:hover{border-color:var(--ink);background:var(--ink);color:#fff}
+  .mbar .zl{font-size:12.5px;font-weight:600;color:var(--ink-2);min-width:46px;text-align:center;letter-spacing:.02em}
+  .mview{height:352px;overflow:auto;background:#EDEFF3;position:relative}
+  .mview .zoomer{transform-origin:top left;width:100%;height:352px}
+  .mview iframe{width:100%;height:100%;border:0;display:block;background:#fff}
+
   /* inline link */
   .ilink{display:inline-block;margin-left:12px;font-size:16.5px;font-weight:500;color:var(--accent-2);text-decoration:none;border-bottom:1px solid var(--line-2);transition:.14s}
   .ilink:hover{border-bottom-color:var(--accent-2)}
@@ -524,8 +540,6 @@ const QR_DEMO = 'iVBORw0KGgoAAAANSUhEUgAAAYgAAAGIAQMAAABhjeVlAAAABlBMVEUMFCT///9
 
 const QR_RESULT = 'iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQMAAABB54RGAAAABlBMVEUMFCT///9oK1aNAAABsElEQVR42u2bUY7DIAxErc0BOFKuzpFyACQKeGyo+tOVdqX5GD5Q0vgrT2OPTWr921VNoQpV6K9CH8O6H2y9lvlsbPHoGrc/9vVS6P+ETlqXkxugru60fK3buBItGlpLPYNMs4UMeErvoTfR4qMVYjIrDQ9Ei1tbKyf2ZpEdRYu0bk1G1WU1rYapbhHS2p4w02Fu8oRktPYKbzFWA6PD7Otl0dStMvGUt3RYo5atK9Hi0dbi0TP1ZbWCwFS3qLR1P5apDy4DyNzQKxMSuYyhraWydlhE/61KW2SZEI4CI0JDOnSMPXow0SLyhM8HtzAdvcvBk/Vb3lv55L0lt3PSIVo0mRAefdv4Vagsh05yGXye8A4nGFc5gxItsllG+PajRX7Tm2gRTXWPY2OUrJ0E5Qm5tIUzSFfUEljDlmdeosXTb+XQHd7Cf4sY0WKrW58z+DtTpBw8V7+FQgX/BzHt+YZcBpfLSN+e1SpGhKJF12/ZPtU/DlCQBOXgKWlFv4VWy3I4rxk8I60whvvDz7oHUXpZdN88HekQyJrqFq8nPKpVfkUjWoz9lv7ioVCF/lnoC+n3KBvedYd7AAAAAElFTkSuQmCC';
 
-const QR_MANUAL = 'iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQMAAABB54RGAAAABlBMVEURGCf///8AJgUnAAABqUlEQVR42u1bWw7DIAyL1gNwpF6dI3EAJMbyILT72aRN8of5qGDNF5YdJ+lkfLqqMJShDP0qtImvM361XS1z5+uYx4d8vBj6n9AXWsfCqE/I9NhENtw0hGihoKXsMbR0J6X7i/PFvJNoIaI1AihTSaKFzi1PXj2UkGih5q3ATQ2GuQzmLTS0lie0RHV50BOCoXVZKoczZe2G3tMYLwtFCWsJ8+7eQnfzrWoi0cJSQmOUZivDqO8vmLeg0FITGAbDWWZHe1HILZi81Z1MVaKNYXawHdF+IlpIaLknDB5liWy7Sk+I5AmDRztulsHoCQGV0Iqu9BYtNbGz3oKrjkuQydsYajXEHv4bLwulT+gNXW8MugjG2IRooeWtkY3BvnpQqY5UQihuZYksb0d6QixuRakVBdaZBqMMooXHrewO5kPMDrpO8rKwevDabwpueecpZ168LKz51moW3vlGT4ikhLepvutflMjkFljeyq9ocrQ1LnJItNDQantNvE/6qYSo3Eq/EQMUfvMEmbdiduIzL1lAkVuAnjC/xpCliezqotZb/IsHQxn6s9Anll0iTiRQxNMAAAAASUVORK5CYII=';
-
 const QR_SURVEY = 'iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQMAAABB54RGAAAABlBMVEURGCf///8AJgUnAAABoElEQVR42u2bwW3EMAwEibgAleTWr6QrQAAjS1xSyusCJMA+Vg/DJ/PlwZJLymf+6XqZQhWq0F+Fvi3WPbfGT38197FxOR5dI/TLPl4K/Z/Qh9a1yA1afYCau60veCAoWkS0lo5uqGxqa3DD3i1ajLSeu5kEW490KFrMtKKcLVDSFnPdKjKPtlx1i5FWesL35T8v8oRktGplTjS4jN3s62Xx1K3Zb3UkRly2Rky0aGhFqzXF1IHHQmqqW1x1K0wgWuRNapUORYujbvXjLu3g2XmJFo8nTEVF/msxg9oTo14WSyYMW4F+axWqNO+qW1wOvmaCy7xvU11pi89lHHYwSpbVaEO0iFwGQHVoq0TXpC22fqvIBLejbmmqy0arBrrng2zERItploGslzYeXt5Vt9i0tcrT26zO/LEwfhItxhl8uYxMkaLFNctYbt0djsKObzVUt/g8YZxBnifGdREt0q9okAmzbsllMNJCOixGMaGXtii1hc9055lXGkNpi7Bu1Un/VsZ0vkXqCdd813Bs3OLsWJ6Qst/SXzwUqtA/C/0GAJMXStaXKGEAAAAASUVORK5CYII=';
 
 const SLIDES = [
@@ -604,9 +618,10 @@ const SLIDES = [
   ],
   note:{uz:"Bugun bazaning o'rnida Google Sheets turadi. Prinsip bir xil.", ko:"오늘은 시트가 DB 역할 — 원리는 동일"} },
 
-{ type:'rows', block:'Practice',
+{ type:'manual', block:'Practice',
+  pdf:'manual.pdf',
   title:{uz:"Amaliyot tartibi", ko:"Practice 진행 순서"},
-  subtitle:{uz:"Hammamiz bir xil qadamdan o'tamiz — 30 daqiqa", ko:"전원이 같은 지점에 도달하는 것이 목표"},
+  subtitle:{uz:"O'ng tomonda qo'llanma — kattalashtirish uchun + tugmasini bosing", ko:"오른쪽 매뉴얼은 + − 버튼으로 확대·축소할 수 있습니다"},
   items:[
     {t:{uz:"Yangi Google Sheets yarating", ko:"새 구글 시트 만들기"}, tag:"2 daq"},
     {t:{uz:"Kengaytmalar > Apps Script ni oching", ko:"확장 프로그램 > Apps Script 열기"}, d:{uz:"Aynan jadval ichidan oching — aks holda kod ishlamaydi.", ko:"반드시 시트 안에서 열기 — 아니면 코드가 동작하지 않음"}, tag:"2 daq", hl:true},
@@ -615,9 +630,7 @@ const SLIDES = [
     {t:{uz:"O'z havolangizni oching va ma'lumot kiriting", ko:"내 링크 열어 데이터 입력"}, tag:"6 daq"},
     {t:{uz:"Jadvalga yozilganini tekshiring", ko:"시트에 쌓이는지 확인"}, tag:"6 daq"}
   ],
-  link:{ url:'https://canva.link/rytq9agrqzzmjxy', qr:QR_MANUAL,
-         label:{uz:"Qo'llanma — har bir qadam rasm bilan", ko:"단계별 매뉴얼 — 화면 캡처 포함"} },
-  note:{uz:"Qo'llanmani telefoningizda ochib qo'ying — kerak bo'lganda qarab turasiz.", ko:"매뉴얼을 휴대폰으로 열어 두고 따라오게 안내"} },
+  note:{uz:"Har bir qadam rasm bilan ko'rsatilgan — adashsangiz shu yerdan qarang.", ko:"단계마다 화면 캡처가 들어 있음 — 막히면 여기서 확인"} },
 
 { type:'code', block:'Practice',
   title:{uz:"Namuna kod — Code.gs", ko:"샘플 코드 ①"},
@@ -631,9 +644,10 @@ const SLIDES = [
   filename:'index.html',
   code:CODE_HTML },
 
-{ type:'rows', block:'Practice',
+{ type:'manual', block:'Practice',
+  pdf:'manual.pdf', pdfPage:5,
   title:{uz:"Joylashtirish (Deploy)", ko:"웹 앱 배포 5단계"},
-  subtitle:{uz:"Eng ko'p to'xtaladigan joy — diqqat bilan", ko:"가장 많이 막히는 지점"},
+  subtitle:{uz:"Eng ko'p to'xtaladigan joy — o'ng tomonda qo'llanmaning 3-bo'limi", ko:"가장 많이 막히는 지점 — 오른쪽은 매뉴얼의 Publish 부분"},
   items:[
     {t:{uz:"Deploy > New deployment", ko:"배포 > 새 배포"}},
     {t:{uz:"Turi: Web app", ko:"유형: 웹 앱 선택"}},
@@ -641,9 +655,7 @@ const SLIDES = [
     {t:{uz:"Ruxsat oynasi: Advanced > Go to project (unsafe)", ko:"확인되지 않은 앱 경고 → 고급 > 이동"}, hl:true},
     {t:{uz:"Havolani nusxalang va brauzerda oching", ko:"생성된 URL을 복사해 열기"}}
   ],
-  link:{ url:'https://canva.link/rytq9agrqzzmjxy', qr:QR_MANUAL,
-         label:{uz:"Qo'llanma — har bir qadam rasm bilan", ko:"단계별 매뉴얼 — 화면 캡처 포함"} },
-  note:{uz:"Ruxsat oynasi qo'rqinchli ko'rinadi — bu normal.", ko:"경고 화면이 떠도 정상 — 매뉴얼의 해당 단계 참고"} },
+  note:{uz:"Ruxsat oynasi qo'rqinchli ko'rinadi — bu normal. Qo'llanmaning 3-bo'limiga qarang.", ko:"경고 화면이 떠도 정상 — 매뉴얼 3단계(Publish) 참고"} },
 
 { type:'rows', block:'Practice',
   title:{uz:"Xato chiqsa — tez yechim", ko:"오류가 날 때 — 빠른 해결"},
@@ -745,9 +757,10 @@ const SLIDES = [
   subtitle:{uz:"GitHub Pages bilan nashr, Supabase bilan baza", ko:"깃허브 배포 + Supabase 연결"},
   time:'11:10 – 11:30 · 20 daq' },
 
-{ type:'rows', block:'Github',
+{ type:'manual', block:'Github',
+  pdf:'github-manual.pdf',
   title:{uz:"GitHub Pages — 5 qadam", ko:"깃허브 배포 5단계"},
-  subtitle:{uz:"Hammamiz birga bajaramiz — 15 daqiqa", ko:"전원 실습 15분"},
+  subtitle:{uz:"O'ng tomonda qo'llanma — kattalashtirish uchun + tugmasini bosing", ko:"오른쪽 매뉴얼은 + − 버튼으로 확대·축소 · 전원 실습 15분"},
   items:[
     {t:{uz:"github.com ga kiring", ko:"깃허브 로그인"}, url:'https://github.com/', urlText:'github.com', d:{uz:"Hisob oldindan tayyorlangan.", ko:"계정은 사전 생성 완료"}, hl:true},
     {t:{uz:"New repository > nom bering > Public", ko:"새 저장소 생성 · Public"}, d:{uz:"Nom: masalan  my-lesson-tool", ko:"영문 소문자 권장"}},
@@ -841,6 +854,7 @@ const UI = {
   hint:  {uz:"Nusxalab Claude ga qo'ying", ko:"복사해 클로드에 붙여넣기"},
   outPh: {uz:"Prompt shu yerda paydo bo'ladi...", ko:"여기에 프롬프트가 생성됩니다..."},
   copied:{uz:"Nusxalandi", ko:"복사되었습니다"},
+  manualLb:{uz:"Qo'llanma", ko:"실습 매뉴얼"},
   hover: {uz:"Chap tomondagi mavzuga sichqonchani olib boring — namuna shu yerda ochiladi va uni sinab ko'rishingiz mumkin",
           ko:"왼쪽 주제에 마우스를 올리면 여기에 예시 앱이 열리고 직접 눌러볼 수 있습니다"},
   manual:{uz:"Matnni qo'lda nusxalang", ko:"직접 선택해 복사해 주세요"}
@@ -952,6 +966,35 @@ function render(s, i){
       '</div></div>' + noteOf(s);
   }
 
+  else if(s.type === 'manual'){
+    h = head(s) + '<div class="body"><div class="msplit">' +
+      '<div class="mlist"><div class="rows">' +
+        s.items.map((it, n) =>
+          '<div class="r' + (it.hl ? ' hl' : '') + '">' +
+            '<div class="n">' + String(n + 1).padStart(2, '0') + '</div>' +
+            '<div class="tx"><b>' + T(it.t) +
+              (it.url ? '<a class="ilink" href="' + it.url + '" target="_blank" rel="noopener">' + (it.urlText || it.url) + '</a>' : '') +
+            '</b>' +
+              (it.d ? '<span class="d">' + T(it.d) + '</span>' : '') +
+            '</div>' +
+            (it.tag ? '<div class="tag">' + esc(D(it.tag)) + '</div>' : '') +
+          '</div>').join('') +
+      '</div></div>' +
+      '<div class="mbox">' +
+        '<div class="mbar">' +
+          '<span class="lb">' + esc(UI.manualLb[L()]) + '</span>' +
+          '<button data-z="out" title="-">&minus;</button>' +
+          '<span class="zl">100%</span>' +
+          '<button data-z="in" title="+">+</button>' +
+          '<button data-z="reset" title="100%">&#8634;</button>' +
+        '</div>' +
+        '<div class="mview"><div class="zoomer">' +
+          '<iframe src="' + s.pdf + '#page=' + (s.pdfPage || 1) + '&toolbar=0&navpanes=0&view=FitH" title="manual"></iframe>' +
+        '</div></div>' +
+      '</div>' +
+      '</div></div>' + noteOf(s);
+  }
+
   else if(s.type === 'topics'){
     h = head(s) + '<div class="body"><div class="tsplit">' +
       '<div class="tlist">' +
@@ -997,6 +1040,32 @@ function render(s, i){
   el.innerHTML = '<div class="inner">' + h + '</div>' +
     '<div class="pagenum">' + (i + 1) + ' / ' + SLIDES.length + '</div>';
   return el;
+}
+
+function initManual(el){
+  const box = el.querySelector('.mbox');
+  if(!box) return;
+  const zoomer = box.querySelector('.zoomer');
+  const label = box.querySelector('.zl');
+  const steps = [1, 1.25, 1.5, 2, 2.5, 3];
+  let i = 0;
+  const apply = () => {
+    const k = steps[i];
+    zoomer.style.transform = 'scale(' + k + ')';
+    zoomer.style.width = (100 / k) + '%';
+    zoomer.style.height = (352 / k) + 'px';
+    label.textContent = Math.round(k * 100) + '%';
+  };
+  box.querySelectorAll('[data-z]').forEach(b => {
+    b.onclick = () => {
+      const a = b.dataset.z;
+      if(a === 'in') i = Math.min(steps.length - 1, i + 1);
+      else if(a === 'out') i = Math.max(0, i - 1);
+      else i = 0;
+      apply();
+    };
+  });
+  apply();
 }
 
 function initTopics(el){
@@ -1052,7 +1121,7 @@ function initPRD(el){
 const stage = document.getElementById('stage');
 function build(){
   stage.innerHTML = '';
-  SLIDES.forEach((s, i) => { const el = render(s, i); stage.appendChild(el); initPRD(el); initTopics(el); });
+  SLIDES.forEach((s, i) => { const el = render(s, i); stage.appendChild(el); initPRD(el); initTopics(el); initManual(el); });
   show(cur, false);
   buildOverview();
 }
