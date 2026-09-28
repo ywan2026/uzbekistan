@@ -474,6 +474,37 @@ function send() {
 <\/script>`;
 
 const APPS = {
+form: `<!doctype html><meta charset="utf-8"><style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;margin:0;padding:16px;color:#1D1D1F}
+h3{margin:0 0 4px;font-size:15px}
+.sub{font-size:12px;color:#86868B;margin-bottom:12px}
+input{font:inherit;font-size:14px;padding:9px 12px;border:1px solid #D2D2D7;border-radius:9px;width:132px;margin-right:6px}
+button{font:inherit;font-size:14px;font-weight:600;background:#0A84FF;color:#fff;border:0;border-radius:9px;padding:10px 16px;cursor:pointer}
+#msg{font-size:13px;font-weight:600;color:#12A150;height:18px;margin:10px 0 6px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{background:#F5F5F7;text-align:left;padding:7px 9px;color:#86868B;font-weight:600;border-bottom:1px solid #E5E5EA}
+td{padding:7px 9px;border-bottom:1px solid #F0F0F2}
+.lab{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#86868B;margin:14px 0 6px}
+</style>
+<h3>Veb-ilova</h3><div class="sub">Ism va javobni yozing</div>
+<input id="n" placeholder="Ismingiz"><input id="a" placeholder="Javobingiz"><button onclick="send()">Yuborish</button>
+<div id="msg"></div>
+<div class="lab">Google Sheets</div>
+<table><thead><tr><th>Vaqt</th><th>Ism</th><th>Javob</th></tr></thead><tbody id="t"></tbody></table>
+<script>
+function send(){
+  var n=document.getElementById('n').value.trim(), a=document.getElementById('a').value.trim();
+  if(!n||!a){document.getElementById('msg').style.color='#C0392B';document.getElementById('msg').textContent='Ikkala katakni to\\'ldiring';return;}
+  var d=new Date(), t=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)+':'+('0'+d.getSeconds()).slice(-2);
+  var r=document.createElement('tr');
+  r.innerHTML='<td>'+t+'</td><td>'+n+'</td><td>'+a+'</td>';
+  document.getElementById('t').appendChild(r);
+  document.getElementById('msg').style.color='#12A150';
+  document.getElementById('msg').textContent='Saqlandi!';
+  document.getElementById('a').value='';
+}
+<\/script>`,
+
 sort: `<!doctype html><meta charset="utf-8"><style>
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;margin:0;padding:16px;color:#111827}
 h3{margin:0 0 12px;font-size:15px}
@@ -691,7 +722,7 @@ const SLIDES = [
     {t:{uz:"Ishlov", ko:"처리"}, d:{uz:"Server kodi bu ma'lumotni qabul qiladi va tekshiradi.", ko:"서버 코드가 받아서 처리"}},
     {t:{uz:"Saqlash", ko:"저장"}, d:{uz:"Ma'lumot bazaga yoziladi va keyin ham o'qiladi.", ko:"데이터베이스에 기록되고 다시 읽힘"}}
   ],
-  svg:'<svg viewBox="0 0 1000 200" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="26" width="250" height="104" rx="16" fill="#F5F5F7" stroke="#D2D2D7" stroke-width="1"/><text x="133" y="68" text-anchor="middle" font-size="21" font-weight="600" fill="#1D1D1F">Foydalanuvchi</text><text x="133" y="98" text-anchor="middle" font-size="16" fill="#86868B">index.html &#183; tugma</text><rect x="375" y="26" width="250" height="104" rx="16" fill="#F0F6FF" stroke="#BBD8FF" stroke-width="1"/><text x="500" y="68" text-anchor="middle" font-size="21" font-weight="600" fill="#0B64D6">Apps Script</text><text x="500" y="98" text-anchor="middle" font-size="16" fill="#0A84FF">saveAnswer()</text><rect x="742" y="26" width="250" height="104" rx="16" fill="#F5F5F7" stroke="#D2D2D7" stroke-width="1"/><text x="867" y="68" text-anchor="middle" font-size="21" font-weight="600" fill="#1D1D1F">Google Sheets</text><text x="867" y="98" text-anchor="middle" font-size="16" fill="#86868B">ma&#39;lumot saqlanadi</text><line x1="262" y1="78" x2="360" y2="78" stroke="#0A84FF" stroke-width="2"/><polygon points="374,78 358,71 358,85" fill="#0A84FF"/><text x="311" y="62" text-anchor="middle" font-size="14" font-weight="600" fill="#0A84FF">1. so&#39;rov</text><line x1="629" y1="78" x2="727" y2="78" stroke="#0A84FF" stroke-width="2"/><polygon points="741,78 725,71 725,85" fill="#0A84FF"/><text x="678" y="62" text-anchor="middle" font-size="14" font-weight="600" fill="#0A84FF">2. yozadi</text><line x1="867" y1="146" x2="146" y2="146" stroke="#C7C7CC" stroke-width="2" stroke-dasharray="6 6"/><polygon points="133,146 149,139 149,153" fill="#C7C7CC"/><line x1="867" y1="130" x2="867" y2="146" stroke="#C7C7CC" stroke-width="2"/><line x1="133" y1="130" x2="133" y2="146" stroke="#C7C7CC" stroke-width="2"/><text x="500" y="172" text-anchor="middle" font-size="14" fill="#86868B">3. javob: &#8220;Saqlandi!&#8221;</text></svg>',
+  svg:'backend',
   note:{uz:"Bugun bazaning o'rnida Google Sheets turadi. Prinsip bir xil.", ko:"오늘은 시트가 DB 역할 — 원리는 동일"} },
 
 { type:'shots', block:'Practice',
@@ -699,9 +730,9 @@ const SLIDES = [
   title:{uz:"Amaliyot tartibi", ko:"Practice 진행 순서"},
   subtitle:{uz:"Chapdagi qadamni bosing — o'ngda o'sha ekran ochiladi", ko:"왼쪽 단계를 클릭하면 오른쪽에 해당 화면이 열립니다"},
   items:[
-    {t:{uz:"Yangi Google Sheets yarating", ko:"새 구글 시트 만들기"}, url:'https://docs.google.com/spreadsheets/d/1vrkmYo1j-p_x8BkwpnXVWvOzhpms1Sm5hwGWXXCgvxE/edit?hl=ko&gid=0#gid=0', urlText:'Google Sheets', shot:1, hl:true},
-    {t:{uz:"Kengaytmalar > Apps Script ni oching", ko:"확장 프로그램 > Apps Script 열기"}, d:{uz:"Aynan jadval ichidan oching.", ko:"반드시 시트 안에서 열기"}, shot:1, hl:true},
-    {t:{uz:"Code.gs — namuna kodni qo'ying", ko:"Code.gs에 샘플 코드 붙여넣기"}, shot:2, hl:true},
+    {t:{uz:"Yangi Google Sheets yarating", ko:"새 구글 시트 만들기"}, url:'https://docs.google.com/spreadsheets/d/1vrkmYo1j-p_x8BkwpnXVWvOzhpms1Sm5hwGWXXCgvxE/edit?hl=ko&gid=0#gid=0', urlText:'Google Sheets', shot:1},
+    {t:{uz:"Kengaytmalar > Apps Script ni oching", ko:"확장 프로그램 > Apps Script 열기"}, d:{uz:"Aynan jadval ichidan oching.", ko:"반드시 시트 안에서 열기"}, shot:1},
+    {t:{uz:"Code.gs — namuna kodni qo'ying", ko:"Code.gs에 샘플 코드 붙여넣기"}, shot:2},
     {t:{uz:"Yangi HTML fayl qo'shing — nomi: index", ko:"HTML 파일 추가 — 이름은 index"}, shot:3},
     {t:{uz:"index.html kodini qo'ying", ko:"index.html 코드 붙여넣기"}, shot:4},
     {t:{uz:"Saqlang va veb-ilova sifatida joylashtiring", ko:"저장 후 웹 앱으로 배포"}, shot:5}
@@ -727,18 +758,18 @@ const SLIDES = [
   items:[
     {t:{uz:"Deploy > Manage deployments", ko:"배포 > 배포 관리"}, shot:5},
     {t:{uz:"Turi: Web app", ko:"유형: 웹 앱 선택"}, shot:6},
-    {t:{uz:"Access: Anyone → Deploy", ko:"액세스: 모든 사용자 → 배포"}, shot:7, hl:true},
-    {t:{uz:"Ruxsat: Advanced > Go to project > Allow", ko:"권한 승인: 고급 > 프로젝트로 이동 > 허용"}, shot:8, hl:true}
+    {t:{uz:"Access: Anyone → Deploy", ko:"액세스: 모든 사용자 → 배포"}, shot:7},
+    {t:{uz:"Ruxsat: Advanced > Go to project > Allow", ko:"권한 승인: 고급 > 프로젝트로 이동 > 허용"}, shot:8}
   ],
   note:{uz:"Ruxsat oynasi qo'rqinchli ko'rinadi — bu normal.", ko:"경고 화면이 떠도 정상"} },
 
-{ type:'rows', block:'Practice',
+{ type:'demo', block:'Practice', app:'form',
   title:{uz:"Tekshirish — ma'lumot tushdimi?", ko:"확인 — 데이터가 쌓이는가"},
-  subtitle:{uz:"Joylashtirish tugadi. Endi haqiqatan ishlayaptimi — sinab ko'ramiz", ko:"배포 후 실제로 동작하는지 직접 확인"},
+  subtitle:{uz:"O'ngdagi namunada sinab ko'ring — sizniki ham xuddi shunday ishlashi kerak", ko:"오른쪽 예시로 먼저 확인 — 내 앱도 이렇게 동작해야 합니다"},
   items:[
     {t:{uz:"Veb-ilova havolasini yangi oynada oching", ko:"웹 앱 링크를 새 창에서 열기"}},
-    {t:{uz:"Ism va javob yozib, Yuborish tugmasini bosing", ko:"이름과 답을 입력하고 Yuborish 누르기"}, hl:true},
-    {t:{uz:"Jadvalga qayting — yangi qator paydo bo'ldimi?", ko:"시트로 돌아가 새 행이 생겼는지 확인"}, hl:true},
+    {t:{uz:"Ism va javob yozib, Yuborish tugmasini bosing", ko:"이름과 답을 입력하고 Yuborish 누르기"}},
+    {t:{uz:"Jadvalga qayting — yangi qator paydo bo'ldimi?", ko:"시트로 돌아가 새 행이 생겼는지 확인"}},
     {t:{uz:"Yonidagi hamkasbning havolasini ham to'ldiring", ko:"옆 사람 링크에도 입력해 보기"}},
     {t:{uz:"Qator qo'shilmasa: Deploy > Manage deployments > New version", ko:"안 되면 새 버전으로 재배포"}}
   ],
@@ -748,7 +779,7 @@ const SLIDES = [
   title:{uz:"Xato chiqsa — tez yechim", ko:"오류가 날 때 — 빠른 해결"},
   subtitle:{uz:"Eng ko'p uchraydigan to'rtta holat", ko:"가장 자주 나오는 네 가지"},
   items:[
-    {t:{uz:"getActiveSpreadsheet() — null xatosi", ko:"getActiveSpreadsheet 오류"}, d:{uz:"Skript jadvaldan ochilmagan. Jadval > Kengaytmalar > Apps Script.", ko:"시트가 아닌 곳에서 스크립트를 만든 경우 — 시트의 확장 프로그램 메뉴에서 다시 열기"}, hl:true},
+    {t:{uz:"getActiveSpreadsheet() — null xatosi", ko:"getActiveSpreadsheet 오류"}, d:{uz:"Skript jadvaldan ochilmagan. Jadval > Kengaytmalar > Apps Script.", ko:"시트가 아닌 곳에서 스크립트를 만든 경우 — 시트의 확장 프로그램 메뉴에서 다시 열기"}},
     {t:{uz:"No HTML file named index", ko:"index 파일을 찾을 수 없음"}, d:{uz:"HTML fayl nomi 'index' bo'lsin — .html yozilmaydi.", ko:"파일 추가 > HTML, 이름은 index (확장자 입력 안 함)"}},
     {t:{uz:"O'zgarish saytda ko'rinmayapti", ko:"수정했는데 반영 안 됨"}, d:{uz:"Deploy > Manage deployments > qalam > Version: New version.", ko:"배포 관리에서 새 버전으로 다시 배포"}},
     {t:{uz:"Ruxsat so'ralmoqda", ko:"권한 승인 화면"}, d:{uz:"Advanced > Go to project (unsafe) > Allow.", ko:"고급 > 프로젝트로 이동 > 허용"}}
@@ -775,12 +806,12 @@ const SLIDES = [
   title:{uz:"Boshlash — SEN School", ko:"시작하기 — 센스쿨"},
   subtitle:{uz:"Qadamni bosing — o'ngda o'sha ekran ochiladi", ko:"단계를 클릭하면 오른쪽에 해당 화면이 열립니다"},
   items:[
-    {t:{uz:"senedu.kr ni oching > Login > O'qituvchi", ko:"센스쿨 접속 > 로그인 > 교사"}, url:'https://senedu.kr/', urlText:'senedu.kr', shot:1, hl:true},
+    {t:{uz:"senedu.kr ni oching > Login > O'qituvchi", ko:"센스쿨 접속 > 로그인 > 교사"}, url:'https://senedu.kr/', urlText:'senedu.kr', shot:1},
     {t:{uz:"AI platformasi uchun \"Foydalanuvchi login\" ni tanlang", ko:"AI 교수학습 플랫폼 > 사용자 로그인 선택"}, d:{uz:"Login va parol kartada.", ko:"아이디·비밀번호는 카드 참고"}, shot:2},
     {t:{uz:"Asosiy sahifada SenGPT ni oching", ko:"도구모음에서 SenGPT 열기"}, shot:3},
-    {t:{uz:"Model: Claude &#183; tilni o'zbekchaga o'zgartiring", ko:"모델을 Claude로, 언어를 우즈베크어로 변경"}, shot:4, hl:true}
+    {t:{uz:"Model: Claude &#183; tilni ingliz tiliga o'zgartiring", ko:"모델을 Claude로, 언어를 영어로 변경"}, shot:4}
   ],
-  note:{uz:"Til tugmasi o'ng yuqorida — globus belgisi.", ko:"언어 전환은 오른쪽 위 지구본 아이콘"} },
+  note:{uz:"Til tugmasi o'ng yuqorida — globus belgisi (o'zbek tili yo'q, ingliz tilini tanlang).", ko:"언어 전환은 오른쪽 위 지구본 — 우즈베크어는 없으므로 영어 선택"} },
 
 { type:'template', block:'Coding',
   title:{uz:"1-qadam: Muammoni bitta jumlada", ko:"1단계 — 문제 한 문장"},
@@ -836,7 +867,7 @@ const SLIDES = [
   items:[
     {t:{uz:"Birinchi so'rovda aytilmagan shartlar bor", ko:"첫 요청에는 빠진 조건이 있다"}, d:{uz:"Biz ularni faqat boshimizda bilamiz.", ko:"머릿속으로만 아는 조건"}},
     {t:{uz:"AI bo'sh joylarni o'zicha to'ldiradi", ko:"AI가 빈칸을 임의로 채운다"}, d:{uz:"Shuning uchun natija kutganimizdek chiqmaydi.", ko:"그래서 결과가 어긋남"}},
-    {t:{uz:"Ishlatib ko'rganda yetishmagani ko'rinadi", ko:"직접 써봐야 드러난다"}, d:{uz:"5 daqiqa: juftingizga o'z vositangizni tushuntiring — nima so'radingiz, nimani tuzatdingiz.", ko:"5분간 짝에게 내 바이브코딩 설명하기 — 무엇을 요청했고 무엇을 고쳤는지"}, hl:true},
+    {t:{uz:"Ishlatib ko'rganda yetishmagani ko'rinadi", ko:"직접 써봐야 드러난다"}, d:{uz:"5 daqiqa: juftingizga o'z vositangizni tushuntiring — nima so'radingiz, nimani tuzatdingiz.", ko:"5분간 짝에게 내 바이브코딩 설명하기 — 무엇을 요청했고 무엇을 고쳤는지"}},
     {t:{uz:"Tuzatish — bu talabni aniqlashtirish", ko:"수정은 요구사항을 정련하는 일"}, d:{uz:"O'quvchilarga ham aynan shuni o'rgatamiz.", ko:"학생에게 가르칠 핵심도 이것"}}
   ],
   note:{uz:"\"Rangni yumshoqroq qil\" · \"Xato javobda maslahat chiqsin\" · \"Telefonda ham yaxshi ko'rinsin\"", ko:"수정 요청 예시 문장"} },
@@ -851,12 +882,12 @@ const SLIDES = [
   title:{uz:"GitHub Pages", ko:"깃허브 배포"},
   subtitle:{uz:"Qadamni bosing — o'ngda o'sha ekran ochiladi &#183; 15 daqiqa", ko:"단계를 클릭하면 해당 화면이 열립니다 · 전원 실습 15분"},
   items:[
-    {t:{uz:"github.com ga kiring (Google hisobi bilan)", ko:"깃허브 로그인 (구글 계정)"}, url:'https://github.com/', urlText:'github.com', shot:1, hl:true},
+    {t:{uz:"github.com ga kiring (Google hisobi bilan)", ko:"깃허브 로그인 (구글 계정)"}, url:'https://github.com/', urlText:'github.com', shot:1},
     {t:{uz:"New repository tugmasini bosing", ko:"New repository 클릭"}, shot:2},
-    {t:{uz:"Nom yozing &#183; Public &#183; Create repository", ko:"이름 입력 · Public · 저장소 생성"}, shot:3, hl:true},
+    {t:{uz:"Nom yozing &#183; Public &#183; Create repository", ko:"이름 입력 · Public · 저장소 생성"}, shot:3},
     {t:{uz:"uploading an existing file > index.html", ko:"파일 업로드 — index.html"}, shot:4},
     {t:{uz:"Fayl yuklandi — Commit changes", ko:"업로드 완료 — 커밋"}, shot:5},
-    {t:{uz:"Settings > Pages > Branch: main > Save", ko:"Settings > Pages > main 저장"}, shot:6, hl:true},
+    {t:{uz:"Settings > Pages > Branch: main > Save", ko:"Settings > Pages > main 저장"}, shot:6},
     {t:{uz:"Sayt tayyor — havolani oching", ko:"주소 생성 — 사이트 열기"}, shot:7}
   ],
   note:{uz:"Havola: username.github.io/repo-nomi", ko:"주소 형식: 아이디.github.io/저장소이름"} },
@@ -884,7 +915,7 @@ const SLIDES = [
   items:[
     {t:{uz:"Ism va maktab", ko:"이름과 학교"}},
     {t:{uz:"Vosita havolasi", ko:"결과물 링크"}, d:{uz:"GitHub Pages manzili.", ko:"깃허브 페이지 주소"}},
-    {t:{uz:"Qaysi darsning qaysi muammosi uchun", ko:"어떤 수업의 어떤 문제를 위한 것인지"}, hl:true}
+    {t:{uz:"Qaysi darsning qaysi muammosi uchun", ko:"어떤 수업의 어떤 문제를 위한 것인지"}}
   ],
   link:{ url:'https://forms.gle/WuSP2c4wKjMzp3WU8', qr:QR_RESULT,
          label:{uz:"Natijangizni shu yerga yuboring", ko:"결과물 제출 — QR 또는 링크로 접속"} },
@@ -1049,7 +1080,7 @@ function render(s, i){
       if(n < s.items.length - 1) parts.push('<div class="arrow">&rsaquo;</div>');
     });
     h = head(s) + '<div class="body"><div class="steps">' + parts.join('') + '</div>' +
-        (s.svg ? '<div class="figsvg">' + s.svg + '</div>' : '') +
+        (s.svg && SVGS[s.svg] ? '<div class="figsvg">' + SVGS[s.svg]() + '</div>' : '') +
         '</div>' + noteOf(s);
   }
 
@@ -1158,6 +1189,38 @@ function render(s, i){
     '<div class="pagenum">' + (i + 1) + ' / ' + SLIDES.length + '</div>';
   return el;
 }
+
+function svgLabel(x, y, pair, size, color, weight){
+  const main = (lang === 'ko') ? pair.ko : pair.uz;
+  const sub  = (lang === 'both') ? pair.ko : '';
+  let t = '<text x="' + x + '" y="' + y + '" text-anchor="middle" font-size="' + size + '" font-weight="' + (weight || 400) + '" fill="' + color + '">' + main + '</text>';
+  if(sub) t += '<text x="' + x + '" y="' + (y + size * 1.15) + '" text-anchor="middle" font-size="' + (size * .68) + '" fill="#86868B">' + sub + '</text>';
+  return t;
+}
+const SVGS = {
+  backend: () => {
+    const B = (x, title, desc, hi) =>
+      '<rect x="' + x + '" y="20" width="250" height="118" rx="16" fill="' + (hi ? '#F0F6FF' : '#F5F5F7') + '" stroke="' + (hi ? '#BBD8FF' : '#D2D2D7') + '"/>' +
+      svgLabel(x + 125, 62, title, 21, hi ? '#0B64D6' : '#1D1D1F', 600) +
+      svgLabel(x + 125, 100, desc, 15, hi ? '#0A84FF' : '#86868B');
+    const A = (x1, x2, pair) =>
+      '<line x1="' + x1 + '" y1="72" x2="' + (x2 - 14) + '" y2="72" stroke="#0A84FF" stroke-width="2"/>' +
+      '<polygon points="' + x2 + ',72 ' + (x2 - 16) + ',65 ' + (x2 - 16) + ',79" fill="#0A84FF"/>' +
+      svgLabel((x1 + x2) / 2, 54, pair, 14, '#0A84FF', 600);
+    return '<svg viewBox="0 0 1000 215" xmlns="http://www.w3.org/2000/svg">' +
+      B(8,   {uz:"Foydalanuvchi", ko:"사용자 화면"}, {uz:"index.html", ko:"입력하고 버튼 클릭"}) +
+      B(375, {uz:"Apps Script",   ko:"백엔드 코드"},  {uz:"saveAnswer()", ko:"받아서 처리"}, true) +
+      B(742, {uz:"Google Sheets", ko:"데이터베이스"}, {uz:"saqlanadi", ko:"시트에 저장"}) +
+      A(262, 374, {uz:"1. so'rov", ko:"1. 요청"}) +
+      A(629, 741, {uz:"2. yozadi", ko:"2. 저장"}) +
+      '<line x1="867" y1="138" x2="867" y2="162" stroke="#C7C7CC" stroke-width="2"/>' +
+      '<line x1="133" y1="138" x2="133" y2="162" stroke="#C7C7CC" stroke-width="2"/>' +
+      '<line x1="867" y1="162" x2="147" y2="162" stroke="#C7C7CC" stroke-width="2" stroke-dasharray="6 6"/>' +
+      '<polygon points="133,162 149,155 149,169" fill="#C7C7CC"/>' +
+      svgLabel(500, 188, {uz:"3. javob: Saqlandi!", ko:"3. 응답: 저장됨!"}, 14, '#86868B') +
+      '</svg>';
+  }
+};
 
 function initQuiz(el){
   el.querySelectorAll('.quiz .q').forEach(q => {
