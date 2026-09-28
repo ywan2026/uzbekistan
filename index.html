@@ -238,6 +238,46 @@
   .tph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:36px;color:var(--muted);font-size:15.5px;line-height:1.7;background:var(--soft)}
   .tprev.live .tph{display:none}
 
+  /* quiz choices */
+  .quiz .chs{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px}
+  .quiz .ch{
+    font-family:inherit;font-size:16.5px;font-weight:500;color:var(--ink-2);
+    background:rgba(0,0,0,.045);border:0;border-radius:10px;padding:9px 16px;cursor:pointer;transition:.14s;text-align:left;
+  }
+  .quiz .ch:hover{background:rgba(0,0,0,.09)}
+  .quiz .ch .ko{font-size:12.5px;margin-top:2px}
+  .quiz .ch.ok{background:#E7F6EC;color:#127A3C;box-shadow:inset 0 0 0 1px #A9DCBB}
+  .quiz .ch.no{background:#FDECEC;color:#C0392B;box-shadow:inset 0 0 0 1px #F3C0C0}
+  .quiz .ch.ok::after{content:" ✓";font-weight:700}
+  .quiz .ch.no::after{content:" ✕";font-weight:700}
+
+  /* selectable rows */
+  .rows .r[data-shot]{cursor:pointer;transition:.14s}
+  .rows .r[data-shot]:hover b{color:var(--accent-2)}
+  .rows .r.sel b{color:var(--accent)}
+  .rows .r.sel .n{color:var(--accent-2)}
+
+  /* code copy */
+  .codehead{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+  .codehead .filename{margin-bottom:0}
+  .copybtn{
+    font-family:inherit;font-size:13.5px;font-weight:500;color:#fff;background:var(--accent-2);
+    border:0;border-radius:9px;padding:8px 16px;cursor:pointer;transition:.14s;
+  }
+  .copybtn:hover{background:#0070E0}
+  .copybtn.done{background:#12A150}
+
+  /* live demo panel */
+  .dsplit{display:flex;gap:30px;align-items:flex-start}
+  .dcol{flex:1;min-width:0}
+  .dbox{width:498px;flex:none;border:.5px solid var(--line-2);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+  .dbar{padding:10px 14px;border-bottom:.5px solid var(--line-2);background:rgba(246,246,248,.9);font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .dbox iframe{width:100%;height:352px;border:0;display:block;background:#fff}
+
+  /* inline figure */
+  .figsvg{margin-top:24px}
+  .figsvg svg{width:100%;height:auto;display:block}
+
   /* page-by-page viewer */
   .msplit{display:flex;gap:26px;align-items:flex-start}
   .mlist{flex:none;width:378px}
@@ -610,15 +650,20 @@ const SLIDES = [
 
 { type:'quiz', block:'Opening',
   title:{uz:"Eslaysizmi? Kichik viktorina", ko:"근황 퀴즈"},
-  subtitle:{uz:"Besh savol — birga javob beramiz", ko:"문항은 현지 상황에 맞게 교체"},
+  subtitle:{uz:"Javobni bosing — to'g'ri yoki noto'g'ri darhol ko'rinadi", ko:"보기를 클릭하면 정답이 바로 표시됩니다"},
   items:[
-    {q:{uz:"May oyida Koreyada qaysi shaharda bo'ldingiz?", ko:"5월에 한국의 어느 도시를 방문했나요?"}, opt:{uz:"① Seul  ② Pusan  ③ Inchxon", ko:"① 서울  ② 부산  ③ 인천"}},
-    {q:{uz:"Songrye maktabida qaysi fan darsida ishtirok etdingiz?", ko:"송례중에서 참관한 수업 과목은?"}, opt:{uz:"① Matematika  ② Ingliz tili  ③ Informatika", ko:"① 수학  ② 영어  ③ 정보"}},
-    {q:{uz:"Koreyalik o'quvchilar darsda qaysi qurilmadan foydalanadi?", ko:"한국 학생들이 수업에서 쓰는 기기는?"}, opt:{uz:"① Faqat daftar  ② Shaxsiy noutbuk  ③ Televizor", ko:"① 공책만  ② 개인 노트북  ③ 텔레비전"}},
-    {q:{uz:"Vibe coding nima degani?", ko:"바이브코딩이란?"}, opt:{uz:"① Kod yozishni o'rganish  ② Tabiiy tilda so'rab dastur yaratish  ③ O'yin turi", ko:"① 코딩 문법을 배우는 것  ② 자연어로 요청해 프로그램을 만드는 것  ③ 게임의 한 종류"}},
-    {q:{uz:"Bu viktorina qancha vaqtda yaratilgan?", ko:"이 퀴즈는 얼마 만에 만들었을까요?"}, opt:{uz:"① 3 kun  ② 5 soat  ③ 10 daqiqa", ko:"① 3일  ② 5시간  ③ 10분"}}
+    {q:{uz:"May oyida Koreyada qaysi shaharda bo'ldingiz?", ko:"5월에 한국의 어느 도시를 방문했나요?"}, a:0,
+     choices:[{uz:"Seul", ko:"서울"},{uz:"Pusan", ko:"부산"},{uz:"Inchxon", ko:"인천"}]},
+    {q:{uz:"Songrye maktabida qaysi fan darsida ishtirok etdingiz?", ko:"송례중에서 참관한 수업 과목은?"}, a:1,
+     choices:[{uz:"Matematika", ko:"수학"},{uz:"Ingliz tili", ko:"영어"},{uz:"Informatika", ko:"정보"}]},
+    {q:{uz:"Koreyalik o'quvchilar darsda qaysi qurilmadan foydalanadi?", ko:"한국 학생들이 수업에서 쓰는 기기는?"}, a:1,
+     choices:[{uz:"Faqat daftar", ko:"공책만"},{uz:"Shaxsiy noutbuk", ko:"개인 노트북"},{uz:"Televizor", ko:"텔레비전"}]},
+    {q:{uz:"Vibe coding nima degani?", ko:"바이브코딩이란?"}, a:1,
+     choices:[{uz:"Kod yozishni o'rganish", ko:"코딩 문법을 배우는 것"},{uz:"Tabiiy tilda so'rab dastur yaratish", ko:"자연어로 요청해 프로그램을 만드는 것"},{uz:"O'yin turi", ko:"게임의 한 종류"}]},
+    {q:{uz:"Bu viktorina qancha vaqtda yaratilgan?", ko:"이 퀴즈는 얼마 만에 만들었을까요?"}, a:2,
+     choices:[{uz:"3 kun", ko:"3일"},{uz:"5 soat", ko:"5시간"},{uz:"10 daqiqa", ko:"10분"}]}
   ],
-  note:{uz:"Javob: 10 daqiqa. Bu viktorinani ham bugun o'rganadigan usulda yaratdim.", ko:"마지막 문항이 본 강의로 넘어가는 다리"} },
+  note:{uz:"Oxirgi javob: 10 daqiqa. Bu viktorinani ham bugungi usulda yaratdim.", ko:"마지막 문항이 본 강의로 넘어가는 다리"} },
 
 { type:'rows', block:'Opening',
   title:{uz:"Hikoyangizni bizga ayting", ko:"여러분의 이야기를 들려주세요"},
@@ -645,21 +690,22 @@ const SLIDES = [
     {t:{uz:"Ishlov", ko:"처리"}, d:{uz:"Server kodi bu ma'lumotni qabul qiladi va tekshiradi.", ko:"서버 코드가 받아서 처리"}},
     {t:{uz:"Saqlash", ko:"저장"}, d:{uz:"Ma'lumot bazaga yoziladi va keyin ham o'qiladi.", ko:"데이터베이스에 기록되고 다시 읽힘"}}
   ],
+  svg:'<svg viewBox="0 0 1000 200" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="26" width="250" height="104" rx="16" fill="#F5F5F7" stroke="#D2D2D7" stroke-width="1"/><text x="133" y="68" text-anchor="middle" font-size="21" font-weight="600" fill="#1D1D1F">Foydalanuvchi</text><text x="133" y="98" text-anchor="middle" font-size="16" fill="#86868B">index.html &#183; tugma</text><rect x="375" y="26" width="250" height="104" rx="16" fill="#F0F6FF" stroke="#BBD8FF" stroke-width="1"/><text x="500" y="68" text-anchor="middle" font-size="21" font-weight="600" fill="#0B64D6">Apps Script</text><text x="500" y="98" text-anchor="middle" font-size="16" fill="#0A84FF">saveAnswer()</text><rect x="742" y="26" width="250" height="104" rx="16" fill="#F5F5F7" stroke="#D2D2D7" stroke-width="1"/><text x="867" y="68" text-anchor="middle" font-size="21" font-weight="600" fill="#1D1D1F">Google Sheets</text><text x="867" y="98" text-anchor="middle" font-size="16" fill="#86868B">ma&#39;lumot saqlanadi</text><line x1="262" y1="78" x2="360" y2="78" stroke="#0A84FF" stroke-width="2"/><polygon points="374,78 358,71 358,85" fill="#0A84FF"/><text x="311" y="62" text-anchor="middle" font-size="14" font-weight="600" fill="#0A84FF">1. so&#39;rov</text><line x1="629" y1="78" x2="727" y2="78" stroke="#0A84FF" stroke-width="2"/><polygon points="741,78 725,71 725,85" fill="#0A84FF"/><text x="678" y="62" text-anchor="middle" font-size="14" font-weight="600" fill="#0A84FF">2. yozadi</text><line x1="867" y1="146" x2="146" y2="146" stroke="#C7C7CC" stroke-width="2" stroke-dasharray="6 6"/><polygon points="133,146 149,139 149,153" fill="#C7C7CC"/><line x1="867" y1="130" x2="867" y2="146" stroke="#C7C7CC" stroke-width="2"/><line x1="133" y1="130" x2="133" y2="146" stroke="#C7C7CC" stroke-width="2"/><text x="500" y="172" text-anchor="middle" font-size="14" fill="#86868B">3. javob: &#8220;Saqlandi!&#8221;</text></svg>',
   note:{uz:"Bugun bazaning o'rnida Google Sheets turadi. Prinsip bir xil.", ko:"오늘은 시트가 DB 역할 — 원리는 동일"} },
 
 { type:'shots', block:'Practice',
-  shots:['images/practice-01.jpg','images/practice-02.jpg','images/practice-03.jpg','images/practice-04.jpg','images/practice-05.jpg','images/practice-06.jpg','images/practice-07.jpg','images/practice-08.jpg'],
+  shots:['images/practice-01.jpg','images/practice-02.jpg','images/practice-03.jpg','images/practice-04.jpg','images/practice-05.jpg'],
   title:{uz:"Amaliyot tartibi", ko:"Practice 진행 순서"},
-  subtitle:{uz:"O'ng tomonda qo'llanma — kattalashtirish uchun + tugmasini bosing", ko:"오른쪽 매뉴얼은 + − 버튼으로 확대·축소할 수 있습니다"},
+  subtitle:{uz:"Chapdagi qadamni bosing — o'ngda o'sha ekran ochiladi", ko:"왼쪽 단계를 클릭하면 오른쪽에 해당 화면이 열립니다"},
   items:[
-    {t:{uz:"Yangi Google Sheets yarating", ko:"새 구글 시트 만들기"}, tag:"2 daq"},
-    {t:{uz:"Kengaytmalar > Apps Script ni oching", ko:"확장 프로그램 > Apps Script 열기"}, d:{uz:"Aynan jadval ichidan oching — aks holda kod ishlamaydi.", ko:"반드시 시트 안에서 열기 — 아니면 코드가 동작하지 않음"}, tag:"2 daq", hl:true},
-    {t:{uz:"Namuna kodni nusxalab qo'ying", ko:"샘플 코드 붙여넣기"}, tag:"6 daq", hl:true},
-    {t:{uz:"Veb-ilova sifatida joylashtiring (Deploy)", ko:"웹 앱으로 배포"}, tag:"8 daq", hl:true},
-    {t:{uz:"O'z havolangizni oching va ma'lumot kiriting", ko:"내 링크 열어 데이터 입력"}, tag:"6 daq"},
-    {t:{uz:"Jadvalga yozilganini tekshiring", ko:"시트에 쌓이는지 확인"}, tag:"6 daq"}
+    {t:{uz:"Yangi Google Sheets yarating", ko:"새 구글 시트 만들기"}, url:'https://docs.google.com/spreadsheets/d/1vrkmYo1j-p_x8BkwpnXVWvOzhpms1Sm5hwGWXXCgvxE/edit?hl=ko&gid=0#gid=0', urlText:'Google Sheets', shot:1, hl:true},
+    {t:{uz:"Kengaytmalar > Apps Script ni oching", ko:"확장 프로그램 > Apps Script 열기"}, d:{uz:"Aynan jadval ichidan oching.", ko:"반드시 시트 안에서 열기"}, shot:1, hl:true},
+    {t:{uz:"Code.gs — namuna kodni qo'ying", ko:"Code.gs에 샘플 코드 붙여넣기"}, shot:2, hl:true},
+    {t:{uz:"Yangi HTML fayl qo'shing — nomi: index", ko:"HTML 파일 추가 — 이름은 index"}, shot:3},
+    {t:{uz:"index.html kodini qo'ying", ko:"index.html 코드 붙여넣기"}, shot:4},
+    {t:{uz:"Saqlang va veb-ilova sifatida joylashtiring", ko:"저장 후 웹 앱으로 배포"}, shot:5}
   ],
-  note:{uz:"Har bir qadam rasm bilan ko'rsatilgan — adashsangiz shu yerdan qarang.", ko:"단계마다 화면 캡처가 들어 있음 — 막히면 여기서 확인"} },
+  note:{uz:"Rasmni bosing yoki nuqtalarni bosing — sahifalar almashadi.", ko:"이미지 클릭 또는 아래 점으로 화면 전환"} },
 
 { type:'code', block:'Practice',
   title:{uz:"Namuna kod — Code.gs", ko:"샘플 코드 ①"},
@@ -675,16 +721,27 @@ const SLIDES = [
 
 { type:'shots', block:'Practice',
   shots:['images/practice-01.jpg','images/practice-02.jpg','images/practice-03.jpg','images/practice-04.jpg','images/practice-05.jpg','images/practice-06.jpg','images/practice-07.jpg','images/practice-08.jpg'], startAt:4,
-  title:{uz:"Joylashtirish (Deploy)", ko:"웹 앱 배포 5단계"},
-  subtitle:{uz:"Eng ko'p to'xtaladigan joy — o'ng tomonda qo'llanmaning 3-bo'limi", ko:"가장 많이 막히는 지점 — 오른쪽은 매뉴얼의 Publish 부분"},
+  title:{uz:"Joylashtirish (Deploy)", ko:"웹 앱 배포"},
+  subtitle:{uz:"Eng ko'p to'xtaladigan joy — qadamni bosib rasmni ko'ring", ko:"가장 많이 막히는 지점 — 단계를 클릭해 화면 확인"},
   items:[
-    {t:{uz:"Deploy > New deployment", ko:"배포 > 새 배포"}},
-    {t:{uz:"Turi: Web app", ko:"유형: 웹 앱 선택"}},
-    {t:{uz:"Execute as: Me  /  Access: Anyone", ko:"실행 계정: 나 / 접근 권한: 모든 사용자"}, hl:true},
-    {t:{uz:"Ruxsat oynasi: Advanced > Go to project (unsafe)", ko:"확인되지 않은 앱 경고 → 고급 > 이동"}, hl:true},
-    {t:{uz:"Havolani nusxalang va brauzerda oching", ko:"생성된 URL을 복사해 열기"}}
+    {t:{uz:"Deploy > Manage deployments", ko:"배포 > 배포 관리"}, shot:5},
+    {t:{uz:"Turi: Web app", ko:"유형: 웹 앱 선택"}, shot:6},
+    {t:{uz:"Access: Anyone → Deploy", ko:"액세스: 모든 사용자 → 배포"}, shot:7, hl:true},
+    {t:{uz:"Ruxsat: Advanced > Go to project > Allow", ko:"권한 승인: 고급 > 프로젝트로 이동 > 허용"}, shot:8, hl:true}
   ],
-  note:{uz:"Ruxsat oynasi qo'rqinchli ko'rinadi — bu normal. Qo'llanmaning 3-bo'limiga qarang.", ko:"경고 화면이 떠도 정상 — 매뉴얼 3단계(Publish) 참고"} },
+  note:{uz:"Ruxsat oynasi qo'rqinchli ko'rinadi — bu normal.", ko:"경고 화면이 떠도 정상"} },
+
+{ type:'rows', block:'Practice',
+  title:{uz:"Tekshirish — ma'lumot tushdimi?", ko:"확인 — 데이터가 쌓이는가"},
+  subtitle:{uz:"Joylashtirish tugadi. Endi haqiqatan ishlayaptimi — sinab ko'ramiz", ko:"배포 후 실제로 동작하는지 직접 확인"},
+  items:[
+    {t:{uz:"Veb-ilova havolasini yangi oynada oching", ko:"웹 앱 링크를 새 창에서 열기"}},
+    {t:{uz:"Ism va javob yozib, Yuborish tugmasini bosing", ko:"이름과 답을 입력하고 Yuborish 누르기"}, hl:true},
+    {t:{uz:"Jadvalga qayting — yangi qator paydo bo'ldimi?", ko:"시트로 돌아가 새 행이 생겼는지 확인"}, hl:true},
+    {t:{uz:"Yonidagi hamkasbning havolasini ham to'ldiring", ko:"옆 사람 링크에도 입력해 보기"}},
+    {t:{uz:"Qator qo'shilmasa: Deploy > Manage deployments > New version", ko:"안 되면 새 버전으로 재배포"}}
+  ],
+  note:{uz:"Jadvalda qator ko'rinsa — siz backend yozdingiz. Tabriklaymiz!", ko:"행이 생기면 백엔드 완성 — 여기까지가 Practice의 목표"} },
 
 { type:'rows', block:'Practice',
   title:{uz:"Xato chiqsa — tez yechim", ko:"오류가 날 때 — 빠른 해결"},
@@ -714,14 +771,15 @@ const SLIDES = [
 
 { type:'shots', block:'Coding',
   shots:['images/sen-01.jpg','images/sen-02.jpg','images/sen-03.jpg','images/sen-04.jpg'],
-  title:{uz:"Boshlash", ko:"시작하기"},
-  subtitle:{uz:"O'ng tomondagi rasmlarni ketma-ket ko'ring", ko:"오른쪽 화면을 순서대로 넘겨 보세요 · 계정 카드는 자리마다 배부"},
+  title:{uz:"Boshlash — SEN School", ko:"시작하기 — 센스쿨"},
+  subtitle:{uz:"Qadamni bosing — o'ngda o'sha ekran ochiladi", ko:"단계를 클릭하면 오른쪽에 해당 화면이 열립니다"},
   items:[
-    {t:{uz:"SEN School saytiga kiring", ko:"센스쿨 접속"}, url:'https://senedu.kr/', urlText:'senedu.kr', d:{uz:"Kartadagi login va parol bilan.", ko:"카드의 아이디·비밀번호로 로그인"}, hl:true},
-    {t:{uz:"SEN GPT bo'limini oching", ko:"센지피티 메뉴 열기"}, d:{uz:"Model sifatida Claude ni tanlang.", ko:"모델을 클로드로 선택"}},
-    {t:{uz:"Yangi suhbat boshlang", ko:"새 대화 시작"}, d:{uz:"Bir vosita — bitta suhbat.", ko:"도구 하나당 대화 하나"}},
-    {t:{uz:"Javoblarni o'zbek tilida so'rang", ko:"우즈베크어로 답하도록 요청"}, d:{uz:"\"Menga o'zbek tilida javob ber\" deb yozing.", ko:"첫 메시지에 언어 지정"}}
-  ] },
+    {t:{uz:"senedu.kr ni oching > Login > O'qituvchi", ko:"센스쿨 접속 > 로그인 > 교사"}, url:'https://senedu.kr/', urlText:'senedu.kr', shot:1, hl:true},
+    {t:{uz:"AI platformasi uchun \"Foydalanuvchi login\" ni tanlang", ko:"AI 교수학습 플랫폼 > 사용자 로그인 선택"}, d:{uz:"Login va parol kartada.", ko:"아이디·비밀번호는 카드 참고"}, shot:2},
+    {t:{uz:"Asosiy sahifada SenGPT ni oching", ko:"도구모음에서 SenGPT 열기"}, shot:3},
+    {t:{uz:"Model: Claude &#183; tilni o'zbekchaga o'zgartiring", ko:"모델을 Claude로, 언어를 우즈베크어로 변경"}, shot:4, hl:true}
+  ],
+  note:{uz:"Til tugmasi o'ng yuqorida — globus belgisi.", ko:"언어 전환은 오른쪽 위 지구본 아이콘"} },
 
 { type:'template', block:'Coding',
   title:{uz:"1-qadam: Muammoni bitta jumlada", ko:"1단계 — 문제 한 문장"},
@@ -732,9 +790,9 @@ const SLIDES = [
   ],
   note:{uz:"Shu jumla — keyingi qadamdagi so'rovning asosi.", ko:"이 문장이 PRD의 출발점"} },
 
-{ type:'rows', block:'Coding',
+{ type:'demo', block:'Coding', app:'binary',
   title:{uz:"Namuna PRD", ko:"예시 PRD"},
-  subtitle:{uz:"Juda oddiy misol — har bir katak bitta jumla", ko:"아주 간단한 예시 — 각 칸에 한 문장이면 충분합니다"},
+  subtitle:{uz:"Chapda PRD — o'ngda shu PRD asosida yaratilgan vosita", ko:"왼쪽은 PRD, 오른쪽은 그 PRD로 만든 실제 앱"},
   items:[
     {t:{uz:"Maqsad", ko:"목적"}, d:{uz:"O'quvchilar ikkilik sanoq sistemasini mashq qilsin.", ko:"학생들이 2진수 변환을 연습하게 한다."}},
     {t:{uz:"Foydalanuvchi", ko:"사용자"}, d:{uz:"7-sinf, bu mavzuni endi o'rganayotgan o'quvchilar.", ko:"7학년, 이 단원을 처음 배우는 학생"}},
@@ -743,7 +801,7 @@ const SLIDES = [
     {t:{uz:"Ma'lumot", ko:"데이터"}, d:{uz:"Hech narsa saqlanmaydi.", ko:"저장하지 않음"}},
     {t:{uz:"Cheklovlar", ko:"제약조건"}, d:{uz:"O'zbek tilida, bitta HTML fayl, noutbukda ishlasin.", ko:"우즈베크어, HTML 한 파일, 노트북에서 동작"}}
   ],
-  note:{uz:"Murakkab yozish shart emas. Shu darajasi yetarli — qolganini tuzatish bosqichida qo'shasiz.", ko:"처음부터 복잡하게 쓸 필요 없음 — 나머지는 수정 단계에서 추가"} },
+  note:{uz:"Olti jumla — natija o'ngda. Murakkab yozish shart emas.", ko:"여섯 문장이면 오른쪽 결과물이 나옵니다"} },
 
 { type:'prd', block:'Coding',
   title:{uz:"PRD yordamchisi", ko:"2단계 — PRD 작성 도우미"},
@@ -789,15 +847,18 @@ const SLIDES = [
 
 { type:'shots', block:'Github',
   shots:['images/github-01.jpg','images/github-02.jpg','images/github-03.jpg','images/github-04.jpg','images/github-05.jpg','images/github-06.jpg','images/github-07.jpg'],
-  title:{uz:"GitHub Pages — 5 qadam", ko:"깃허브 배포 5단계"},
-  subtitle:{uz:"O'ng tomonda qo'llanma — kattalashtirish uchun + tugmasini bosing", ko:"오른쪽 매뉴얼은 + − 버튼으로 확대·축소 · 전원 실습 15분"},
+  title:{uz:"GitHub Pages", ko:"깃허브 배포"},
+  subtitle:{uz:"Qadamni bosing — o'ngda o'sha ekran ochiladi &#183; 15 daqiqa", ko:"단계를 클릭하면 해당 화면이 열립니다 · 전원 실습 15분"},
   items:[
-    {t:{uz:"github.com ga kiring", ko:"깃허브 로그인"}, url:'https://github.com/', urlText:'github.com', d:{uz:"Hisob oldindan tayyorlangan.", ko:"계정은 사전 생성 완료"}, hl:true},
-    {t:{uz:"New repository > nom bering > Public", ko:"새 저장소 생성 · Public"}, d:{uz:"Nom: masalan  my-lesson-tool", ko:"영문 소문자 권장"}},
-    {t:{uz:"Add file > Upload files > index.html", ko:"파일 업로드 — index.html"}, d:{uz:"Fayl nomi aynan index.html bo'lsin.", ko:"파일명 반드시 index.html"}, hl:true},
-    {t:{uz:"Settings > Pages > Branch: main > Save", ko:"Settings > Pages > main 브랜치 저장"}, hl:true},
-    {t:{uz:"1–2 daqiqadan so'ng havolangiz tayyor", ko:"1~2분 후 주소 생성"}, d:{uz:"username.github.io/my-lesson-tool", ko:"옆 사람 노트북에서 열어 확인"}}
-  ] },
+    {t:{uz:"github.com ga kiring (Google hisobi bilan)", ko:"깃허브 로그인 (구글 계정)"}, url:'https://github.com/', urlText:'github.com', shot:1, hl:true},
+    {t:{uz:"New repository tugmasini bosing", ko:"New repository 클릭"}, shot:2},
+    {t:{uz:"Nom yozing &#183; Public &#183; Create repository", ko:"이름 입력 · Public · 저장소 생성"}, shot:3, hl:true},
+    {t:{uz:"uploading an existing file > index.html", ko:"파일 업로드 — index.html"}, shot:4},
+    {t:{uz:"Fayl yuklandi — Commit changes", ko:"업로드 완료 — 커밋"}, shot:5},
+    {t:{uz:"Settings > Pages > Branch: main > Save", ko:"Settings > Pages > main 저장"}, shot:6, hl:true},
+    {t:{uz:"Sayt tayyor — havolani oching", ko:"주소 생성 — 사이트 열기"}, shot:7}
+  ],
+  note:{uz:"Havola: username.github.io/repo-nomi", ko:"주소 형식: 아이디.github.io/저장소이름"} },
 
 { type:'cards', block:'Github', cols:3,
   title:{uz:"Supabase — haqiqiy baza", ko:"Supabase 백엔드 연결"},
@@ -885,6 +946,7 @@ const UI = {
   outPh: {uz:"Prompt shu yerda paydo bo'ladi...", ko:"여기에 프롬프트가 생성됩니다..."},
   copied:{uz:"Nusxalandi", ko:"복사되었습니다"},
   manualLb:{uz:"Qo'llanma", ko:"실습 매뉴얼"},
+  demoLb:{uz:"Namuna — sinab ko'ring", ko:"예시 앱 — 직접 해보세요"},
   hover: {uz:"Chap tomondagi mavzuga sichqonchani olib boring — namuna shu yerda ochiladi va uni sinab ko'rishingiz mumkin",
           ko:"왼쪽 주제에 마우스를 올리면 여기에 예시 앱이 열리고 직접 눌러볼 수 있습니다"},
   manual:{uz:"Matnni qo'lda nusxalang", ko:"직접 선택해 복사해 주세요"}
@@ -985,15 +1047,38 @@ function render(s, i){
         '<h3>' + T(it.t) + '</h3><p>' + T(it.d) + '</p></div>');
       if(n < s.items.length - 1) parts.push('<div class="arrow">&rsaquo;</div>');
     });
-    h = head(s) + '<div class="body"><div class="steps">' + parts.join('') + '</div></div>' + noteOf(s);
+    h = head(s) + '<div class="body"><div class="steps">' + parts.join('') + '</div>' +
+        (s.svg ? '<div class="figsvg">' + s.svg + '</div>' : '') +
+        '</div>' + noteOf(s);
   }
 
   else if(s.type === 'quiz'){
     h = head(s) + '<div class="body"><div class="quiz">' +
       s.items.map((it, n) =>
-        '<div class="q"><div class="n">' + String(n + 1).padStart(2, '0') + '</div>' +
-          '<div><b>' + T(it.q) + '</b><div class="opt">' + T(it.opt) + '</div></div>' +
+        '<div class="q" data-a="' + it.a + '"><div class="n">' + String(n + 1).padStart(2, '0') + '</div>' +
+          '<div style="flex:1"><b>' + T(it.q) + '</b><div class="chs">' +
+            it.choices.map((c, k) =>
+              '<button class="ch" data-k="' + k + '">' + '①②③④'.charAt(k) + ' ' + T(c) + '</button>').join('') +
+          '</div></div>' +
         '</div>').join('') +
+      '</div></div>' + noteOf(s);
+  }
+
+  else if(s.type === 'demo'){
+    h = head(s) + '<div class="body"><div class="dsplit">' +
+      '<div class="dcol"><div class="rows">' +
+        s.items.map((it, n) =>
+          '<div class="r">' +
+            '<div class="n">' + String(n + 1).padStart(2, '0') + '</div>' +
+            '<div class="tx"><b>' + T(it.t) + '</b>' +
+              (it.d ? '<span class="d">' + T(it.d) + '</span>' : '') +
+            '</div>' +
+          '</div>').join('') +
+      '</div></div>' +
+      '<div class="dbox" data-app="' + s.app + '">' +
+        '<div class="dbar">' + esc(UI.demoLb[L()]) + '</div>' +
+        '<iframe title="demo"></iframe>' +
+      '</div>' +
       '</div></div>' + noteOf(s);
   }
 
@@ -1057,7 +1142,8 @@ function render(s, i){
 
   else if(s.type === 'code'){
     h = head(s) + '<div class="body codewrap">' +
-      '<div class="filename">' + esc(s.filename) + '</div>' +
+      '<div class="codehead"><span class="filename">' + esc(s.filename) + '</span>' +
+      '<button class="copybtn">' + esc(UI.copy[L()]) + '</button></div>' +
       '<pre>' + esc(s.code) + '</pre></div>';
   }
 
@@ -1070,6 +1156,52 @@ function render(s, i){
   el.innerHTML = '<div class="inner">' + h + '</div>' +
     '<div class="pagenum">' + (i + 1) + ' / ' + SLIDES.length + '</div>';
   return el;
+}
+
+function initQuiz(el){
+  el.querySelectorAll('.quiz .q').forEach(q => {
+    const a = parseInt(q.dataset.a, 10);
+    q.querySelectorAll('.ch').forEach(b => {
+      b.onclick = () => {
+        const k = parseInt(b.dataset.k, 10);
+        if(k === a){ b.classList.add('ok'); }
+        else {
+          b.classList.add('no');
+          const right = q.querySelector('.ch[data-k="' + a + '"]');
+          if(right) right.classList.add('ok');
+        }
+      };
+    });
+  });
+}
+
+function initCode(el){
+  const btn = el.querySelector('.copybtn');
+  if(!btn) return;
+  const pre = el.querySelector('pre');
+  btn.onclick = () => {
+    const txt = pre.textContent;
+    const done = () => {
+      btn.classList.add('done');
+      btn.textContent = lang === 'ko' ? '복사됨 ✓' : 'Nusxalandi ✓';
+      setTimeout(() => { btn.classList.remove('done'); btn.textContent = UI.copy[L()]; }, 1600);
+    };
+    try {
+      if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, () => toast(UI.manual[L()])); }
+      else {
+        const ta = document.createElement('textarea');
+        ta.value = txt; document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); document.body.removeChild(ta); done();
+      }
+    } catch(e) { toast(UI.manual[L()]); }
+  };
+}
+
+function initDemo(el){
+  const box = el.querySelector('.dbox');
+  if(!box) return;
+  const code = APPS[box.dataset.app];
+  if(code) box.querySelector('iframe').srcdoc = code;
 }
 
 function initManual(el){
@@ -1092,14 +1224,17 @@ function initManual(el){
     pg.textContent = (i + 1) + ' / ' + shots.length;
     zl.textContent = Math.round(zooms[z] * 100) + '%';
     dots.forEach((d, n) => d.classList.toggle('on', n === i));
+    rows.forEach(r => r.classList.toggle('sel', parseInt(r.dataset.shot, 10) === i));
     prevB.disabled = i === 0;
     nextB.disabled = i === shots.length - 1;
   };
+  const rows = [...el.querySelectorAll('.rows .r[data-shot]')];
   const go = (d) => { i = Math.max(0, Math.min(shots.length - 1, i + d)); view.scrollTop = 0; view.scrollLeft = 0; draw(); };
   prevB.onclick = () => go(-1);
   nextB.onclick = () => go(1);
   img.onclick = () => go(i === shots.length - 1 ? -i : 1);
-  dots.forEach((d, n) => d.onclick = () => { i = n; draw(); });
+  dots.forEach((d, n) => d.onclick = () => { i = n; view.scrollTop = 0; draw(); });
+  rows.forEach(r => r.onclick = () => { i = parseInt(r.dataset.shot, 10); view.scrollTop = 0; view.scrollLeft = 0; draw(); });
   box.querySelectorAll('[data-z]').forEach(b => b.onclick = () => {
     z = b.dataset.z === 'in' ? Math.min(zooms.length - 1, z + 1) : Math.max(0, z - 1);
     draw();
@@ -1160,7 +1295,7 @@ function initPRD(el){
 const stage = document.getElementById('stage');
 function build(){
   stage.innerHTML = '';
-  SLIDES.forEach((s, i) => { const el = render(s, i); stage.appendChild(el); initPRD(el); initTopics(el); initManual(el); });
+  SLIDES.forEach((s, i) => { const el = render(s, i); stage.appendChild(el); initPRD(el); initTopics(el); initManual(el); initQuiz(el); initCode(el); initDemo(el); });
   show(cur, false);
   buildOverview();
 }
