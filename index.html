@@ -256,6 +256,7 @@
   .rows .r[data-shot]:hover b{color:var(--accent-2)}
   .rows .r.sel b{color:var(--accent)}
   .rows .r.sel .n{color:var(--accent-2)}
+  .rows .r.sel{background:var(--accent-soft);border-radius:10px}
 
   /* code copy */
   .codehead{display:flex;align-items:center;gap:14px;margin-bottom:12px}
@@ -1086,7 +1087,7 @@ function render(s, i){
     h = head(s) + '<div class="body"><div class="msplit">' +
       '<div class="mlist"><div class="rows">' +
         s.items.map((it, n) =>
-          '<div class="r' + (it.hl ? ' hl' : '') + '">' +
+          '<div class="r' + (it.hl ? ' hl' : '') + '"' + (it.shot ? ' data-shot="' + (it.shot - 1) + '"' : '') + '>' +
             '<div class="n">' + String(n + 1).padStart(2, '0') + '</div>' +
             '<div class="tx"><b>' + T(it.t) +
               (it.url ? '<a class="ilink" href="' + it.url + '" target="_blank" rel="noopener">' + (it.urlText || it.url) + '</a>' : '') +
@@ -1479,7 +1480,7 @@ if(window.ResizeObserver){
 /* drag to pan */
 (function(){
   let on = false, sx = 0, sy = 0, sl = 0, st = 0;
-  const skip = (t) => !!(t.closest && t.closest('input,textarea,button,a,iframe,select,[data-app]'));
+  const skip = (t) => !!(t.closest && t.closest('input,textarea,button,a,iframe,select,[data-app],[data-shot],.mdots,.mview'));
   stage.addEventListener('pointerdown', e => {
     if(e.button !== 0 || skip(e.target)) return;
     if(stage.scrollWidth <= stage.clientWidth + 1 && stage.scrollHeight <= stage.clientHeight + 1) return;
