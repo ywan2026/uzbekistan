@@ -328,8 +328,102 @@
   .prdbtns .ghost:hover{background:rgba(0,0,0,.09)}
   .prdbtns small{font-size:12.5px;color:var(--muted);line-height:1.5;text-align:center;margin-top:2px}
 
+  /* info box */
+  .infobox{margin-top:24px;border:.5px solid var(--line-2);border-radius:14px;padding:20px 24px;background:var(--soft);display:flex;gap:30px}
+  .infobox .it{flex:1;display:flex;gap:14px;align-items:flex-start}
+  .infobox .ic{font-size:30px;line-height:1.1}
+  .infobox b{font-size:18px;font-weight:600;display:block;line-height:1.4}
+  .infobox b .ko{font-size:14px;font-weight:400}
+
+  /* row copy button */
+  .rowcopy{
+    font-family:inherit;font-size:13px;font-weight:600;color:#fff;background:var(--accent-2);
+    border:0;border-radius:8px;padding:7px 13px;cursor:pointer;margin-left:12px;transition:.14s;vertical-align:2px;
+  }
+  .rowcopy:hover{background:#0070E0}
+  .rowcopy.done{background:#12A150}
+
+  /* fill-in blanks */
+  .blank{
+    font-family:inherit;font-size:inherit;font-weight:500;color:var(--accent);
+    border:0;border-bottom:1.5px solid var(--accent-2);background:transparent;
+    min-width:230px;padding:2px 8px;margin:0 6px;outline:none;
+  }
+  .blank:focus{background:var(--accent-soft)}
+
+  /* tooltip */
+  .tip{
+    display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;
+    background:var(--accent-2);color:#fff;font-size:15px;font-weight:700;margin-left:12px;
+    cursor:help;position:relative;vertical-align:6px;
+  }
+  .tip .tipbox{
+    display:none;position:absolute;top:34px;left:50%;transform:translateX(-50%);
+    width:430px;background:var(--ink);color:#fff;font-size:15px;font-weight:400;line-height:1.55;
+    padding:14px 18px;border-radius:12px;z-index:5;text-align:left;letter-spacing:-.005em;
+    box-shadow:0 8px 24px rgba(0,0,0,.22);
+  }
+  .tip:hover .tipbox{display:block}
+  .tip .tipbox .ko{font-size:13px;color:#B9C6DA}
+
+  /* quotes */
+  .quotes{margin-top:22px;border-top:1px solid var(--line);padding-top:18px;display:flex;flex-direction:column;gap:9px}
+  .quotes .qt{font-size:18px;color:var(--ink-2);line-height:1.5}
+  .quotes .qt .ko{font-size:14px}
+
+  /* limits explorer */
+  .limits{display:flex;gap:26px;margin-top:22px;border-top:1px solid var(--line);padding-top:20px}
+  .limits .ll{flex:none;width:340px;display:flex;flex-direction:column;gap:7px}
+  .limits .lb{
+    font-family:inherit;text-align:left;border:0;background:rgba(0,0,0,.04);border-radius:10px;
+    padding:11px 15px;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;transition:.14s;
+  }
+  .limits .lb:hover{background:rgba(0,0,0,.08)}
+  .limits .lb.on{background:var(--accent-2);color:#fff}
+  .limits .lb .ko{font-size:12.5px;font-weight:400}
+  .limits .lb.on .ko{color:#D6E7FF}
+  .limits .lp{flex:1;min-width:0;font-size:17px;line-height:1.6;color:var(--body);display:flex;align-items:center}
+  .limits .lp .ko{font-size:14px}
+
+  /* credentials */
+  .creds{margin-top:20px;border:.5px solid var(--line-2);border-radius:12px;padding:16px 18px;background:var(--soft)}
+  .creds .ch{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+  .creds button{
+    font-family:inherit;font-size:14.5px;font-weight:600;color:#fff;background:var(--ink);
+    border:0;border-radius:9px;padding:10px 16px;cursor:pointer;
+  }
+  .creds button:hover{background:var(--accent)}
+  .creds input{
+    font-family:inherit;font-size:15px;border:1px solid var(--line-2);border-radius:9px;
+    padding:9px 12px;width:110px;margin-right:8px;outline:none;
+  }
+  .creds input:focus{border-color:var(--accent-2)}
+  .creds .out{font-size:16.5px;line-height:1.6;color:var(--ink);font-weight:600}
+  .creds .out span{color:var(--accent);font-family:"SF Mono",Menlo,Consolas,monospace}
+  .creds .err{color:#C0392B;font-size:14px;margin-top:8px}
+
+  /* hero / bio / video */
+  .hero{text-align:center}
+  .hero .flags{font-size:74px;line-height:1;letter-spacing:14px;margin-bottom:26px}
+  .hero h1.t{font-size:62px}
+  .hero .sub-title{font-size:25px;margin-top:20px}
+  .hero .meta{margin-top:38px;font-size:17px;color:var(--muted);line-height:1.7}
+  .bsplit{display:flex;gap:40px;align-items:flex-start}
+  .bphoto{width:268px;flex:none;border-radius:16px;overflow:hidden;border:.5px solid var(--line-2);background:var(--soft)}
+  .bphoto img{width:100%;display:block}
+  .bcv{flex:1;min-width:0;display:flex;flex-direction:column}
+  .bcv .cv{display:flex;gap:18px;align-items:baseline;padding:9px 2px;border-top:1px solid var(--line)}
+  .bcv .cv:last-child{border-bottom:1px solid var(--line)}
+  .bcv .yr{font-size:14px;font-weight:600;color:var(--accent-2);min-width:118px;letter-spacing:-.01em}
+  .bcv .cvt{font-size:17px;font-weight:500;color:var(--ink);line-height:1.4}
+  .bcv .cvt .ko{font-size:13.5px;font-weight:400}
+  .vbox{border:.5px solid var(--line-2);border-radius:14px;overflow:hidden;background:#000;aspect-ratio:16/9;max-height:430px;margin:0 auto}
+  .vbox iframe,.vbox video{width:100%;height:100%;border:0;display:block;object-fit:contain;background:#000}
+  .vph{display:grid;place-items:center;height:330px;border:2px dashed var(--line-2);border-radius:14px;color:var(--muted);font-size:16px;text-align:center;line-height:1.7;background:var(--soft)}
+
   /* link + QR */
-  .linkbox{display:flex;align-items:center;gap:28px;border-top:1px solid var(--line);padding-top:24px;margin-top:28px}
+  .linkrow{display:flex;gap:34px;border-top:1px solid var(--line);padding-top:22px;margin-top:24px}
+  .linkbox{flex:1;min-width:0;display:flex;align-items:center;gap:20px}
   .linkbox img{width:96px;height:96px;flex:none}
   .linkbox .lt{flex:1;min-width:0}
   .linkbox .lt b{display:block;font-size:19px;font-weight:600;line-height:1.4;letter-spacing:-.012em}
@@ -641,9 +735,77 @@ const QR_DEMO = 'iVBORw0KGgoAAAANSUhEUgAAAYgAAAGIAQMAAABhjeVlAAAABlBMVEUMFCT///9
 
 const QR_RESULT = 'iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQMAAABB54RGAAAABlBMVEUMFCT///9oK1aNAAABsElEQVR42u2bUY7DIAxErc0BOFKuzpFyACQKeGyo+tOVdqX5GD5Q0vgrT2OPTWr921VNoQpV6K9CH8O6H2y9lvlsbPHoGrc/9vVS6P+ETlqXkxugru60fK3buBItGlpLPYNMs4UMeErvoTfR4qMVYjIrDQ9Ei1tbKyf2ZpEdRYu0bk1G1WU1rYapbhHS2p4w02Fu8oRktPYKbzFWA6PD7Otl0dStMvGUt3RYo5atK9Hi0dbi0TP1ZbWCwFS3qLR1P5apDy4DyNzQKxMSuYyhraWydlhE/61KW2SZEI4CI0JDOnSMPXow0SLyhM8HtzAdvcvBk/Vb3lv55L0lt3PSIVo0mRAefdv4Vagsh05yGXye8A4nGFc5gxItsllG+PajRX7Tm2gRTXWPY2OUrJ0E5Qm5tIUzSFfUEljDlmdeosXTb+XQHd7Cf4sY0WKrW58z+DtTpBw8V7+FQgX/BzHt+YZcBpfLSN+e1SpGhKJF12/ZPtU/DlCQBOXgKWlFv4VWy3I4rxk8I60whvvDz7oHUXpZdN88HekQyJrqFq8nPKpVfkUjWoz9lv7ioVCF/lnoC+n3KBvedYd7AAAAAElFTkSuQmCC';
 
+const QR_QUIZ = 'iVBORw0KGgoAAAANSUhEUgAAAU0AAAFNAQMAAAC+Pq+HAAAABlBMVEUdHR////+Km5piAAACKElEQVR42u1bO3aEMAwUoaDkCHsUjrYcbY+yR6Ck4KFYP0O6TSEVybgixpVmNTMaE+JP1044iqN/9uiLbD3lYWSmJ7/nfTyJ14U3f/ng/Ys+Xjj6i6MCwUPREAhmPgYm8srzSo9t0pcvQJALQSv4IBBIwU9ph1bw0Sq/TQf5DopVAIETUVuz9oW0AyCo7YKmDYMSz2ZYAIJiLWiVFyIyUJocGwTQggIIuiMS5g9RiAc4ogII+nJH1Lzo218ud/+KYuVB8KYpvOjEJsckEqCioFqALkiHgFSFnXZkx9qB3SNBC9KJaAsvSirHOpEdJhPzbq8AQbYcj90IqRf1gIJdl6EF6UTkuQTFb14DCtfl6AtAkEtETjsymtlya0TWIBjN8onIRmANSJV0vC9kR/9GF6QHFNoFGk3bb166wLxofwUIkjMivSa4ctF7g2A0q5kLhH9WV2Hhn6Am86uYCyq6wEO5CIta1U8fnBlzQYkjioLrzhozWuTYIKKqjIhMhS+BNi04CURUqAXT0Scyy05BRDVaoMxvU0BvB98JagIE2UTUU4i4tY/KQwuqHJGuxaZjuyzT74jiDEazbEfUb81s6SWy3Rc0jurxEYpVcXfM+z2g8IuDAXJcIsf2HWPkohHcaRcMmI5LtKB/LxEFvzcItKAKgoiGyO8LvAtgSgu7gH4SkTiiCwtAUPRl9fVwXhCAiKocUdyRhRfVZZEFiKhmLsD/w+Do/zz6DQ5bvjPrOymaAAAAAElFTkSuQmCC';
+
+const QR_PRE = 'iVBORw0KGgoAAAANSUhEUgAAAZUAAAGVAQMAAAAMlf54AAAABlBMVEUdHR////+Km5piAAADEUlEQVR42u1cMW7kMAykz8WWfoKf4qftPi1P8RO2dGFYZ3JISotUaYIQGFWC1moyGHI4pCLtx+sQ3uEd3vntO1+C9dTNfNnJcsytyVM/Oe2n9e1fre34Jz9fvPN7dxTB1eA1TB/n1AzBR7vw+3Ci64uY1sD05uBkrHzLTc/2kpuneiLbLmKEVUydsMS0EqbK05ueN6bOXFszTohpUZ7eSxHc7kQ7I9J6Gt0aMS2ZTzX2AkGEXF2WRoEp82khTFP3aoANRfRtQ91bCNNcBu50a6Sbpw8o4RXR+LP+4d+tRD6dL0+a7XLm6olGY0uj+dOLPK3B031IrOfktYwVNdu+6Il/atUNeVoj9r6dlbuVpcZTeA6KKRY2xLQQpgZlQ4C1oibAdZPQojHzaSXd66yEu4uCxSJtWA0iEEvUvXV07xGWoGF6b2QoYSzDugNMz6EKT5fuOcAJ/KCwew4BLjGtUcuYR2R49ZNLkqfp4TOflsEU2fPZxdIOM7+5Eob5cE7USJVi7+n2UWbPvnHdi4qVmJbRSDAWBkswbV5v0ChzrS9DTEvxFAIY5gNa4SJu3QNc6t5KGgnAZVGztXbI9yGWSL78u1WJve4axZxDGL/okvfviWkZ3Su9f+oL9ISHr1Yw7Aj6vVXy6YER0DUaqauPN+iaYyOMvYUwlZgxM3CzHdOnzgb5RJ4WwdRD7i6ucsW7MLGJxMpeW6XY62Up5vC7fRRQxsf0e4vo3t3rUzcJ0/jt44IvGXIuMa2jezWNJpTim7SYoHvpDVapT3N+7D0kVvTEY+ABPhJrmUI8nX2GIaePuhMYYom9tlo+UlqCfUow3ypiOjRMQvK0iEYa69Ph0WIfVbLqxr0mYlqDpzmHn469RPZ05kZPnJjW8ZGkN9S6WOqqKaxgaqQyGqnF65jD38ss2SWXz9kV8rQIpvH+1KEEgp5q+wsavq0oiKlqJMF87+KGUrr6nlipkQpiGoXq0FEdalj6vdXyqVkN/jw83ypK+EiNGqmk7s03UDGh1N8q4oEbMS1Wn/J/hfEO7/zNO/8BMF+H0zjaBQkAAAAASUVORK5CYII=';
+
+const QR_RES = 'iVBORw0KGgoAAAANSUhEUgAAAbkAAAG5AQMAAAApmthrAAAABlBMVEUdHR////+Km5piAAADh0lEQVR42u1cO5acQAzUmGBCjsBRONpwNB9lj0BIwEOm9evGgYON9pWLqHehk1EhVZXUiH7v2oQbuZEbITb+Fr8++iXvc1i0B/b3+dL2n1nbwq/XvfGXfPPixh+1sQFgMSzIpy16lO9bmyyBk/VrPqb2TPvrJADAALC3l7oBYJdpCLctLNx3lggA3OniTQCgAkBmSwWy3iVALykA3I8tesQzBAAsAO7gH9MlVgsOvxvVQVYtkBAAsBygAUAs4S/G/YwfWirQTA7kAIgASBUQcf/XgioAEAB1tShbws8oayV8kWCDpR/5qwLKwJbnjfs1+e8c4NYFl7gPoL4QVwr8VYEywF62z7MoNDkQ1cFzQmODehAAcBygMT3XetMVkHDu50UhaoFBQndmAMAS4PW9pfdruLVJ6sE1BMJNBuRNDgBWAnrc0wBUK/0dAJ9MBVs9w18VigOE4S/pCVvcGzbCCUxPeBN3jQgAMB9gcvU3Z9ylVL+TgSD/3ihkCYArAaECvBZE5q8WgAwASE+YAIAigXu+3ZXwQ/TJsveukMYzBwGAB4Dg/OEEBgAi7tYeiupgHIAkEM8HSI2fqn8+uhU8EsXqExEAUD6AKTtzAn0RZMBu5aiAqz9mAFAjyNZZ8SVzgs0DRHcgN8xsBsH5ADrMfXm4h8EAc4mT/LtvTACAycC5xr2CDXrz99ED6oMBLAGIKsDf90j44QNUdYiiEBmAPgCeERRXn/8ZZgLPvxf0AeA4wJP7lTPQ50BkGBTnUCioDBynwVP1a44GVdybR0QOAJcBBjYYWu8oejDFVLALBKEKgPQB4mhYjP6udXLQ417tYKcHzABwKsBKf58FLQDUkcA8GsZuIDIHkPFsYK8O6REJVQAoAPoie39LDYXqUSDx42McCMEEQM3/PM5/RTu4ywHzBskB0AAQvf413u7HhIAECZQaFCcHgJOBWoNA+YWQ8cV/dUPAZCAzABoAvuTB9JwMnENXqHOA7AoRAGAqIEdAu/pLzq9e+pecB1h4PByxBPRJMI/y0B989IDYDcSVgTXxOyyM81+9THAeALQEPL8QMswD1FeDxokglgA0AOQ3guJAUH0wMJ2B50wgewGwANCcAc6OT7LBz9gNJAfAzQCzdrsvPwxyPs6I8VwAMgcoAHQVsKdLPB/JBtkLQFUBIfF6uLdxHiA/EEEOAOsD8Eva3MiN/9vGP6K90CLngKPRAAAAAElFTkSuQmCC';
+
 const QR_SURVEY = 'iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQMAAABB54RGAAAABlBMVEURGCf///8AJgUnAAABoElEQVR42u2bwW3EMAwEibgAleTWr6QrQAAjS1xSyusCJMA+Vg/DJ/PlwZJLymf+6XqZQhWq0F+Fvi3WPbfGT38197FxOR5dI/TLPl4K/Z/Qh9a1yA1afYCau60veCAoWkS0lo5uqGxqa3DD3i1ajLSeu5kEW490KFrMtKKcLVDSFnPdKjKPtlx1i5FWesL35T8v8oRktGplTjS4jN3s62Xx1K3Zb3UkRly2Rky0aGhFqzXF1IHHQmqqW1x1K0wgWuRNapUORYujbvXjLu3g2XmJFo8nTEVF/msxg9oTo14WSyYMW4F+axWqNO+qW1wOvmaCy7xvU11pi89lHHYwSpbVaEO0iFwGQHVoq0TXpC22fqvIBLejbmmqy0arBrrng2zERItploGslzYeXt5Vt9i0tcrT26zO/LEwfhItxhl8uYxMkaLFNctYbt0djsKObzVUt/g8YZxBnifGdREt0q9okAmzbsllMNJCOixGMaGXtii1hc9055lXGkNpi7Bu1Un/VsZ0vkXqCdd813Bs3OLsWJ6Qst/SXzwUqtA/C/0GAJMXStaXKGEAAAAASUVORK5CYII=';
 
+const CREDS = { id: 'ws_et01@senedu.kr ~ ws_et50@senedu.kr', pw: 'password1!' };
+
 const SLIDES = [
+{ type:'hero', block:'Welcome',
+  flags:'🇺🇿 🤝 🇰🇷',
+  title:{uz:"Xush kelibsiz!", ko:"만나서 반갑습니다"},
+  subtitle:{uz:"O'zbekiston — Koreya ta'lim hamkorligi · Vibe Coding seminari", ko:"우즈베키스탄 · 대한민국 교육 협력 — 바이브코딩 연수"},
+  meta:{uz:"Toshkent · 2026-yil 5-oktyabr · Informatika fani o'qituvchilari uchun", ko:"타슈켄트 · 2026년 10월 5일 · 기념 촬영용 화면"} },
+
+{ type:'bio', block:'Welcome',
+  photo:'images/profile.jpg',
+  title:{uz:"Tanishaylik — An Yongwon", ko:"강사 소개 — 안용원"},
+  subtitle:{uz:"Seul shahri, Songrye o'rta maktabi &#183; ingliz tili o'qituvchisi", ko:"서울 송례중학교 영어교사"},
+  items:[
+    {y:'2025~2026', t:{uz:"Seul Milliy universiteti — AI integratsiyalashgan ta'lim magistraturasi", ko:"서울대학교 AI 융합교육학과"}},
+    {y:'2026', t:{uz:"Maktab bosqichi o'tish davri o'quv dasturi yetakchi maktabi vakili", ko:"학교급 전환기 교육과정 선도학교 대표교원"}},
+    {y:'2024~2025', t:{uz:"Raqamli asosda individual ta'lim yetakchi maktabi vakili", ko:"디지털 기반 학생 맞춤교육 선도학교 대표교원"}},
+    {y:'2022~2023', t:{uz:"AI tadqiqot maktabi tadqiqot a'zosi", ko:"AI 연구학교 연구위원"}},
+    {y:'2026 / 2025 / 2023', t:{uz:"Kangdong-Songpa AI &#183; EdTech yetakchi o'qituvchilar guruhi", ko:"강동송파 AI 에듀테크 선도교사단"}},
+    {y:'2025~2026', t:{uz:"Dibeot (o'quvchi noutbuki) loyihasi qo'llab-quvvatlash guruhi", ko:"디벗 현장지원단 / 정책지원단"}},
+    {y:'2025~2026', t:{uz:"SEN School yetakchi o'qituvchilar guruhi", ko:"SEN스쿨 선도교사단"}},
+    {y:'2025', t:{uz:"Sun'iy intellekt ta'lim xizmatlari yetakchi o'qituvchilar guruhi", ko:"인공지능 교육서비스 선도교사단"}},
+    {y:'2025', t:{uz:"AI moslashuvchan o'qitish platformasi yetakchi o'qituvchilar guruhi", ko:"인공지능 맞춤형 교수학습 플랫폼 선도교사단"}},
+    {y:'2024~2025', t:{uz:"Mikro-o'rganish kontentini ishlab chiqish jamoasi", ko:"마이크로러닝 콘텐츠 개발팀"}}
+  ],
+  note:{uz:"Bugun shu tajribani siz bilan bo'lishaman.", ko:"오늘 이 경험을 함께 나누겠습니다"} },
+
+{ type:'video', block:'Welcome',
+  file:'video.mp4',
+  title:{uz:"May oyini eslaymiz", ko:"지난 5월을 돌아보며"},
+  subtitle:{uz:"O'zbekistonlik hamkasblarning Koreyaga tashrifi &#183; 2 daqiqa 38 soniya", ko:"우즈베키스탄 선생님들의 한국 방문 회고 영상 · 2분 38초"},
+  note:{uz:"O'ynatish uchun tugmani bosing.", ko:"재생 버튼을 눌러 함께 시청합니다"} },
+
+{ type:'rows', block:'Welcome',
+  title:{uz:"Isinish o'yini 🎯", ko:"몸풀기 아이스브레이킹 퀴즈"},
+  subtitle:{uz:"Telefoningiz bilan QR kodni skanerlang va o'yinga qo'shiling", ko:"휴대폰으로 QR을 찍어 게임에 참여하세요"},
+  items:[
+    {t:{uz:"Telefonda kamerani oching va QR kodni skanerlang", ko:"휴대폰 카메라로 QR 찍기"}},
+    {t:{uz:"Ekrandagi PIN raqamini kiriting", ko:"화면에 뜨는 PIN 번호 입력"}},
+    {t:{uz:"Ismingizni yozing va kuting", ko:"이름을 입력하고 대기"}},
+    {t:{uz:"Tez javob bering — tezlik ham ball qo'shadi", ko:"빠르게 답할수록 점수가 올라갑니다"}}
+  ],
+  links:[
+    { url:'https://www.quizn.show/quz/pin/gamePinForm.do', qr:QR_QUIZ, text:"quizn.show",
+      label:{uz:"QR ni skanerlang yoki havolani oching", ko:"QR을 찍거나 링크로 접속 — PIN 번호는 화면에 표시됩니다"} }
+  ],
+  box:[
+    {icon:'🎁', t:{uz:"G'oliblarni Koreyadan olib kelingan maxsus sovg'a kutmoqda", ko:"우승자에게는 한국에서 가져온 특별한 선물이 기다리고 있습니다"}}
+  ],
+  note:{uz:"Sovg'a nima ekanini hozircha aytmayman 🙂", ko:"선물이 무엇인지는 아직 비밀입니다"} },
+
+{ type:'hero', block:'Welcome',
+  flags:'🏆 🎁 🎉',
+  title:{uz:"Tabriklaymiz!", ko:"시상식"},
+  subtitle:{uz:"G'oliblar sahnaga — Koreyadan kelgan sovg'a sizniki", ko:"우승자에게 한국에서 준비한 선물을 드립니다"},
+  meta:{uz:"Barcha ishtirokchilarga rahmat — endi asosiy qismga o'tamiz", ko:"참여해 주신 모든 분께 감사드립니다"} },
+
+{ type:'hero', block:'Welcome',
+  flags:'🚀',
+  title:{uz:"Vibe coding olamiga kiramizmi?", ko:"바이브코딩의 세계로 들어가 볼까요?"},
+  subtitle:{uz:"Uy vazifasini bajardingizmi? Google hisobingizga kirib oldingizmi?", ko:"사전 과제는 모두 마치셨나요? 구글 계정 로그인은 되어 있나요?"},
+  meta:{uz:"Tayyor bo'lsangiz — boshladik!", ko:"준비되셨으면 시작하겠습니다"} },
+
 { type:'cover', block:'Opening',
   eyebrow:'Vibe Coding',
   title:{uz:"O'z dars vositangizni yarating", ko:"내 수업 도구 만들기"},
@@ -705,9 +867,17 @@ const SLIDES = [
     {t:{uz:"May oyidan beri darsda sinab ko'rgan yangi narsangiz", ko:"5월 이후 수업에서 새로 시도해 본 것"}, d:{uz:"Kichik bo'lsa ham — bitta misol yetarli.", ko:"작은 것이라도 하나면 충분"}},
     {t:{uz:"Hozir darsingizda eng qiyin bo'lgan narsa", ko:"현재 수업에서 가장 불편한 것"}, d:{uz:"Bu — bugungi amaliyot uchun material bo'ladi.", ko:"뒤 실습의 재료가 됨"}}
   ],
-  link:{ url:'https://forms.gle/fzvNcgRrw9fkSMpc8', qr:QR_SURVEY,
-         label:{uz:"QR kodni skanerlang yoki havolani oching", ko:"QR을 찍거나 링크를 열어 응답해 주세요"} },
-  note:{uz:"O'zbek yoki rus tilida yozing — men koreys tiliga tarjima qilib o'qiyman.", ko:"GOOGLETRANSLATE 수식으로 번역 열 구성"} },
+  links:[
+    { url:'https://forms.gle/fzvNcgRrw9fkSMpc8', qr:QR_SURVEY, text:"So'rovnoma",
+      label:{uz:"Savollarga javob bering", ko:"설문 응답하기"} },
+    { url:'https://docs.google.com/spreadsheets/d/1nIMW6oqk3TlSqqgBoue_PnLtkvweyCtkW5F7U6_cZO0/edit?usp=sharing', qr:QR_PRE, text:"Natijalar jadvali",
+      label:{uz:"Hammaning javoblarini shu yerda birga ko'ramiz", ko:"사전 설문 결과 — 다 함께 보는 시트"} }
+  ],
+  box:[
+    {icon:'🔴', t:{uz:"Yordam kerak bo'lsa — qizil stikerni monitorga yopishtiring", ko:"도움이 필요하면 빨간색 포스트잇을 모니터에 붙여 주세요"}},
+    {icon:'🟢', t:{uz:"Topshiriqni tugatsangiz — yashil stikerni yopishtiring", ko:"과제를 다 했으면 초록색 포스트잇을 붙여 주세요"}}
+  ],
+  note:{uz:"O'zbek yoki rus tilida yozing — men koreys tiliga tarjima qilib o'qiyman.", ko:"응답은 스프레드시트에서 실시간 번역으로 확인"} },
 
 { type:'section', block:'Practice', icon:'🧩', num:'02', name:'Practice',
   title:{uz:"Backendni tushunish", ko:"백엔드 개념 이해하기"},
@@ -732,9 +902,9 @@ const SLIDES = [
   items:[
     {t:{uz:"Yangi Google Sheets yarating", ko:"새 구글 시트 만들기"}, url:'https://docs.google.com/spreadsheets/d/1vrkmYo1j-p_x8BkwpnXVWvOzhpms1Sm5hwGWXXCgvxE/edit?hl=ko&gid=0#gid=0', urlText:'Google Sheets', shot:1},
     {t:{uz:"Kengaytmalar > Apps Script ni oching", ko:"확장 프로그램 > Apps Script 열기"}, d:{uz:"Aynan jadval ichidan oching.", ko:"반드시 시트 안에서 열기"}, shot:1},
-    {t:{uz:"Code.gs — namuna kodni qo'ying", ko:"Code.gs에 샘플 코드 붙여넣기"}, shot:2},
+    {t:{uz:"Code.gs — namuna kodni qo'ying", ko:"Code.gs에 샘플 코드 붙여넣기"}, copy:'gs', shot:2},
     {t:{uz:"Yangi HTML fayl qo'shing — nomi: index", ko:"HTML 파일 추가 — 이름은 index"}, shot:3},
-    {t:{uz:"index.html kodini qo'ying", ko:"index.html 코드 붙여넣기"}, shot:4},
+    {t:{uz:"index.html kodini qo'ying", ko:"index.html 코드 붙여넣기"}, copy:'html', shot:4},
     {t:{uz:"Saqlang va veb-ilova sifatida joylashtiring", ko:"저장 후 웹 앱으로 배포"}, shot:5}
   ],
   note:{uz:"Rasmni bosing yoki nuqtalarni bosing — sahifalar almashadi.", ko:"이미지 클릭 또는 아래 점으로 화면 전환"} },
@@ -770,8 +940,8 @@ const SLIDES = [
     {t:{uz:"Veb-ilova havolasini yangi oynada oching", ko:"웹 앱 링크를 새 창에서 열기"}},
     {t:{uz:"Ism va javob yozib, Yuborish tugmasini bosing", ko:"이름과 답을 입력하고 Yuborish 누르기"}},
     {t:{uz:"Jadvalga qayting — yangi qator paydo bo'ldimi?", ko:"시트로 돌아가 새 행이 생겼는지 확인"}},
-    {t:{uz:"Yonidagi hamkasbning havolasini ham to'ldiring", ko:"옆 사람 링크에도 입력해 보기"}},
-    {t:{uz:"Qator qo'shilmasa: Deploy > Manage deployments > New version", ko:"안 되면 새 버전으로 재배포"}}
+    {t:{uz:"Qator qo'shilmasa: Deploy > Manage deployments > New version", ko:"안 되면 새 버전으로 재배포"}},
+    {t:{uz:"Yordam kerak bo'lsa — qizil stikerni monitorga yopishtiring! 🔴", ko:"도움이 필요하면 빨간색 포스트잇을 모니터에 붙여 주세요!"}}
   ],
   note:{uz:"Jadvalda qator ko'rinsa — siz backend yozdingiz. Tabriklaymiz!", ko:"행이 생기면 백엔드 완성 — 여기까지가 Practice의 목표"} },
 
@@ -794,7 +964,17 @@ const SLIDES = [
     {t:{uz:"saveAnswer()", ko:"백엔드 로직"}, d:{uz:"Ma'lumotni qabul qilib, qayerga yozishni hal qiladi.", ko:"받아서 어디에 쓸지 결정하는 코드"}},
     {t:{uz:"Google Sheets", ko:"데이터베이스"}, d:{uz:"Ma'lumot saqlanadigan joy. Bugun — jadval.", ko:"데이터가 실제로 저장되는 곳"}}
   ],
-  note:{uz:"Jadvalning chegarasi bor: ko'p foydalanuvchi, tezlik, xavfsizlik. Shuning uchun keyinroq Supabase.", ko:"시트의 한계 → 뒤의 Supabase로 연결되는 다리"} },
+  limits:[
+    {t:{uz:"1. Hajm va tezlik", ko:"데이터 규모·속도 한계"},
+     d:{uz:"Ma'lumot va foydalanuvchi ko'paysa, jadval sekinlashadi. Supabase indeks va so'rovlar bilan katta hajmni barqaror ishlaydi.", ko:"시트는 데이터와 동시 사용자가 늘면 느려집니다. Supabase는 DB 인덱스와 쿼리로 대량 데이터를 더 안정적으로 처리합니다."}},
+    {t:{uz:"2. Murakkab ma'lumotni boshqarish", ko:"복잡한 데이터 관리 어려움"},
+     d:{uz:"Foydalanuvchi, buyurtma, mahsulot kabi bog'liq ma'lumotlarni boshqarish va takror/xatolikni oldini olish qiyin. Supabase relatsion baza, cheklovlar va tranzaksiyalarni qo'llab-quvvatlaydi.", ko:"사용자·주문·상품처럼 연결된 데이터를 관리하고, 중복·오류를 막기 어렵습니다. Supabase는 관계형 DB, 제약조건, 트랜잭션을 지원합니다."}},
+    {t:{uz:"3. Xavfsizlik va ruxsatlar", ko:"보안·권한 제어 부족"},
+     d:{uz:"\"Faqat o'z ma'lumotini ko'rish/o'zgartirish\" kabi nozik ruxsatlarni sozlash qiyin. Supabase autentifikatsiya va qator darajasidagi xavfsizlik siyosatini beradi.", ko:"사용자별로 \"자기 데이터만 보기/수정\" 같은 정교한 권한 관리가 어렵습니다. Supabase는 인증과 행 단위 보안 정책을 제공합니다."}},
+    {t:{uz:"4. Rasm va fayl saqlash", ko:"이미지·파일 저장에 부적합"},
+     d:{uz:"Jadvalda rasm va biriktirmalarni tartibli yuklash, saqlash va ruxsatlarini boshqarish qiyin. Supabase Storage faylni saqlaydi, bazada esa URL bilan bog'lanadi.", ko:"시트는 이미지나 첨부파일을 체계적으로 업로드·보관·권한 관리하기 어렵습니다. Supabase는 Storage에 파일을 저장하고 DB에서 URL로 연결할 수 있습니다."}}
+  ],
+  note:{uz:"Jadvalning chegarasi — sarlavhani bosing, izoh o'ngda chiqadi.", ko:"시트의 한계 — 소제목을 클릭하면 오른쪽에 설명이 보입니다"} },
 
 { type:'section', block:'Coding', icon:'✨', num:'03', name:'Coding',
   title:{uz:"O'z vositangizni yarating", ko:"내 수업 도구 만들기"},
@@ -811,7 +991,8 @@ const SLIDES = [
     {t:{uz:"Asosiy sahifada SenGPT ni oching", ko:"도구모음에서 SenGPT 열기"}, shot:3},
     {t:{uz:"Model: Claude &#183; tilni ingliz tiliga o'zgartiring", ko:"모델을 Claude로, 언어를 영어로 변경"}, shot:4}
   ],
-  note:{uz:"Til tugmasi o'ng yuqorida — globus belgisi (o'zbek tili yo'q, ingliz tilini tanlang).", ko:"언어 전환은 오른쪽 위 지구본 — 우즈베크어는 없으므로 영어 선택"} },
+  creds:{ pass:'1234' },
+  note:{uz:"SenGPT tokenlari cheklangan — o'ylab, ehtiyot bilan foydalaning.", ko:"SenGPT는 토큰 사용량이 정해져 있으니 신중하게 사용해 주세요 · 언어는 지구본에서 영어 선택"} },
 
 { type:'template', block:'Coding',
   title:{uz:"1-qadam: Muammoni bitta jumlada", ko:"1단계 — 문제 한 문장"},
@@ -824,6 +1005,8 @@ const SLIDES = [
 
 { type:'demo', block:'Coding', app:'binary',
   title:{uz:"Namuna PRD", ko:"예시 PRD"},
+  tip:{uz:"PRD (Product Requirements Document) — yaratmoqchi bo'lgan narsangizni oldindan yozib qo'yadigan qisqa hujjat: maqsad, foydalanuvchi, funksiyalar, ekran, ma'lumot, cheklovlar. AI ga aynan shuni yuborasiz.",
+       ko:"PRD는 만들 것을 미리 적어 두는 짧은 요구사항 문서입니다. 목적·사용자·기능·화면·데이터·제약조건 여섯 가지를 적어 그대로 AI에게 보냅니다."},
   subtitle:{uz:"Chapda PRD — o'ngda shu PRD asosida yaratilgan vosita", ko:"왼쪽은 PRD, 오른쪽은 그 PRD로 만든 실제 앱"},
   items:[
     {t:{uz:"Maqsad", ko:"목적"}, d:{uz:"O'quvchilar ikkilik sanoq sistemasini mashq qilsin.", ko:"학생들이 2진수 변환을 연습하게 한다."}},
@@ -867,10 +1050,16 @@ const SLIDES = [
   items:[
     {t:{uz:"Birinchi so'rovda aytilmagan shartlar bor", ko:"첫 요청에는 빠진 조건이 있다"}, d:{uz:"Biz ularni faqat boshimizda bilamiz.", ko:"머릿속으로만 아는 조건"}},
     {t:{uz:"AI bo'sh joylarni o'zicha to'ldiradi", ko:"AI가 빈칸을 임의로 채운다"}, d:{uz:"Shuning uchun natija kutganimizdek chiqmaydi.", ko:"그래서 결과가 어긋남"}},
-    {t:{uz:"Ishlatib ko'rganda yetishmagani ko'rinadi", ko:"직접 써봐야 드러난다"}, d:{uz:"5 daqiqa: juftingizga o'z vositangizni tushuntiring — nima so'radingiz, nimani tuzatdingiz.", ko:"5분간 짝에게 내 바이브코딩 설명하기 — 무엇을 요청했고 무엇을 고쳤는지"}},
+    {t:{uz:"Ishlatib ko'rganda yetishmagani ko'rinadi", ko:"직접 써봐야 드러난다"}, d:{uz:"Juftingizga o'z vositangizni tushuntiring — nima so'radingiz, nimani tuzatdingiz.", ko:"짝에게 내 바이브코딩 설명하기 — 무엇을 요청했고 무엇을 고쳤는지"}},
     {t:{uz:"Tuzatish — bu talabni aniqlashtirish", ko:"수정은 요구사항을 정련하는 일"}, d:{uz:"O'quvchilarga ham aynan shuni o'rgatamiz.", ko:"학생에게 가르칠 핵심도 이것"}}
   ],
-  note:{uz:"\"Rangni yumshoqroq qil\" · \"Xato javobda maslahat chiqsin\" · \"Telefonda ham yaxshi ko'rinsin\"", ko:"수정 요청 예시 문장"} },
+  quotes:[
+    {uz:"\"Rangni yumshoqroq qil, matnni kattaroq yoz.\"", ko:"\"색을 부드럽게, 글씨를 더 크게 해줘.\""},
+    {uz:"\"Xato javobda javobni ko'rsatma — avval maslahat ber.\"", ko:"\"틀렸을 때 정답 대신 힌트를 먼저 줘.\""},
+    {uz:"\"Har bir qadamni sekinlashtir, tugma bosilganda o'tsin.\"", ko:"\"단계를 천천히, 버튼을 눌러야 넘어가게 해줘.\""},
+    {uz:"\"Barcha matnlarni o'zbek tiliga o'gir.\"", ko:"\"모든 텍스트를 우즈베크어로 바꿔줘.\""}
+  ],
+  note:{uz:"Tuzatish so'rovlari — misollar.", ko:"수정 요청 예시 문장"} },
 
 { type:'section', block:'Github', icon:'🚀', num:'04', name:'Github',
   title:{uz:"Joylashtirish va backend", ko:"깃허브 배포와 백엔드 연결"},
@@ -917,8 +1106,12 @@ const SLIDES = [
     {t:{uz:"Vosita havolasi", ko:"결과물 링크"}, d:{uz:"GitHub Pages manzili.", ko:"깃허브 페이지 주소"}},
     {t:{uz:"Qaysi darsning qaysi muammosi uchun", ko:"어떤 수업의 어떤 문제를 위한 것인지"}}
   ],
-  link:{ url:'https://forms.gle/WuSP2c4wKjMzp3WU8', qr:QR_RESULT,
-         label:{uz:"Natijangizni shu yerga yuboring", ko:"결과물 제출 — QR 또는 링크로 접속"} },
+  links:[
+    { url:'https://forms.gle/WuSP2c4wKjMzp3WU8', qr:QR_RESULT, text:"Yuborish",
+      label:{uz:"Natijangizni shu yerga yuboring", ko:"결과물 제출하기"} },
+    { url:'https://docs.google.com/spreadsheets/d/1ldvAX3Hrjq3qYHywIzGFVQQ3XwrvFddSru89lR_tQJA/edit?gid=1167077171#gid=1167077171', qr:QR_RES, text:"Galereya jadvali",
+      label:{uz:"Hamma natijalar shu yerda — birga ko'ramiz", ko:"결과 공유 시트 — 다 함께 보기"} }
+  ],
   note:{uz:"Barcha natijalar ekranda bitta ro'yxatda ko'rinadi — galereya boshlanadi.", ko:"제출 목록을 화면에 띄우고 갤러리 워크 시작"} },
 
 { type:'steps', block:'Present & Share',
@@ -979,6 +1172,12 @@ const UI = {
   copied:{uz:"Nusxalandi", ko:"복사되었습니다"},
   manualLb:{uz:"Qo'llanma", ko:"실습 매뉴얼"},
   demoLb:{uz:"Namuna — sinab ko'ring", ko:"예시 앱 — 직접 해보세요"},
+  credLb:{uz:"Hisob ma'lumotlari", ko:"계정 정보"},
+  credBtn:{uz:"ID / parolni ko'rish", ko:"아이디 / 비밀번호 확인하기"},
+  credAsk:{uz:"Maxfiy kodni kiriting", ko:"암호를 입력하세요"},
+  credNo:{uz:"Kod noto'g'ri", ko:"암호가 올바르지 않습니다"},
+  credOk:{uz:"Tasdiqlash", ko:"확인"},
+  videoPh:{uz:"Video havolasi keyinroq qo'shiladi", ko:"영상 링크를 넣어 주세요 (유튜브 embed 주소)"},
   hover: {uz:"Chap tomondagi mavzuga sichqonchani olib boring — namuna shu yerda ochiladi va uni sinab ko'rishingiz mumkin",
           ko:"왼쪽 주제에 마우스를 올리면 여기에 예시 앱이 열리고 직접 눌러볼 수 있습니다"},
   manual:{uz:"Matnni qo'lda nusxalang", ko:"직접 선택해 복사해 주세요"}
@@ -997,18 +1196,38 @@ function titleOf(s){
 }
 
 function head(s){
-  return '<div class="head"><h2 class="t">' + T(s.title) + '</h2>' +
+  return '<div class="head"><h2 class="t">' + T(s.title) +
+    (s.tip ? '<span class="tip">?<span class="tipbox">' + T(s.tip) + '</span></span>' : '') + '</h2>' +
     (s.subtitle ? '<div class="sub-title" style="font-size:17px;margin-top:10px">' + T(s.subtitle) + '</div>' : '') +
     '</div>';
 }
 function noteOf(s){ return s.note ? '<div class="note">' + T(s.note) + '</div>' : ''; }
-function linkOf(s){
-  if(!s.link) return '';
-  return '<div class="linkbox">' +
-    (s.link.qr ? '<img alt="QR" src="data:image/png;base64,' + s.link.qr + '">' : '') +
-    '<div class="lt"><b>' + T(s.link.label) + '</b>' +
-    '<a class="url" href="' + s.link.url + '" target="_blank" rel="noopener">' + esc(s.link.text || s.link.url) + '</a></div>' +
+function boxOf(s){
+  if(!s.box) return '';
+  return '<div class="infobox">' + s.box.map(b =>
+    '<div class="it"><div class="ic">' + b.icon + '</div><b>' + T(b.t) + '</b></div>').join('') + '</div>';
+}
+function quotesOf(s){
+  if(!s.quotes) return '';
+  return '<div class="quotes">' + s.quotes.map(q => '<div class="qt">' + T(q) + '</div>').join('') + '</div>';
+}
+function credsOf(s){
+  if(!s.creds) return '';
+  return '<div class="creds" data-pass="' + s.creds.pass + '">' +
+    '<div class="ch">' + esc(UI.credLb[L()]) + '</div>' +
+    '<div class="cbody"><button data-c="open">' + esc(UI.credBtn[L()]) + '</button></div>' +
   '</div>';
+}
+
+function linkOf(s){
+  const arr = s.links || (s.link ? [s.link] : []);
+  if(!arr.length) return '';
+  return '<div class="linkrow">' + arr.map(l =>
+    '<div class="linkbox">' +
+      (l.qr ? '<img alt="QR" src="data:image/png;base64,' + l.qr + '">' : '') +
+      '<div class="lt"><b>' + T(l.label) + '</b>' +
+      '<a class="url" href="' + l.url + '" target="_blank" rel="noopener">' + esc(l.text || l.url) + '</a></div>' +
+    '</div>').join('') + '</div>';
 }
 
 function render(s, i){
@@ -1054,7 +1273,13 @@ function render(s, i){
           '<h3>' + T(it.t) + '</h3>' +
           '<p>' + T(it.d) + '</p>' +
         '</div>').join('') +
-      '</div></div>' + linkOf(s) + noteOf(s);
+      '</div>' +
+      (s.limits ? '<div class="limits"><div class="ll">' +
+        s.limits.map((l, n) => '<button class="lb' + (n === 0 ? ' on' : '') + '" data-l="' + n + '">' + T(l.t) + '</button>').join('') +
+        '</div><div class="lp">' + s.limits.map((l, n) =>
+          '<div data-lp="' + n + '"' + (n ? ' style="display:none"' : '') + '>' + T(l.d) + '</div>').join('') +
+        '</div></div>' : '') +
+      '</div>' + linkOf(s) + noteOf(s);
   }
 
   else if(s.type === 'rows'){
@@ -1064,12 +1289,13 @@ function render(s, i){
           '<div class="n">' + String(n + 1).padStart(2, '0') + '</div>' +
           '<div class="tx"><b>' + T(it.t) +
             (it.url ? '<a class="ilink" href="' + it.url + '" target="_blank" rel="noopener">' + (it.urlText || it.url) + '</a>' : '') +
+            (it.copy ? '<button class="rowcopy" data-code="' + it.copy + '">' + esc(UI.copy[L()]) + '</button>' : '') +
           '</b>' +
             (it.d ? '<span class="d">' + T(it.d) + '</span>' : '') +
           '</div>' +
           (it.tag ? '<div class="tag">' + esc(D(it.tag)) + '</div>' : '') +
         '</div>').join('') +
-      '</div></div>' + linkOf(s) + noteOf(s);
+      '</div>' + quotesOf(s) + '</div>' + linkOf(s) + boxOf(s) + noteOf(s);
   }
 
   else if(s.type === 'steps'){
@@ -1111,7 +1337,37 @@ function render(s, i){
         '<div class="dbar">' + esc(UI.demoLb[L()]) + '</div>' +
         '<iframe title="demo"></iframe>' +
       '</div>' +
+      '</div></div>' + boxOf(s) + noteOf(s);
+  }
+
+  else if(s.type === 'hero'){
+    el.classList.add('cover');
+    h = '<div class="hero">' +
+      '<div class="flags">' + s.flags + '</div>' +
+      '<h1 class="t">' + T(s.title) + '</h1>' +
+      '<div class="sub-title">' + T(s.subtitle) + '</div>' +
+      (s.meta ? '<div class="meta">' + T(s.meta) + '</div>' : '') +
+      '</div>';
+  }
+
+  else if(s.type === 'bio'){
+    h = head(s) + '<div class="body"><div class="bsplit">' +
+      '<div class="bphoto"><img src="' + s.photo + '" alt=""></div>' +
+      '<div class="bcv">' +
+        s.items.map(it =>
+          '<div class="cv"><span class="yr">' + esc(it.y) + '</span><span class="cvt">' + T(it.t) + '</span></div>').join('') +
+      '</div>' +
       '</div></div>' + noteOf(s);
+  }
+
+  else if(s.type === 'video'){
+    h = head(s) + '<div class="body">' +
+      (s.file
+        ? '<div class="vbox"><video src="' + s.file + '" controls playsinline preload="metadata"></video></div>'
+        : s.url
+          ? '<div class="vbox"><iframe src="' + s.url + '" allow="autoplay; fullscreen; encrypted-media" allowfullscreen></iframe></div>'
+          : '<div class="vph">' + esc(UI.videoPh[L()]) + '</div>') +
+      '</div>' + noteOf(s);
   }
 
   else if(s.type === 'shots'){
@@ -1122,6 +1378,7 @@ function render(s, i){
             '<div class="n">' + String(n + 1).padStart(2, '0') + '</div>' +
             '<div class="tx"><b>' + T(it.t) +
               (it.url ? '<a class="ilink" href="' + it.url + '" target="_blank" rel="noopener">' + (it.urlText || it.url) + '</a>' : '') +
+              (it.copy ? '<button class="rowcopy" data-code="' + it.copy + '">' + esc(UI.copy[L()]) + '</button>' : '') +
             '</b>' +
               (it.d ? '<span class="d">' + T(it.d) + '</span>' : '') +
             '</div>' +
@@ -1181,7 +1438,7 @@ function render(s, i){
 
   else if(s.type === 'template'){
     h = head(s) + '<div class="body"><div class="tmpl">' +
-      s.lines.map(l => '<div class="line">' + T(l, true) + '</div>').join('') +
+      s.lines.map(l => '<div class="line">' + T(l, true).replace(/<u><\/u>/g, '<input class="blank" type="text">') + '</div>').join('') +
       '</div></div>' + noteOf(s);
   }
 
@@ -1258,6 +1515,69 @@ function initCode(el){
         document.execCommand('copy'); document.body.removeChild(ta); done();
       }
     } catch(e) { toast(UI.manual[L()]); }
+  };
+}
+
+function copyText(txt, btn){
+  const done = () => {
+    if(!btn) return;
+    const old = btn.textContent;
+    btn.classList.add('done');
+    btn.textContent = lang === 'ko' ? '복사됨 ✓' : 'Nusxalandi ✓';
+    setTimeout(() => { btn.classList.remove('done'); btn.textContent = old; }, 1600);
+  };
+  try {
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, () => toast(UI.manual[L()])); }
+    else {
+      const ta = document.createElement('textarea');
+      ta.value = txt; document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta); done();
+    }
+  } catch(e) { toast(UI.manual[L()]); }
+}
+
+function initRowCopy(el){
+  el.querySelectorAll('.rowcopy').forEach(b => {
+    b.onclick = (e) => {
+      e.stopPropagation();
+      copyText(b.dataset.code === 'gs' ? CODE_GS : CODE_HTML, b);
+    };
+  });
+}
+
+function initLimits(el){
+  const wrap = el.querySelector('.limits');
+  if(!wrap) return;
+  wrap.querySelectorAll('.lb').forEach(b => {
+    b.onclick = () => {
+      wrap.querySelectorAll('.lb').forEach(x => x.classList.toggle('on', x === b));
+      wrap.querySelectorAll('[data-lp]').forEach(p => p.style.display = (p.dataset.lp === b.dataset.l) ? '' : 'none');
+    };
+  });
+}
+
+function initCreds(el){
+  const box = el.querySelector('.creds');
+  if(!box) return;
+  const pass = box.dataset.pass;
+  const body = box.querySelector('.cbody');
+  const openBtn = body.querySelector('[data-c="open"]');
+  openBtn.onclick = () => {
+    body.innerHTML = '<div><input type="password" placeholder="' + UI.credAsk[L()] + '" data-c="pw">' +
+      '<button data-c="go">' + UI.credOk[L()] + '</button></div><div class="err" style="display:none"></div>';
+    const inp = body.querySelector('[data-c="pw"]');
+    const err = body.querySelector('.err');
+    const check = () => {
+      if(inp.value.trim() === pass){
+        body.innerHTML = '<div class="out">ID &nbsp;<span>' + CREDS.id + '</span><br>PW &nbsp;<span>' + CREDS.pw + '</span></div>';
+      } else {
+        err.style.display = ''; err.textContent = UI.credNo[L()];
+        inp.value = ''; inp.focus();
+      }
+    };
+    body.querySelector('[data-c="go"]').onclick = check;
+    inp.onkeydown = (e) => { if(e.key === 'Enter') check(); };
+    inp.focus();
   };
 }
 
@@ -1359,7 +1679,7 @@ function initPRD(el){
 const stage = document.getElementById('stage');
 function build(){
   stage.innerHTML = '';
-  SLIDES.forEach((s, i) => { const el = render(s, i); stage.appendChild(el); initPRD(el); initTopics(el); initManual(el); initQuiz(el); initCode(el); initDemo(el); });
+  SLIDES.forEach((s, i) => { const el = render(s, i); stage.appendChild(el); initPRD(el); initTopics(el); initManual(el); initQuiz(el); initCode(el); initDemo(el); initRowCopy(el); initLimits(el); initCreds(el); });
   show(cur, false);
   buildOverview();
 }
