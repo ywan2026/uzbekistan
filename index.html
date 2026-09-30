@@ -315,7 +315,11 @@
   }
   .prd textarea::placeholder{color:#B6BDCB}
   .prd textarea:focus{outline:none;border-bottom-color:var(--accent-2);background:rgba(10,132,255,.04)}
-  .prdout{margin-top:26px;display:flex;gap:20px;align-items:stretch}
+  .prdopt{display:flex;align-items:center;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+  .prdopt input{width:19px;height:19px;accent-color:var(--accent-2);cursor:pointer;margin:0}
+  .prdopt label{font-size:15.5px;font-weight:600;color:var(--ink);cursor:pointer;line-height:1.35}
+  .prdopt label .ko{font-size:12.5px;font-weight:400}
+  .prdout{margin-top:18px;display:flex;gap:20px;align-items:stretch}
   .prdout textarea{
     flex:1;font-family:"SF Mono","SFMono-Regular",Menlo,Consolas,monospace;font-size:13.5px;line-height:1.6;
     border:.5px solid var(--line-2);padding:14px 16px;background:var(--soft);color:var(--ink-2);height:112px;resize:none;border-radius:10px;
@@ -786,6 +790,38 @@ const QR_RES = 'iVBORw0KGgoAAAANSUhEUgAAAbkAAAG5AQMAAAApmthrAAAABlBMVEUdHR////+K
 
 const QR_SURVEY = 'iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQMAAABB54RGAAAABlBMVEURGCf///8AJgUnAAABoElEQVR42u2bwW3EMAwEibgAleTWr6QrQAAjS1xSyusCJMA+Vg/DJ/PlwZJLymf+6XqZQhWq0F+Fvi3WPbfGT38197FxOR5dI/TLPl4K/Z/Qh9a1yA1afYCau60veCAoWkS0lo5uqGxqa3DD3i1ajLSeu5kEW490KFrMtKKcLVDSFnPdKjKPtlx1i5FWesL35T8v8oRktGplTjS4jN3s62Xx1K3Zb3UkRly2Rky0aGhFqzXF1IHHQmqqW1x1K0wgWuRNapUORYujbvXjLu3g2XmJFo8nTEVF/msxg9oTo14WSyYMW4F+axWqNO+qW1wOvmaCy7xvU11pi89lHHYwSpbVaEO0iFwGQHVoq0TXpC22fqvIBLejbmmqy0arBrrng2zERItploGslzYeXt5Vt9i0tcrT26zO/LEwfhItxhl8uYxMkaLFNctYbt0djsKObzVUt/g8YZxBnifGdREt0q9okAmzbsllMNJCOixGMaGXtii1hc9055lXGkNpi7Bu1Un/VsZ0vkXqCdd813Bs3OLsWJ6Qst/SXzwUqtA/C/0GAJMXStaXKGEAAAAASUVORK5CYII=';
 
+
+const SUPA_PROMPT = `
+
+--- Ma'lumotlarni saqlash: Supabase ---
+Ma'lumotni Supabase'da saqla va quyidagi shartlarga qat'iy rioya qil:
+
+1) Faqat bitta index.html fayl bo'lsin. Supabase kutubxonasini CDN orqali ulа:
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"><\/script>
+   npm, build, React yoki import ishlatma — sof HTML, CSS va JavaScript.
+
+2) Fayl boshida SUPABASE_URL va SUPABASE_ANON_KEY nomli ikkita o'zgaruvchi qo'y va
+   ustiga izoh yoz: "<-- bu yerga o'z qiymatlaringizni qo'ying". Faqat anon (public)
+   kalit ishlatilsin; service_role kalitini hech qachon kodga yozma.
+
+3) Kod boshida izoh ichida tayyor SQL ber, men uni Supabase SQL Editor'ga nusxalayman:
+   jadval yaratish (id, created_at va kerakli ustunlar), RLS ni yoqish hamda anon roli
+   uchun insert va select siyosatlarini yaratish. SQL ni to'liq va ishlaydigan holda yoz.
+
+4) Har bir so'rovni try/catch bilan o'ra. Xatolik bo'lsa ekranda error.message ni
+   ko'rsat (faqat console.log qilma). Tarmoq sekin bo'lsa ham dastur qotib qolmasin.
+
+5) Yuborish tugmasi bosilganda uni vaqtincha o'chir va "Yuborilmoqda..." deb yoz,
+   javob kelgach yana yoq. Bo'sh maydonlarni yubormasdan oldin tekshir.
+
+6) Sahifa ochilganda mavjud yozuvlarni o'qib ro'yxatda ko'rsat. Yangi yozuv
+   qo'shilgach ro'yxatni yangila. Yozuv bo'lmasa "Hozircha yozuv yo'q" deb yoz.
+
+7) Oxirida qisqa yo'riqnoma yoz: Supabase'da loyiha ochish, jadval yaratish,
+   URL va anon kalitni qayerdan olish, hamda "row-level security policy" xatosi
+   chiqsa nima qilish kerakligi.
+`;
+
 const CREDS = { id: 'ws_et01@senedu.kr ~ ws_et50@senedu.kr', pw: 'password1!' };
 
 const SLIDES = [
@@ -1226,6 +1262,8 @@ const UI = {
   copied:{uz:"Nusxalandi", ko:"복사되었습니다"},
   manualLb:{uz:"Qo'llanma", ko:"실습 매뉴얼"},
   demoLb:{uz:"Namuna — sinab ko'ring", ko:"예시 앱 — 직접 해보세요"},
+  supaOpt:{uz:"Ma'lumot saqlansin — Supabase yo'riqnomasini ham qo'shish",
+           ko:"데이터를 저장해야 함 — Supabase 초보자용 지침을 프롬프트에 포함"},
   credLb:{uz:"Hisob ma'lumotlari", ko:"계정 정보"},
   credBtn:{uz:"ID / parolni ko'rish", ko:"아이디 / 비밀번호 확인하기"},
   credAsk:{uz:"Maxfiy kodni kiriting", ko:"암호를 입력하세요"},
@@ -1493,6 +1531,10 @@ function render(s, i){
           '<div class="f"><label><i>' + String(n + 1).padStart(2, '0') + '</i>' + T(f.label) + '</label>' +
           '<textarea data-k="' + f.key + '" placeholder="' + esc(one(f.ph)) + '"></textarea></div>').join('') +
       '</div>' +
+      '<div class="prdopt">' +
+        '<input type="checkbox" id="supa-' + i + '" data-supa checked>' +
+        '<label for="supa-' + i + '">' + T(UI.supaOpt) + '</label>' +
+      '</div>' +
       '<div class="prdout">' +
         '<textarea class="out" readonly placeholder="' + esc(UI.outPh[L()]) + '"></textarea>' +
         '<div class="prdbtns">' +
@@ -1731,12 +1773,16 @@ function initPRD(el){
       .filter(k => v[k])
       .map(k => labels[k] + ': ' + v[k]);
     if(!lines.length){ out.value = ''; return; }
-    out.value =
+    let txt =
       'Menga dars uchun oddiy veb-vosita yarat.\n\n' +
       lines.join('\n') +
       '\n\nBarcha matnlar o\'zbek tilida bo\'lsin.' +
       '\nKodni bitta index.html faylda ber.' +
-      '\nDizayn sodda va katta harfli bo\'lsin.';
+      '\nDizayn sodda va katta harfli bo\'lsin.' +
+      '\nMen yangi boshlovchiman — har bir qadamni izoh bilan tushuntir.';
+    const cb = el.querySelector('[data-supa]');
+    if(cb && cb.checked) txt += SUPA_PROMPT;
+    out.value = txt;
   };
   el.querySelector('[data-act="gen"]').onclick = build;
   el.querySelector('[data-act="copy"]').onclick = () => {
