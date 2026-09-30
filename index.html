@@ -372,7 +372,9 @@
   .quotes .qt .ko{font-size:14px}
 
   /* limits explorer */
-  .limits{display:flex;gap:26px;margin-top:22px;border-top:1px solid var(--line);padding-top:20px}
+  .limhead{margin-top:26px;border-top:1px solid var(--line);padding-top:18px;font-size:20px;font-weight:600;color:var(--ink);letter-spacing:-.015em}
+  .limhead .ko{font-size:14px}
+  .limits{display:flex;gap:26px;margin-top:14px}
   .limits .ll{flex:none;width:340px;display:flex;flex-direction:column;gap:7px}
   .limits .lb{
     font-family:inherit;text-align:left;border:0;background:rgba(0,0,0,.04);border-radius:10px;
@@ -401,6 +403,47 @@
   .creds .out{font-size:16.5px;line-height:1.6;color:var(--ink);font-weight:600}
   .creds .out span{color:var(--accent);font-family:"SF Mono",Menlo,Consolas,monospace}
   .creds .err{color:#C0392B;font-size:14px;margin-top:8px}
+
+  /* grand opening slide */
+  .slide.grandslide{padding:0}
+  .gwrap{position:relative;width:100%;height:100%;min-height:720px;overflow:hidden;border-radius:12px;background:#060B18}
+  .gbg{position:absolute;inset:0;display:flex}
+  .gbg .half{flex:1;background-size:cover;background-position:center;transform:scale(1.06);filter:saturate(1.25) contrast(1.05)}
+  .gbg .half:first-child{clip-path:polygon(0 0,100% 0,70% 100%,0 100%)}
+  .gbg .half:last-child{margin-left:-16%;clip-path:polygon(30% 0,100% 0,100% 100%,0 100%)}
+  .gveil{position:absolute;inset:0;background:
+    radial-gradient(90% 70% at 20% 22%, rgba(0,153,187,.42) 0%, rgba(0,0,0,0) 60%),
+    radial-gradient(80% 70% at 82% 78%, rgba(200,20,60,.34) 0%, rgba(0,0,0,0) 62%),
+    radial-gradient(120% 95% at 50% 46%, rgba(6,11,24,.52) 0%, rgba(6,11,24,.84) 58%, rgba(6,11,24,.96) 100%)}
+  .gpat{position:absolute;inset:0;background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTIwIDEyMCI+CjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLW9wYWNpdHk9IjAuMTYiIHN0cm9rZS13aWR0aD0iMS4xIj4KPHBhdGggZD0iTTYwIDE0IEw3MCAzOCBMOTQgMjggTDg0IDUyIEwxMDggNjAgTDg0IDY4IEw5NCA5MiBMNzAgODIgTDYwIDEwNiBMNTAgODIgTDI2IDkyIEwzNiA2OCBMMTIgNjAgTDM2IDUyIEwyNiAyOCBMNTAgMzggWiIvPgo8Y2lyY2xlIGN4PSI2MCIgY3k9IjYwIiByPSIxNiIvPgo8cGF0aCBkPSJNMCA2MCBMMTIgNjAgTTEwOCA2MCBMMTIwIDYwIE02MCAwIEw2MCAxNCBNNjAgMTA2IEw2MCAxMjAiLz4KPC9nPjwvc3ZnPg==");background-size:118px 118px;opacity:.5;
+    mask-image:radial-gradient(75% 65% at 50% 50%, rgba(0,0,0,.25) 0%, #000 78%);
+    -webkit-mask-image:radial-gradient(75% 65% at 50% 50%, rgba(0,0,0,.25) 0%, #000 78%)}
+  .gsheen{position:absolute;inset:0;background:linear-gradient(104deg, rgba(255,255,255,0) 34%, rgba(255,255,255,.10) 49%, rgba(255,255,255,0) 62%)}
+  .gframe{position:absolute;inset:22px;border:1px solid rgba(255,255,255,.18);border-radius:8px;pointer-events:none}
+  .gframe::before,.gframe::after{content:"";position:absolute;width:56px;height:56px;border:2px solid rgba(255,214,120,.75)}
+  .gframe::before{top:-1px;left:-1px;border-right:0;border-bottom:0;border-radius:8px 0 0 0}
+  .gframe::after{bottom:-1px;right:-1px;border-left:0;border-top:0;border-radius:0 0 8px 0}
+  .gc{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 92px;color:#fff}
+  .gc .kicker{
+    font-size:13px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:#FFD97D;margin-bottom:24px;
+    border:1px solid rgba(255,217,125,.45);border-radius:999px;padding:8px 20px;background:rgba(255,217,125,.08);
+  }
+  .gc h1{
+    font-family:ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;
+    margin:0;font-size:46px;line-height:1.24;font-weight:600;letter-spacing:-.025em;max-width:1000px;
+    text-shadow:0 3px 26px rgba(0,0,0,.55);
+  }
+  .gc h1 .ko{font-size:21px;color:#DCE8F8;margin-top:14px;font-weight:400;text-shadow:none}
+  .gc .org{margin-top:24px;font-size:23px;font-weight:500;color:#EAF1FB;letter-spacing:-.01em;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+  .gc .org .ko{font-size:16px;color:#AFC4DF}
+  .gc .rulewide{width:120px;height:2px;background:linear-gradient(90deg,rgba(255,217,125,0),#FFD97D,rgba(255,217,125,0));margin:32px 0 28px}
+  .gnations{display:flex;align-items:center;gap:24px}
+  .gnation{display:flex;align-items:center;gap:13px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);border-radius:999px;padding:11px 24px;backdrop-filter:blur(10px);box-shadow:0 6px 22px rgba(0,0,0,.28)}
+  .gnation img{width:40px;height:27px;object-fit:cover;border-radius:3px;display:block;box-shadow:0 1px 5px rgba(0,0,0,.45)}
+  .gnation b{font-size:18px;font-weight:600;letter-spacing:-.01em}
+  .gnation b .ko{font-size:13px;color:#C9D9EE;font-weight:400}
+  .gshake{font-size:32px;filter:drop-shadow(0 3px 10px rgba(0,0,0,.4))}
+  .gc .when{margin-top:32px;font-size:16px;color:#B9CCE4;letter-spacing:.06em}
 
   /* hero / bio / video */
   .hero{text-align:center}
@@ -746,11 +789,15 @@ const QR_SURVEY = 'iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQMAAABB54RGAAAABlBMVEURGCf//
 const CREDS = { id: 'ws_et01@senedu.kr ~ ws_et50@senedu.kr', pw: 'password1!' };
 
 const SLIDES = [
-{ type:'hero', block:'Welcome',
-  flags:'🇺🇿 🤝 🇰🇷',
-  title:{uz:"Xush kelibsiz!", ko:"만나서 반갑습니다"},
-  subtitle:{uz:"O'zbekiston — Koreya ta'lim hamkorligi · Vibe Coding seminari", ko:"우즈베키스탄 · 대한민국 교육 협력 — 바이브코딩 연수"},
-  meta:{uz:"Toshkent · 2026-yil 5-oktyabr · Informatika fani o'qituvchilari uchun", ko:"타슈켄트 · 2026년 10월 5일 · 기념 촬영용 화면"} },
+{ type:'grand', block:'Welcome',
+  kicker:'2026',
+  title:{uz:"2026-yil O'zbekiston uchun keyingi bosqichdagi malaka oshirish treningi",
+         ko:"2026년 우즈베키스탄 교원 역량강화 후속 연수"},
+  org:{uz:"Seul Metropolitan Ta'lim Boshqarmasi &#8211; O'zbekiston",
+       ko:"서울특별시교육청 – 우즈베키스탄"},
+  uzName:{uz:"O'zbekiston Respublikasi", ko:"우즈베키스탄 공화국"},
+  krName:{uz:"Koreya Respublikasi", ko:"대한민국"},
+  when:{uz:"Toshkent shahri &#183; 2026-yil 5-oktyabr", ko:"타슈켄트 · 2026년 10월 5일"} },
 
 { type:'bio', block:'Welcome',
   photo:'images/profile.jpg',
@@ -964,6 +1011,7 @@ const SLIDES = [
     {t:{uz:"saveAnswer()", ko:"백엔드 로직"}, d:{uz:"Ma'lumotni qabul qilib, qayerga yozishni hal qiladi.", ko:"받아서 어디에 쓸지 결정하는 코드"}},
     {t:{uz:"Google Sheets", ko:"데이터베이스"}, d:{uz:"Ma'lumot saqlanadigan joy. Bugun — jadval.", ko:"데이터가 실제로 저장되는 곳"}}
   ],
+  limitsTitle:{uz:"Jadvalning chegaralari", ko:"시트의 한계"},
   limits:[
     {t:{uz:"1. Hajm va tezlik", ko:"데이터 규모·속도 한계"},
      d:{uz:"Ma'lumot va foydalanuvchi ko'paysa, jadval sekinlashadi. Supabase indeks va so'rovlar bilan katta hajmni barqaror ishlaydi.", ko:"시트는 데이터와 동시 사용자가 늘면 느려집니다. Supabase는 DB 인덱스와 쿼리로 대량 데이터를 더 안정적으로 처리합니다."}},
@@ -974,7 +1022,7 @@ const SLIDES = [
     {t:{uz:"4. Rasm va fayl saqlash", ko:"이미지·파일 저장에 부적합"},
      d:{uz:"Jadvalda rasm va biriktirmalarni tartibli yuklash, saqlash va ruxsatlarini boshqarish qiyin. Supabase Storage faylni saqlaydi, bazada esa URL bilan bog'lanadi.", ko:"시트는 이미지나 첨부파일을 체계적으로 업로드·보관·권한 관리하기 어렵습니다. Supabase는 Storage에 파일을 저장하고 DB에서 URL로 연결할 수 있습니다."}}
   ],
-  note:{uz:"Jadvalning chegarasi — sarlavhani bosing, izoh o'ngda chiqadi.", ko:"시트의 한계 — 소제목을 클릭하면 오른쪽에 설명이 보입니다"} },
+  note:{uz:"Sarlavhani bosing — izoh o'ngda chiqadi.", ko:"소제목을 클릭하면 오른쪽에 설명이 나옵니다"} },
 
 { type:'section', block:'Coding', icon:'✨', num:'03', name:'Coding',
   title:{uz:"O'z vositangizni yarating", ko:"내 수업 도구 만들기"},
@@ -998,8 +1046,8 @@ const SLIDES = [
   title:{uz:"1-qadam: Muammoni bitta jumlada", ko:"1단계 — 문제 한 문장"},
   subtitle:{uz:"Kichik muammo tanlang — butun darsni emas", ko:"작게 잡을수록 완성 확률이 높음"},
   lines:[
-    {uz:"Mening darsimda o'quvchilar <u></u> ni qiyin tushunadi.", ko:"내 수업에서 학생들이 ___를 어려워한다"},
-    {uz:"Men har darsda <u></u> ni takrorlayman.", ko:"나는 매 수업마다 ___를 반복한다"}
+    {uz:"Mening darsimda o'quvchilar <u></u> ni qiyin tushunadi.", ko:"내 수업에서 학생들이 <u></u> 를 어려워한다"},
+    {uz:"Men har darsda <u></u> ni takrorlayman.", ko:"나는 매 수업마다 <u></u> 를 반복한다"}
   ],
   note:{uz:"Shu jumla — keyingi qadamdagi so'rovning asosi.", ko:"이 문장이 PRD의 출발점"} },
 
@@ -1124,6 +1172,12 @@ const SLIDES = [
     {t:{uz:"Qayerda ishlatasiz?", ko:"어디에 쓸 것인가"}, d:{uz:"Qaysi dars, qaysi bosqich.", ko:"단원과 수업 단계"}}
   ],
   note:{uz:"Galereya: 7 daqiqa davomida bir-biringizning vositalaringizni sinab ko'ring.", ko:"선정 기준 — 문제 정의가 명확한 사례 / 수정 과정이 흥미로운 사례"} },
+
+{ type:'hero', block:'Present & Share',
+  flags:'👏 🎉 👏',
+  title:{uz:"Taqdimot uchun rahmat!", ko:"발표해 주셔서 감사합니다"},
+  subtitle:{uz:"Bugun yaratgan vositangiz — ertangi darsingizning bir qismi", ko:"오늘 만든 도구가 내일 수업의 한 부분이 됩니다"},
+  meta:{uz:"Hamkasblaringiz uchun ham qarsak chalamiz 👏", ko:"발표해 주신 선생님들께 큰 박수 부탁드립니다"} },
 
 { type:'section', block:'Closing', icon:'🎓', num:'06', name:'Closing',
   title:{uz:"O'quvchilarga o'rgatish", ko:"학생에게 가르치기"},
@@ -1274,7 +1328,7 @@ function render(s, i){
           '<p>' + T(it.d) + '</p>' +
         '</div>').join('') +
       '</div>' +
-      (s.limits ? '<div class="limits"><div class="ll">' +
+      (s.limits ? '<div class="limhead">' + T(s.limitsTitle) + '</div><div class="limits"><div class="ll">' +
         s.limits.map((l, n) => '<button class="lb' + (n === 0 ? ' on' : '') + '" data-l="' + n + '">' + T(l.t) + '</button>').join('') +
         '</div><div class="lp">' + s.limits.map((l, n) =>
           '<div data-lp="' + n + '"' + (n ? ' style="display:none"' : '') + '>' + T(l.d) + '</div>').join('') +
@@ -1340,6 +1394,27 @@ function render(s, i){
       '</div></div>' + boxOf(s) + noteOf(s);
   }
 
+  else if(s.type === 'grand'){
+    el.classList.add('grandslide');
+    h = '<div class="gwrap">' +
+      '<div class="gbg">' +
+        '<div class="half" style="background-image:url(images/flag-uz.png)"></div>' +
+        '<div class="half" style="background-image:url(images/flag-kr.png)"></div>' +
+      '</div><div class="gveil"></div><div class="gpat"></div><div class="gsheen"></div><div class="gframe"></div>' +
+      '<div class="gc">' +
+        '<div class="kicker">' + esc(s.kicker) + '</div>' +
+        '<h1>' + T(s.title) + '</h1>' +
+        '<div class="org">' + T(s.org) + '</div>' +
+        '<div class="rulewide"></div>' +
+        '<div class="gnations">' +
+          '<div class="gnation"><img src="images/flag-uz.png" alt=""><b>' + T(s.uzName) + '</b></div>' +
+          '<div class="gshake">🤝</div>' +
+          '<div class="gnation"><img src="images/flag-kr.png" alt=""><b>' + T(s.krName) + '</b></div>' +
+        '</div>' +
+        '<div class="when">' + T(s.when) + '</div>' +
+      '</div></div>';
+  }
+
   else if(s.type === 'hero'){
     el.classList.add('cover');
     h = '<div class="hero">' +
@@ -1384,7 +1459,7 @@ function render(s, i){
             '</div>' +
             (it.tag ? '<div class="tag">' + esc(D(it.tag)) + '</div>' : '') +
           '</div>').join('') +
-      '</div></div>' +
+      '</div>' + credsOf(s) + '</div>' +
       '<div class="mbox" data-shots="' + esc(s.shots.join('|')) + '" data-start="' + (s.startAt || 0) + '">' +
         '<div class="mbar">' +
           '<span class="lb">' + esc(UI.manualLb[L()]) + '</span>' +
