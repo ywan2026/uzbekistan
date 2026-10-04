@@ -239,6 +239,8 @@
   .tprev.live .tph{display:none}
 
   /* quiz choices */
+  .quiz.miniq{margin-top:24px;border-top:1px solid var(--line);padding-top:6px}
+  .quiz.miniq .n{color:var(--accent-2)}
   .quiz .chs{display:flex;flex-wrap:wrap;gap:8px;margin-top:11px}
   .quiz .ch{
     font-family:inherit;font-size:16.5px;font-weight:500;color:var(--ink-2);
@@ -483,7 +485,12 @@
   .overlay.open{display:block}
   .ovhead{display:flex;align-items:center;margin-bottom:26px;gap:14px}
   .ovhead h2{margin:0;font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
-  .ovgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:14px;background:transparent}
+  .ovgrid{display:block}
+  .ovgroup{margin-bottom:26px}
+  .ovlabel{display:flex;align-items:center;gap:10px;font-size:12.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+  .ovlabel::after{content:"";flex:1;height:1px;background:var(--line-2)}
+  .ovlabel span{order:3;font-size:11.5px;font-weight:600;letter-spacing:0;color:var(--muted);background:rgba(0,0,0,.05);border-radius:999px;padding:3px 10px}
+  .ovrow{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:12px}
   .ovcard{border:.5px solid var(--line-2);border-radius:12px;background:#fff;padding:18px 20px;cursor:pointer;text-align:left;font-family:inherit;transition:.16s;box-shadow:0 1px 3px rgba(0,0,0,.05)}
   .ovcard:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.10)}
   .ovcard.cur{background:var(--ink);border-color:var(--ink)}
@@ -492,7 +499,7 @@
   .ovcard.cur .bl{color:#8A97B4}
   .ovcard .no{font-size:11.5px;font-weight:600;color:var(--accent-2);letter-spacing:.18em}
   .ovcard .tt{font-size:15.5px;font-weight:600;margin-top:8px;line-height:1.4;color:var(--ink);letter-spacing:-.012em}
-  .ovcard .bl{font-size:12px;color:var(--muted);margin-top:8px;letter-spacing:.08em;text-transform:uppercase}
+  .ovcard .tt{min-height:40px}
 
   .toast{
     position:fixed;left:50%;bottom:34px;transform:translateX(-50%);
@@ -782,6 +789,8 @@ const QR_DEMO = 'iVBORw0KGgoAAAANSUhEUgAAAYgAAAGIAQMAAABhjeVlAAAABlBMVEUMFCT///9
 
 const QR_RESULT = 'iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQMAAABB54RGAAAABlBMVEUMFCT///9oK1aNAAABsElEQVR42u2bUY7DIAxErc0BOFKuzpFyACQKeGyo+tOVdqX5GD5Q0vgrT2OPTWr921VNoQpV6K9CH8O6H2y9lvlsbPHoGrc/9vVS6P+ETlqXkxugru60fK3buBItGlpLPYNMs4UMeErvoTfR4qMVYjIrDQ9Ei1tbKyf2ZpEdRYu0bk1G1WU1rYapbhHS2p4w02Fu8oRktPYKbzFWA6PD7Otl0dStMvGUt3RYo5atK9Hi0dbi0TP1ZbWCwFS3qLR1P5apDy4DyNzQKxMSuYyhraWydlhE/61KW2SZEI4CI0JDOnSMPXow0SLyhM8HtzAdvcvBk/Vb3lv55L0lt3PSIVo0mRAefdv4Vagsh05yGXye8A4nGFc5gxItsllG+PajRX7Tm2gRTXWPY2OUrJ0E5Qm5tIUzSFfUEljDlmdeosXTb+XQHd7Cf4sY0WKrW58z+DtTpBw8V7+FQgX/BzHt+YZcBpfLSN+e1SpGhKJF12/ZPtU/DlCQBOXgKWlFv4VWy3I4rxk8I60whvvDz7oHUXpZdN88HekQyJrqFq8nPKpVfkUjWoz9lv7ioVCF/lnoC+n3KBvedYd7AAAAAElFTkSuQmCC';
 
+const QR_PADLET = 'iVBORw0KGgoAAAANSUhEUgAAASIAAAEiAQMAAABncE31AAAABlBMVEUdHR////+Km5piAAABUklEQVR42u2aTRKDIAyFM/UAHMmreyQPwAyG/Ik7u0gW7WPBWJrVl/h4BGm8GAchClG/FnWSjZ0XaOefvLYNX9046kNvBqK+i1LOMhj7JN7m07BJ/wX7RPZS3gy780PrtjbfAMkH2BewF/VpkoAB9uXsTYJQ99V6z5rDu2/sutD7fPbhc7TafYLPyWd/D6lxz8LqRMEri30ojbCfPmdOKv9HA/sCzTHiU+pJiMsq2OdrTmAnk3p9IbDXpnvMfdwnKhGe4Uct7LXJda+HKR0q9dZdQN0XnK2cs59rQ26g98l77UNuVp8Dzck/1x60GnrXnI6eQlVPQY2mZMFLHh6z8Fz7SADY1/VzXG4W+YfPqdEcbRrrVWJgR92ne0y6W5hk7R0i1H0peyl5y0K8AWCfz97va/0GC/6+Wu87+fcjlhSwr/A53acTfcxif49vyRD1J1EXCruwSV9XZNEAAAAASUVORK5CYII=';
+
 const QR_QUIZ = 'iVBORw0KGgoAAAANSUhEUgAAAU0AAAFNAQMAAAC+Pq+HAAAABlBMVEUdHR////+Km5piAAACKElEQVR42u1bO3aEMAwUoaDkCHsUjrYcbY+yR6Ck4KFYP0O6TSEVybgixpVmNTMaE+JP1044iqN/9uiLbD3lYWSmJ7/nfTyJ14U3f/ng/Ys+Xjj6i6MCwUPREAhmPgYm8srzSo9t0pcvQJALQSv4IBBIwU9ph1bw0Sq/TQf5DopVAIETUVuz9oW0AyCo7YKmDYMSz2ZYAIJiLWiVFyIyUJocGwTQggIIuiMS5g9RiAc4ogII+nJH1Lzo218ud/+KYuVB8KYpvOjEJsckEqCioFqALkiHgFSFnXZkx9qB3SNBC9KJaAsvSirHOpEdJhPzbq8AQbYcj90IqRf1gIJdl6EF6UTkuQTFb14DCtfl6AtAkEtETjsymtlya0TWIBjN8onIRmANSJV0vC9kR/9GF6QHFNoFGk3bb166wLxofwUIkjMivSa4ctF7g2A0q5kLhH9WV2Hhn6Am86uYCyq6wEO5CIta1U8fnBlzQYkjioLrzhozWuTYIKKqjIhMhS+BNi04CURUqAXT0Scyy05BRDVaoMxvU0BvB98JagIE2UTUU4i4tY/KQwuqHJGuxaZjuyzT74jiDEazbEfUb81s6SWy3Rc0jurxEYpVcXfM+z2g8IuDAXJcIsf2HWPkohHcaRcMmI5LtKB/LxEFvzcItKAKgoiGyO8LvAtgSgu7gH4SkTiiCwtAUPRl9fVwXhCAiKocUdyRhRfVZZEFiKhmLsD/w+Do/zz6DQ5bvjPrOymaAAAAAElFTkSuQmCC';
 
 const QR_PRE = 'iVBORw0KGgoAAAANSUhEUgAAAZUAAAGVAQMAAAAMlf54AAAABlBMVEUdHR////+Km5piAAADEUlEQVR42u1cMW7kMAykz8WWfoKf4qftPi1P8RO2dGFYZ3JISotUaYIQGFWC1moyGHI4pCLtx+sQ3uEd3vntO1+C9dTNfNnJcsytyVM/Oe2n9e1fre34Jz9fvPN7dxTB1eA1TB/n1AzBR7vw+3Ci64uY1sD05uBkrHzLTc/2kpuneiLbLmKEVUydsMS0EqbK05ueN6bOXFszTohpUZ7eSxHc7kQ7I9J6Gt0aMS2ZTzX2AkGEXF2WRoEp82khTFP3aoANRfRtQ91bCNNcBu50a6Sbpw8o4RXR+LP+4d+tRD6dL0+a7XLm6olGY0uj+dOLPK3B031IrOfktYwVNdu+6Il/atUNeVoj9r6dlbuVpcZTeA6KKRY2xLQQpgZlQ4C1oibAdZPQojHzaSXd66yEu4uCxSJtWA0iEEvUvXV07xGWoGF6b2QoYSzDugNMz6EKT5fuOcAJ/KCwew4BLjGtUcuYR2R49ZNLkqfp4TOflsEU2fPZxdIOM7+5Eob5cE7USJVi7+n2UWbPvnHdi4qVmJbRSDAWBkswbV5v0ChzrS9DTEvxFAIY5gNa4SJu3QNc6t5KGgnAZVGztXbI9yGWSL78u1WJve4axZxDGL/okvfviWkZ3Su9f+oL9ISHr1Yw7Aj6vVXy6YER0DUaqauPN+iaYyOMvYUwlZgxM3CzHdOnzgb5RJ4WwdRD7i6ucsW7MLGJxMpeW6XY62Up5vC7fRRQxsf0e4vo3t3rUzcJ0/jt44IvGXIuMa2jezWNJpTim7SYoHvpDVapT3N+7D0kVvTEY+ABPhJrmUI8nX2GIaePuhMYYom9tlo+UlqCfUow3ypiOjRMQvK0iEYa69Ph0WIfVbLqxr0mYlqDpzmHn469RPZ05kZPnJjW8ZGkN9S6WOqqKaxgaqQyGqnF65jD38ss2SWXz9kV8rQIpvH+1KEEgp5q+wsavq0oiKlqJMF87+KGUrr6nlipkQpiGoXq0FEdalj6vdXyqVkN/jw83ypK+EiNGqmk7s03UDGh1N8q4oEbMS1Wn/J/hfEO7/zNO/8BMF+H0zjaBQkAAAAASUVORK5CYII=';
@@ -853,13 +862,32 @@ const SLIDES = [
   ],
   note:{uz:"Bugun shu tajribani siz bilan bo'lishaman.", ko:"오늘 이 경험을 함께 나누겠습니다"} },
 
-{ type:'video', block:'Welcome',
+{ type:'rows', block:'Welcome',
+  title:{uz:"Bugungi barcha materiallar 📌", ko:"오늘의 연수 자료"},
+  subtitle:{uz:"Hamma havola va fayl bitta joyda — Padlet", ko:"모든 링크와 파일을 패들렛 한 곳에 모아 두었습니다"},
+  items:[
+    {t:{uz:"Taqdimot va qo'llanmalar", ko:"발표 자료와 실습 매뉴얼"}, d:{uz:"Bugun ko'rsatiladigan hamma narsa.", ko:"오늘 화면에 띄우는 모든 자료"}},
+    {t:{uz:"Namuna kodlar va havolalar", ko:"샘플 코드와 링크 모음"}, d:{uz:"Nusxa olib, o'zingizda sinab ko'rasiz.", ko:"복사해서 직접 실습할 수 있습니다"}},
+    {t:{uz:"Seminardan keyin ham ochiq qoladi", ko:"연수가 끝난 뒤에도 계속 열려 있습니다"}, d:{uz:"Maktabda hamkasblaringizga ham ko'rsating.", ko:"학교로 돌아가 동료 선생님들과도 공유하세요"}}
+  ],
+  links:[
+    { url:'https://bit.ly/uz26', qr:QR_PADLET, text:"bit.ly/uz26",
+      label:{uz:"QR ni skanerlang yoki havolani yozing", ko:"QR을 찍거나 주소를 직접 입력하세요"} }
+  ],
+  note:{uz:"Hoziroq telefoningizga saqlab qo'ying.", ko:"지금 휴대폰에 저장해 두시면 하루 종일 편합니다"} },
+
+{ type:'section', block:'Opening', icon:'👋', num:'01', name:'Opening',
+  title:{uz:"Qayta uchrashuv", ko:"다시 만나서 반갑습니다"},
+  subtitle:{uz:"Bir necha oydan keyin yana birgamiz", ko:"5월 이후 몇 달 만의 재회"},
+  time:'10:00 – 10:10 · 10 daq' },
+
+{ type:'video', block:'Opening',
   file:'video.mp4',
   title:{uz:"May oyini eslaymiz", ko:"지난 5월을 돌아보며"},
   subtitle:{uz:"O'zbekistonlik hamkasblarning Koreyaga tashrifi &#183; 2 daqiqa 38 soniya", ko:"우즈베키스탄 선생님들의 한국 방문 회고 영상 · 2분 38초"},
   note:{uz:"O'ynatish uchun tugmani bosing.", ko:"재생 버튼을 눌러 함께 시청합니다"} },
 
-{ type:'rows', block:'Welcome',
+{ type:'rows', block:'Opening',
   title:{uz:"Isinish o'yini 🎯", ko:"몸풀기 아이스브레이킹 퀴즈"},
   subtitle:{uz:"Telefoningiz bilan QR kodni skanerlang va o'yinga qo'shiling", ko:"휴대폰으로 QR을 찍어 게임에 참여하세요"},
   items:[
@@ -877,17 +905,31 @@ const SLIDES = [
   ],
   note:{uz:"Sovg'a nima ekanini hozircha aytmayman 🙂", ko:"선물이 무엇인지는 아직 비밀입니다"} },
 
-{ type:'hero', block:'Welcome',
+{ type:'hero', block:'Opening',
   flags:'🏆 🎁 🎉',
   title:{uz:"Tabriklaymiz!", ko:"시상식"},
   subtitle:{uz:"G'oliblar sahnaga — Koreyadan kelgan sovg'a sizniki", ko:"우승자에게 한국에서 준비한 선물을 드립니다"},
   meta:{uz:"Barcha ishtirokchilarga rahmat — endi asosiy qismga o'tamiz", ko:"참여해 주신 모든 분께 감사드립니다"} },
 
-{ type:'hero', block:'Welcome',
-  flags:'🚀',
-  title:{uz:"Vibe coding olamiga kiramizmi?", ko:"바이브코딩의 세계로 들어가 볼까요?"},
-  subtitle:{uz:"Uy vazifasini bajardingizmi? Google hisobingizga kirib oldingizmi?", ko:"사전 과제는 모두 마치셨나요? 구글 계정 로그인은 되어 있나요?"},
-  meta:{uz:"Tayyor bo'lsangiz — boshladik!", ko:"준비되셨으면 시작하겠습니다"} },
+{ type:'rows', block:'Opening',
+  title:{uz:"Hikoyangizni bizga ayting", ko:"여러분의 이야기를 들려주세요"},
+  subtitle:{uz:"QR kodni oching va uchta savolga javob bering", ko:"응답은 스프레드시트에서 실시간 한국어 번역으로 확인"},
+  items:[
+    {t:{uz:"Ismingiz", ko:"본인 이름"}, d:{uz:"Maktabingiz nomini ham yozing.", ko:"학교명도 함께 적기"}},
+    {t:{uz:"May oyidan beri darsda sinab ko'rgan yangi narsangiz", ko:"5월 이후 수업에서 새로 시도해 본 것"}, d:{uz:"Kichik bo'lsa ham — bitta misol yetarli.", ko:"작은 것이라도 하나면 충분"}},
+    {t:{uz:"Hozir darsingizda eng qiyin bo'lgan narsa", ko:"현재 수업에서 가장 불편한 것"}, d:{uz:"Bu — bugungi amaliyot uchun material bo'ladi.", ko:"뒤 실습의 재료가 됨"}}
+  ],
+  links:[
+    { url:'https://forms.gle/fzvNcgRrw9fkSMpc8', qr:QR_SURVEY, text:"So'rovnoma",
+      label:{uz:"Savollarga javob bering", ko:"설문 응답하기"} },
+    { url:'https://docs.google.com/spreadsheets/d/1nIMW6oqk3TlSqqgBoue_PnLtkvweyCtkW5F7U6_cZO0/edit?usp=sharing', qr:QR_PRE, text:"Natijalar jadvali",
+      label:{uz:"Hammaning javoblarini shu yerda birga ko'ramiz", ko:"사전 설문 결과 — 다 함께 보는 시트"} }
+  ],
+  box:[
+    {icon:'🔴', t:{uz:"Yordam kerak bo'lsa — qizil stikerni monitorga yopishtiring", ko:"도움이 필요하면 빨간색 포스트잇을 모니터에 붙여 주세요"}},
+    {icon:'🟢', t:{uz:"Topshiriqni tugatsangiz — yashil stikerni yopishtiring", ko:"과제를 다 했으면 초록색 포스트잇을 붙여 주세요"}}
+  ],
+  note:{uz:"O'zbek yoki rus tilida yozing — men koreys tiliga tarjima qilib o'qiyman.", ko:"응답은 스프레드시트에서 실시간 번역으로 확인"} },
 
 { type:'cover', block:'Opening',
   eyebrow:'Vibe Coding',
@@ -918,49 +960,16 @@ const SLIDES = [
   link:{ url:'https://script.google.com/macros/s/AKfycbw_Uu7JL1Pbd1vfvpXVW3CFICY-eh3a0Haui2g1BUapYKvyudlNc4ISc4leH6G7gWRXUA/exec',
          qr:QR_DEMO, text:"Namunani oching  \u2192",
          label:{uz:"Namuna: shu o'yin ham vibe coding bilan yaratilgan — hozir sinab ko'ring", ko:"예시 — 바이브코딩으로 만든 게임, 지금 열어서 해보세요"} },
+  miniquiz:{ a:2,
+    q:{uz:"Savol: bugun ko'rsatgan viktorinani yaratishga qancha vaqt ketgan?", ko:"퀴즈 — 오늘 보신 그 퀴즈, 만드는 데 얼마나 걸렸을까요?"},
+    choices:[{uz:"3 kun", ko:"3일"},{uz:"5 soat", ko:"5시간"},{uz:"10 daqiqa", ko:"10분"}] },
   note:{uz:"Mukammal dastur emas — ishlaydigan natija. Bugungi yagona maqsad shu.", ko:"완벽한 앱이 아니라 '동작하는 결과물'이 목표"} },
 
-{ type:'section', block:'Opening', icon:'👋', num:'01', name:'Opening',
-  title:{uz:"Qayta uchrashuv", ko:"다시 만나서 반갑습니다"},
-  subtitle:{uz:"Bir necha oydan keyin yana birgamiz", ko:"5월 이후 몇 달 만의 재회"},
-  time:'10:00 – 10:10 · 10 daq' },
-
-{ type:'quiz', block:'Opening',
-  title:{uz:"Eslaysizmi? Kichik viktorina", ko:"근황 퀴즈"},
-  subtitle:{uz:"Javobni bosing — to'g'ri yoki noto'g'ri darhol ko'rinadi", ko:"보기를 클릭하면 정답이 바로 표시됩니다"},
-  items:[
-    {q:{uz:"May oyida Koreyada qaysi shaharda bo'ldingiz?", ko:"5월에 한국의 어느 도시를 방문했나요?"}, a:0,
-     choices:[{uz:"Seul", ko:"서울"},{uz:"Pusan", ko:"부산"},{uz:"Inchxon", ko:"인천"}]},
-    {q:{uz:"Songrye maktabida qaysi fan darsida ishtirok etdingiz?", ko:"송례중에서 참관한 수업 과목은?"}, a:1,
-     choices:[{uz:"Matematika", ko:"수학"},{uz:"Ingliz tili", ko:"영어"},{uz:"Informatika", ko:"정보"}]},
-    {q:{uz:"Koreyalik o'quvchilar darsda qaysi qurilmadan foydalanadi?", ko:"한국 학생들이 수업에서 쓰는 기기는?"}, a:1,
-     choices:[{uz:"Faqat daftar", ko:"공책만"},{uz:"Shaxsiy noutbuk", ko:"개인 노트북"},{uz:"Televizor", ko:"텔레비전"}]},
-    {q:{uz:"Vibe coding nima degani?", ko:"바이브코딩이란?"}, a:1,
-     choices:[{uz:"Kod yozishni o'rganish", ko:"코딩 문법을 배우는 것"},{uz:"Tabiiy tilda so'rab dastur yaratish", ko:"자연어로 요청해 프로그램을 만드는 것"},{uz:"O'yin turi", ko:"게임의 한 종류"}]},
-    {q:{uz:"Bu viktorina qancha vaqtda yaratilgan?", ko:"이 퀴즈는 얼마 만에 만들었을까요?"}, a:2,
-     choices:[{uz:"3 kun", ko:"3일"},{uz:"5 soat", ko:"5시간"},{uz:"10 daqiqa", ko:"10분"}]}
-  ],
-  note:{uz:"Oxirgi javob: 10 daqiqa. Bu viktorinani ham bugungi usulda yaratdim.", ko:"마지막 문항이 본 강의로 넘어가는 다리"} },
-
-{ type:'rows', block:'Opening',
-  title:{uz:"Hikoyangizni bizga ayting", ko:"여러분의 이야기를 들려주세요"},
-  subtitle:{uz:"QR kodni oching va uchta savolga javob bering", ko:"응답은 스프레드시트에서 실시간 한국어 번역으로 확인"},
-  items:[
-    {t:{uz:"Ismingiz", ko:"본인 이름"}, d:{uz:"Maktabingiz nomini ham yozing.", ko:"학교명도 함께 적기"}},
-    {t:{uz:"May oyidan beri darsda sinab ko'rgan yangi narsangiz", ko:"5월 이후 수업에서 새로 시도해 본 것"}, d:{uz:"Kichik bo'lsa ham — bitta misol yetarli.", ko:"작은 것이라도 하나면 충분"}},
-    {t:{uz:"Hozir darsingizda eng qiyin bo'lgan narsa", ko:"현재 수업에서 가장 불편한 것"}, d:{uz:"Bu — bugungi amaliyot uchun material bo'ladi.", ko:"뒤 실습의 재료가 됨"}}
-  ],
-  links:[
-    { url:'https://forms.gle/fzvNcgRrw9fkSMpc8', qr:QR_SURVEY, text:"So'rovnoma",
-      label:{uz:"Savollarga javob bering", ko:"설문 응답하기"} },
-    { url:'https://docs.google.com/spreadsheets/d/1nIMW6oqk3TlSqqgBoue_PnLtkvweyCtkW5F7U6_cZO0/edit?usp=sharing', qr:QR_PRE, text:"Natijalar jadvali",
-      label:{uz:"Hammaning javoblarini shu yerda birga ko'ramiz", ko:"사전 설문 결과 — 다 함께 보는 시트"} }
-  ],
-  box:[
-    {icon:'🔴', t:{uz:"Yordam kerak bo'lsa — qizil stikerni monitorga yopishtiring", ko:"도움이 필요하면 빨간색 포스트잇을 모니터에 붙여 주세요"}},
-    {icon:'🟢', t:{uz:"Topshiriqni tugatsangiz — yashil stikerni yopishtiring", ko:"과제를 다 했으면 초록색 포스트잇을 붙여 주세요"}}
-  ],
-  note:{uz:"O'zbek yoki rus tilida yozing — men koreys tiliga tarjima qilib o'qiyman.", ko:"응답은 스프레드시트에서 실시간 번역으로 확인"} },
+{ type:'hero', block:'Opening',
+  flags:'🚀',
+  title:{uz:"Vibe coding olamiga kiramizmi?", ko:"바이브코딩의 세계로 들어가 볼까요?"},
+  subtitle:{uz:"Uy vazifasini bajardingizmi? Google hisobingizga kirib oldingizmi?", ko:"사전 과제는 모두 마치셨나요? 구글 계정 로그인은 되어 있나요?"},
+  meta:{uz:"Tayyor bo'lsangiz — boshladik!", ko:"준비되셨으면 시작하겠습니다"} },
 
 { type:'section', block:'Practice', icon:'🧩', num:'02', name:'Practice',
   title:{uz:"Backendni tushunish", ko:"백엔드 개념 이해하기"},
@@ -1113,7 +1122,8 @@ const SLIDES = [
     {key:'data',   label:{uz:"Ma'lumot", ko:"데이터"},        ph:{uz:"Nima saqlanishi kerak?", ko:"무엇을 저장하는가?"}},
     {key:'limit',  label:{uz:"Cheklovlar", ko:"제약조건"},    ph:{uz:"Til, qurilma, vaqt", ko:"언어·기기·시간"}}
   ],
-  note:{uz:"Promptni nusxalab, Claude suhbatiga qo'ying.", ko:"복사해서 클로드 대화창에 붙여넣기"} },
+  note:{uz:"Promptni nusxalab Claude suhbatiga qo'ying. Agar Google Apps Script orqali joylashtirmoqchi bo'lsangiz, AI dan \"Code.gs va index.html fayllarini alohida yoz\" deb so'rang.",
+        ko:"복사해서 클로드 대화창에 붙여넣기 · 구글 Apps Script로 배포하려면 AI에게 \"Code.gs 파일과 index.html 파일을 따로 만들어 줘\"라고 요청하세요"} },
 
 { type:'topics', block:'Coding',
   title:{uz:"Mavzu misollari", ko:"예시 주제 — 정보교과"},
@@ -1175,7 +1185,36 @@ const SLIDES = [
   ],
   link:{ url:'https://supabase.com/', 
          label:{uz:"Ro'yxatdan o'ting va loyiha yarating", ko:"가입 후 프로젝트 생성 — 무료 플랜으로 충분합니다"} },
-  note:{uz:"Shablon va qo'llanma havolasi beriladi — qolganini onlayn mentorlikda davom ettiramiz.", ko:"템플릿·가이드 링크 제공, 사후 멘토링으로 연결"} },
+  note:{uz:"Keyingi sahifada — qanday ulash kerakligi.", ko:"다음 페이지에서 연결 방법을 단계별로 봅니다"} },
+
+{ type:'rows', block:'Github',
+  title:{uz:"Supabase'ni qanday ulash mumkin", ko:"Supabase 백엔드 연결 방법"},
+  subtitle:{uz:"Besh qadam &#183; bugun namoyish, keyin o'zingiz takrorlaysiz", ko:"다섯 단계 — 오늘은 시연, 이후 직접 따라 하기"},
+  items:[
+    {t:{uz:"supabase.com da ro'yxatdan o'ting > New project", ko:"supabase.com 가입 후 새 프로젝트 생성"}, url:'https://supabase.com/', urlText:'supabase.com', d:{uz:"Hudud: Seoul. Parolni yozib qo'ying.", ko:"지역은 Seoul 선택, 비밀번호는 메모해 두기"}},
+    {t:{uz:"SQL Editor'da jadval va ruxsatlarni yarating", ko:"SQL Editor에서 테이블과 정책 생성"}, d:{uz:"create table &#183; enable row level security &#183; anon uchun insert va select siyosatlari.", ko:"테이블 생성 + RLS 활성화 + anon의 insert·select 정책"}},
+    {t:{uz:"Connect tugmasidan ikki qiymatni nusxalang", ko:"상단 Connect 버튼에서 두 값 복사"}, d:{uz:"NEXT_PUBLIC_SUPABASE_URL va NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY. Maxfiy (secret / service_role) kalitni hech qachon ishlatmang!", ko:"NEXT_PUBLIC_SUPABASE_URL 과 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY 두 줄 — secret·service_role 키는 절대 사용 금지"}},
+    {t:{uz:"index.html ga kutubxonani ulang va mijozni yarating", ko:"index.html에 라이브러리 연결 후 클라이언트 생성"}, d:{uz:"CDN script + createClient(URL, ANON_KEY).", ko:"CDN 스크립트 추가 후 createClient(URL, ANON_KEY)"}},
+    {t:{uz:"insert va select kodini yozing, Table Editor'da tekshiring", ko:"insert·select 코드 작성 후 Table Editor에서 확인"}, d:{uz:"Xatolikni ekranda error.message bilan ko'rsating.", ko:"오류는 화면에 error.message로 표시"}}
+  ],
+  quotes:[
+    {uz:"\"new row violates row-level security policy\" &#8594; siyosat yaratilmagan yoki \"to anon\" yozilmagan.", ko:"\"RLS 정책 위반\" 오류 → 정책을 만들지 않았거나 to anon이 빠진 경우"},
+    {uz:"\"Failed to fetch\" &#8594; Project URL xato yoki loyiha uxlab qolgan (haftada bir oching).", ko:"\"Failed to fetch\" → URL 오타이거나 무료 프로젝트가 일시 정지된 상태"}
+  ],
+  note:{uz:"anon kalit ochiq ko'rinadi — bu normal. Xavfsizlikni RLS siyosatlari ta'minlaydi.", ko:"anon 키는 공개돼도 정상 — 실제 보안은 RLS 정책이 담당합니다"} },
+
+{ type:'rows', block:'Github',
+  title:{uz:"Bepul rejadagi cheklovlar", ko:"Supabase 무료 플랜 한도"},
+  subtitle:{uz:"Darsda ishlatishga yetadi — lekin bilib qo'ying", ko:"수업에서 쓰기엔 충분하지만 알아 두어야 할 것들"},
+  items:[
+    {t:{uz:"Faol loyihalar: 2 ta", ko:"활성 프로젝트 2개까지"}, d:{uz:"Bepul rejada bir vaqtning o'zida eng ko'pi 2 ta faol loyiha. To'xtatilgan loyihalar bu songa kirmaydi.", ko:"무료 플랜은 동시에 최대 2개 — 정지된 프로젝트는 한도에 포함되지 않습니다"}},
+    {t:{uz:"Hajm chegarasi", ko:"용량 제한"}, d:{uz:"Baza 500MB, fayl saqlash 1GB, shuningdek trafik chegarasi bor. Dashboard &gt; Usage dan kuzatib turing.", ko:"DB 500MB · 파일 저장 1GB · 전송량 한도 — 대시보드의 Usage에서 확인하세요"}},
+    {t:{uz:"7 kun ishlatilmasa — uyquga ketadi", ko:"7일간 사용이 없으면 일시정지"}, d:{uz:"Foydalanish kam bo'lsa loyiha avtomatik to'xtatiladi. Dars oldidan bir marta ochib \"uyg'otib\" qo'ying.", ko:"수업 전날 한 번 열어서 깨워 두세요"}},
+    {t:{uz:"Sinf uchun maslahat", ko:"수업 운영 팁"}, d:{uz:"Har bir o'quvchiga alohida loyiha emas — bitta sinf loyihasi va bitta jadval yetadi.", ko:"학생마다 프로젝트를 만들지 말고, 학급 하나에 프로젝트 하나·테이블 하나로 운영하세요"}}
+  ],
+  link:{ url:'https://supabase.com/docs/guides/platform/billing-on-supabase', text:"supabase.com/docs",
+         label:{uz:"Rejalar va limitlar haqida rasmiy qo'llanma", ko:"요금제와 사용량 한도 공식 문서"} },
+  note:{uz:"Limitga yaqinlashsangiz ogohlantirish keladi — Usage sahifasini vaqti-vaqti bilan tekshiring.", ko:"한도를 넘기면 알림이나 서비스 제한이 생길 수 있습니다"} },
 
 { type:'section', block:'Present & Share', icon:'🎤', num:'05', name:'Present & Share',
   title:{uz:"Ulashing va ko'rsating", ko:"공유하고 발표하기"},
@@ -1231,11 +1270,45 @@ const SLIDES = [
   ],
   note:{uz:"Baholash: natija emas — so'rov yozuvi, tuzatish jarayoni, tushuntirish suhbati.", ko:"평가는 결과물이 아니라 과정 중심으로"} },
 
+{ type:'steps', block:'Closing',
+  svg:'halluc',
+  title:{uz:"Diqqat — aniq misol (1): Hallutsinatsiya", ko:"이것만은 유의하세요 — 구체적 사례 ①  환각 현상"},
+  subtitle:{uz:"AI bilmagan narsani ham ishonch bilan aytadi", ko:"AI는 모르는 것도 확신에 차서 답합니다"},
+  items:[
+    {t:{uz:"Yo'q funksiyani o'ylab topadi", ko:"없는 기능을 지어냅니다"}, d:{uz:"Masalan: \"sheet.autoSort()\" deb yozadi — Apps Script'da bunday buyruq yo'q. Kod ishga tushmaydi, o'quvchi esa o'zini aybdor his qiladi.", ko:"예: Apps Script에 없는 sheet.autoSort()를 만들어 씁니다. 코드는 멈추고 학생은 자기 탓이라 여깁니다."}},
+    {t:{uz:"Ishlaydi, lekin natija noto'g'ri", ko:"돌아가지만 답이 틀립니다"}, d:{uz:"Ikkilik sanoq mashqida 13 ni 1011 deb ko'rsatadi — dastur xato bermaydi, faqat javob noto'g'ri. Eng xavflisi shu.", ko:"예: 2진수 연습 앱이 13을 1011로 표시합니다. 오류는 안 나고 답만 틀립니다 — 가장 위험한 경우입니다."}},
+    {t:{uz:"Yechim: sinov misollari", ko:"해결: 테스트 문항으로 검증"}, d:{uz:"O'quvchi 2-3 ta javobini qo'lda hisoblab tekshirsin. \"Ishlayapti\" degani \"to'g'ri\" degani emas.", ko:"학생이 2~3개를 직접 계산해 맞춰 보게 하세요. 동작한다고 맞는 것이 아닙니다."}}
+  ],
+  note:{uz:"Darsda qoida: AI javobini avval tekshir, keyin ishlat.", ko:"수업 규칙 — AI의 답은 먼저 검증한 뒤에 사용합니다"} },
+
+{ type:'steps', block:'Closing',
+  svg:'blackbox',
+  title:{uz:"Diqqat — aniq misol (2): Qora quti", ko:"이것만은 유의하세요 — 구체적 사례 ②  블랙박스와 인지적 외주화"},
+  subtitle:{uz:"Natija bor, lekin tushuncha qolmaydi", ko:"결과는 남는데 이해가 남지 않습니다"},
+  items:[
+    {t:{uz:"Ichkarisi ko'rinmaydi", ko:"과정이 보이지 않습니다"}, d:{uz:"O'quvchi 100 qatorli kodni oladi, lekin qaysi qator nima qilishini bilmaydi. Xato chiqsa — tuzata olmaydi, faqat \"yana yarat\" deydi.", ko:"100줄짜리 코드를 받지만 어느 줄이 무엇을 하는지 모릅니다. 오류가 나면 고치지 못하고 \"다시 만들어 줘\"만 반복합니다."}},
+    {t:{uz:"Fikrlash AI ga topshiriladi", ko:"인지적 외주화 — 생각을 외주 줍니다"}, d:{uz:"Muammoni bo'lish, algoritm tuzish, xatoni izlash — aynan shu uch ish o'quvchida qolishi kerak. AI ularni ham olib qo'ysa, informatika darsi yo'qoladi.", ko:"문제 분해·알고리즘 설계·디버깅은 학생 몫으로 남아야 합니다. 이것까지 AI가 가져가면 정보 수업이 사라집니다."}},
+    {t:{uz:"Yechim: tushuntirib bersin", ko:"해결: 설명하게 하세요"}, d:{uz:"Har bir o'quvchi 3 ta qatorni o'z so'zi bilan tushuntirsin va bitta qatorni o'zgartirib natijani oldindan aytsin.", ko:"코드 세 줄을 자기 말로 설명하고, 한 줄을 바꿨을 때 결과를 먼저 예측하게 하세요."}}
+  ],
+  note:{uz:"Baholash natijani emas, tushuntirishni o'lchasin.", ko:"평가는 결과물이 아니라 설명하는 힘을 봅니다"} },
+
+{ type:'steps', block:'Closing',
+  svg:'privacy',
+  title:{uz:"Diqqat — aniq misol (3): Shaxsiy ma'lumot", ko:"이것만은 유의하세요 — 구체적 사례 ③  개인정보·민감정보"},
+  subtitle:{uz:"Vibe coding bilan yaratilgan vosita ham ma'lumot to'playdi", ko:"바이브코딩으로 만든 도구도 데이터를 모읍니다"},
+  items:[
+    {t:{uz:"Ism, manzil, telefon — hech qachon", ko:"이름·집주소·전화번호는 절대 금지"}, d:{uz:"Kod ham, kalit ham ochiq saqlanadi. Bir marta chiqib ketgan ma'lumotni qaytarib bo'lmaydi.", ko:"코드와 키가 공개되어 있어 한 번 유출되면 되돌릴 수 없습니다."}},
+    {t:{uz:"Psixologik maslahat vositasi — yaratmang", ko:"심리상담 앱은 만들지 않습니다"}, d:{uz:"O'quvchi dardini AI ga aytadi: xavf belgisi e'tiborsiz qoladi va yuzma-yuz hal qilinishi kerak bo'lgan muammo AI ga topshiriladi.", ko:"위기 신호를 놓치고, 대면으로 풀어야 할 문제를 AI에 의존하게 됩니다."}},
+    {t:{uz:"Buning o'rniga", ko:"대신 이렇게 하세요"}, d:{uz:"Raqam yoki taxallus ishlating &#183; faqat o'quv natijasini yig'ing &#183; dars tugagach ma'lumotni o'chiring.", ko:"번호나 별명 사용 · 학습 결과만 수집 · 수업이 끝나면 삭제"}}
+  ],
+  note:{uz:"Oddiy qoida: o'zingiz yo'qotishdan qo'rqadigan ma'lumotni o'quvchidan ham so'ramang.", ko:"원칙 하나 — 내가 잃어버리면 곤란한 정보는 학생에게도 요구하지 않습니다"} },
+
 { type:'cover', block:'Closing',
   eyebrow:'Rahmat',
   title:{uz:"Rahmat!", ko:"감사합니다"},
   subtitle:{uz:"Bugun yaratgan vositangiz sizda qoladi — va bu faqat boshlanishi.", ko:"오늘 만든 도구는 여러분의 것입니다"},
   meta:{uz:"Onlayn mentorlik: 1–3 oy · Qo'shimcha materiallar: Supabase va GitHub qo'llanmasi · Natijalar galereyasi ochiq qoladi", ko:"사후 온라인 멘토링 · 심화 자료 · 결과물 갤러리 유지 · 안용원 (대한민국 서울)"} }
+
 ];
 
 /* ====================== RENDER ====================== */
@@ -1371,7 +1444,13 @@ function render(s, i){
         '</div><div class="lp">' + s.limits.map((l, n) =>
           '<div data-lp="' + n + '"' + (n ? ' style="display:none"' : '') + '>' + T(l.d) + '</div>').join('') +
         '</div></div>' : '') +
-      '</div>' + linkOf(s) + noteOf(s);
+      '</div>' + linkOf(s) +
+      (s.miniquiz ? '<div class="quiz miniq">' +
+        '<div class="q" data-a="' + s.miniquiz.a + '"><div class="n">?</div>' +
+        '<div style="flex:1"><b>' + T(s.miniquiz.q) + '</b><div class="chs">' +
+          s.miniquiz.choices.map((c, k) => '<button class="ch" data-k="' + k + '">' + '①②③④'.charAt(k) + ' ' + T(c) + '</button>').join('') +
+        '</div></div></div></div>' : '') +
+      noteOf(s);
   }
 
   else if(s.type === 'rows'){
@@ -1572,6 +1651,75 @@ function svgLabel(x, y, pair, size, color, weight){
   return t;
 }
 const SVGS = {
+  halluc: () => {
+    const box = (x, y, w, h, fill, stroke) =>
+      '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="14" fill="' + fill + '" stroke="' + stroke + '"/>';
+    const arrow = (x1, x2, y) =>
+      '<line x1="' + x1 + '" y1="' + y + '" x2="' + (x2 - 14) + '" y2="' + y + '" stroke="#86868B" stroke-width="2"/>' +
+      '<polygon points="' + x2 + ',' + y + ' ' + (x2 - 15) + ',' + (y - 7) + ' ' + (x2 - 15) + ',' + (y + 7) + '" fill="#86868B"/>';
+    return '<svg viewBox="0 0 1000 176" xmlns="http://www.w3.org/2000/svg">' +
+      box(6, 30, 212, 92, '#F5F5F7', '#D2D2D7') +
+      svgLabel(112, 66, {uz:"Savol", ko:"질문"}, 17, '#1D1D1F', 600) +
+      svgLabel(112, 96, {uz:"\"Bu kod to'g'rimi?\"", ko:"\"이 코드 맞아?\""}, 13, '#86868B') +
+      arrow(222, 300, 76) +
+      box(300, 30, 250, 92, '#FDECEC', '#F3C0C0') +
+      svgLabel(425, 64, {uz:"Ishonchli javob", ko:"확신에 찬 대답"}, 17, '#C0392B', 600) +
+      svgLabel(425, 96, {uz:"\"Albatta! 100% to'g'ri.\"", ko:"\"물론이죠! 100% 맞습니다.\""}, 13, '#C0392B') +
+      arrow(554, 632, 76) +
+      box(632, 30, 230, 92, '#F5F5F7', '#D2D2D7') +
+      svgLabel(747, 64, {uz:"Haqiqat", ko:"실제"}, 17, '#1D1D1F', 600) +
+      svgLabel(747, 96, {uz:"funksiya umuman yo'q", ko:"그런 함수는 없음"}, 13, '#86868B') +
+      '<text x="912" y="92" text-anchor="middle" font-size="46">🤯</text>' +
+      svgLabel(500, 158, {uz:"Xato emas — ishonch bilan aytilgan xato. Shuning uchun sezilmaydi.", ko:"틀린 것이 문제가 아니라, 확신에 차서 틀리기 때문에 알아채기 어렵습니다"}, 14, '#5A5A5F') +
+      '</svg>';
+  },
+
+  blackbox: () => {
+    const box = (x, y, w, h, fill, stroke) =>
+      '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="14" fill="' + fill + '" stroke="' + stroke + '"/>';
+    const arrow = (x1, x2, y) =>
+      '<line x1="' + x1 + '" y1="' + y + '" x2="' + (x2 - 14) + '" y2="' + y + '" stroke="#86868B" stroke-width="2"/>' +
+      '<polygon points="' + x2 + ',' + y + ' ' + (x2 - 15) + ',' + (y - 7) + ' ' + (x2 - 15) + ',' + (y + 7) + '" fill="#86868B"/>';
+    return '<svg viewBox="0 0 1000 186" xmlns="http://www.w3.org/2000/svg">' +
+      box(40, 30, 200, 92, '#F5F5F7', '#D2D2D7') +
+      svgLabel(140, 66, {uz:"So'rov", ko:"요청"}, 17, '#1D1D1F', 600) +
+      svgLabel(140, 96, {uz:"\"O'yin yarat\"", ko:"\"게임 만들어 줘\""}, 13, '#86868B') +
+      arrow(244, 330, 76) +
+      box(330, 20, 230, 112, '#1D1D1F', '#1D1D1F') +
+      '<text x="445" y="76" text-anchor="middle" font-size="40" font-weight="700" fill="#FFD97D">?</text>' +
+      svgLabel(445, 110, {uz:"ichkarisi ko'rinmaydi", ko:"내부는 보이지 않음"}, 13, '#C7C7CC') +
+      arrow(564, 650, 76) +
+      box(650, 30, 200, 92, '#F0F6FF', '#BBD8FF') +
+      svgLabel(750, 66, {uz:"Ishlaydigan kod", ko:"동작하는 코드"}, 17, '#0B64D6', 600) +
+      svgLabel(750, 96, {uz:"lekin nega — bilinmaydi", ko:"하지만 왜인지는 모름"}, 13, '#0A84FF') +
+      '<text x="920" y="92" text-anchor="middle" font-size="44">🤔</text>' +
+      svgLabel(500, 168, {uz:"Natija bor, tushuncha yo'q — fikrlash AI ga topshirib qo'yiladi.", ko:"결과는 남고 이해는 남지 않습니다 — 생각을 AI에 외주 주는 상태"}, 14, '#5A5A5F') +
+      '</svg>';
+  },
+
+  privacy: () => {
+    const box = (x, y, w, h, fill, stroke) =>
+      '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="14" fill="' + fill + '" stroke="' + stroke + '"/>';
+    const arrow = (x1, x2, y, color) =>
+      '<line x1="' + x1 + '" y1="' + y + '" x2="' + (x2 - 14) + '" y2="' + y + '" stroke="' + color + '" stroke-width="2"/>' +
+      '<polygon points="' + x2 + ',' + y + ' ' + (x2 - 15) + ',' + (y - 7) + ' ' + (x2 - 15) + ',' + (y + 7) + '" fill="' + color + '"/>';
+    return '<svg viewBox="0 0 1000 220" xmlns="http://www.w3.org/2000/svg">' +
+      '<text x="90" y="80" text-anchor="middle" font-size="40">🧑‍🎓</text>' +
+      box(150, 26, 230, 92, '#FDECEC', '#F3C0C0') +
+      svgLabel(265, 60, {uz:"Ism &#183; manzil &#183; telefon", ko:"이름 · 주소 · 전화번호"}, 15, '#C0392B', 600) +
+      svgLabel(265, 92, {uz:"o'quvchi kiritadi", ko:"학생이 입력"}, 13, '#C0392B') +
+      arrow(384, 462, 72, '#C0392B') +
+      box(462, 26, 210, 92, '#F5F5F7', '#D2D2D7') +
+      svgLabel(567, 60, {uz:"Ochiq kod &#183; ochiq baza", ko:"공개된 코드 · 공개 저장소"}, 15, '#1D1D1F', 600) +
+      svgLabel(567, 92, {uz:"kalitlar ko'rinadi", ko:"키가 그대로 노출"}, 13, '#86868B') +
+      arrow(676, 754, 72, '#C0392B') +
+      box(754, 26, 200, 92, '#1D1D1F', '#1D1D1F') +
+      '<text x="854" y="84" text-anchor="middle" font-size="40">🕵️</text>' +
+      svgLabel(500, 162, {uz:"Bir marta chiqib ketgan ma'lumotni qaytarib bo'lmaydi.", ko:"한 번 빠져나간 정보는 되돌릴 수 없습니다"}, 15, '#C0392B', 600) +
+      svgLabel(500, 198, {uz:"Yechim: raqam yoki taxallus &#183; faqat o'quv natijasi &#183; dars tugagach o'chirish", ko:"해결: 번호나 별명 · 학습 결과만 · 수업 후 삭제"}, 14, '#0B64D6', 600) +
+      '</svg>';
+  },
+
   backend: () => {
     const B = (x, title, desc, hi) =>
       '<rect x="' + x + '" y="20" width="250" height="118" rx="16" fill="' + (hi ? '#F0F6FF' : '#F5F5F7') + '" stroke="' + (hi ? '#BBD8FF' : '#D2D2D7') + '"/>' +
@@ -1863,12 +2011,22 @@ function deckZoom(dir){
 
 function buildOverview(){
   const g = document.getElementById('ovgrid');
-  g.innerHTML = SLIDES.map((s, i) =>
-    '<button class="ovcard' + (i === cur ? ' cur' : '') + '" data-go="' + i + '">' +
-      '<div class="no">' + String(i + 1).padStart(2, '0') + '</div>' +
-      '<div class="tt">' + esc(titleOf(s)) + '</div>' +
-      '<div class="bl">' + esc(s.block) + '</div>' +
-    '</button>').join('');
+  const groups = [];
+  SLIDES.forEach((sl, i) => {
+    if(!groups.length || groups[groups.length - 1].name !== sl.block) groups.push({ name: sl.block, items: [] });
+    groups[groups.length - 1].items.push(i);
+  });
+  g.innerHTML = groups.map(gr =>
+    '<div class="ovgroup">' +
+      '<div class="ovlabel">' + esc(gr.name) + '<span>' + gr.items.length + '</span></div>' +
+      '<div class="ovrow">' +
+        gr.items.map(i =>
+          '<button class="ovcard' + (i === cur ? ' cur' : '') + '" data-go="' + i + '">' +
+            '<div class="no">' + String(i + 1).padStart(2, '0') + '</div>' +
+            '<div class="tt">' + esc(titleOf(SLIDES[i])) + '</div>' +
+          '</button>').join('') +
+      '</div>' +
+    '</div>').join('');
   [...g.querySelectorAll('.ovcard')].forEach(b => b.addEventListener('click', () => {
     show(+b.dataset.go);
     document.getElementById('overlay').classList.remove('open');
